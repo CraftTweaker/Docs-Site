@@ -10,7 +10,7 @@ export default function ThemeOptions() {
     height: themeOptionsOpen ? "100%" : 0
   }
   return <>
-    <div className = "flex-none relative my-auto inline-block border-b dark:border-dark-700 py-2 flex flex-row pl-2 text-center cursor-pointer hover:bg-gray-400 dark-hover:bg-dark-600 select-none" onClick = {() => {
+    <div className = "flex-none relative my-auto inline-block border-b dark:border-dark-700 py-2 flex flex-row pl-2 text-center cursor-pointer hover:bg-gray-400 dark-hover:bg-dark-700 select-none" onClick = {() => {
       setThemeOptionsOpen(!themeOptionsOpen)
     }}>
             <span className = {`mx-auto`}>

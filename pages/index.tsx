@@ -109,7 +109,7 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
                   )}
                 </select>
 
-                <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 row-gap-4 col-gap-2 my-4`}>
+                <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 row-y-4 col-x-2 my-4`}>
 
                   {verlang[version].map((lang: string) => {
                     return <div className = {`border bg-gray-400 dark:bg-dark-800 dark:border-dark-700`} key = {`${lang}-${version}`}>
