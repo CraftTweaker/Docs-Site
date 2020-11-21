@@ -8,6 +8,9 @@ import TableCell from "./markdown/TableCell";
 import Heading from "./markdown/Heading";
 import { ContentProps } from "../utils/Interfaces";
 
+import gfm from 'remark-gfm';
+
+
 export default function Content({ version, lang, page }: ContentProps) {
 
 
@@ -53,7 +56,7 @@ export default function Content({ version, lang, page }: ContentProps) {
         tableCell: TableCell,
         link: Clink,
         heading: Heading
-      }} transformLinkUri = {uri => transform(uri, false)} transformImageUri = {uri => transform(uri, true)}/>
+      }} transformLinkUri = {uri => transform(uri, false)} transformImageUri = {uri => transform(uri, true)} plugins={[gfm]}/>
     </div>
   </>
 }
