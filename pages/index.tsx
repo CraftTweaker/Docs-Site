@@ -32,7 +32,6 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
 
   const simpleBarRef = useRef(null);
   useEffect(() => {
-
     // Handles reseting simple bar's position
     const handleRouteChange = () => {
       // @ts-ignore
@@ -40,15 +39,6 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
     };
     Router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-
-    };
-    const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    script.async = true;
-    script.dataset.adClient = "ca-pub-7211841189345460";
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
       Router.events.off("routeChangeComplete", handleRouteChange);
     }
 
@@ -93,7 +83,7 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
 
 
       <div className = {`flex flex-row`}>
-        <SideNav stub = {true} showingNav = {showingNav} parentFolders={[]}/>
+        <SideNav stub = {true} showingNav = {showingNav} parentFolders = {[]}/>
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
             <div className = "container mx-auto text-center mt-1 dark:text-dark-100">
@@ -115,10 +105,10 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
                     return <div className = {`border bg-gray-400 dark:bg-dark-800 dark:border-dark-700`} key = {`${lang}-${version}`}>
                       {/*<Link href = {`/[version]/[lang]/[...slug]`} as = {`/${version}/${lang}/index/`}>*/}
 
-                        <a href = {`/${version}/${lang}/index/`}> <img className = {`w-full`} src = {getFlag(lang)} alt = {lang}/>
-                          <p className = {`text-xl font-semibold mt-2`}>Version: {version}</p>
-                          <p className = {`text-xl font-semibold mb-2`}>Language: {lang}</p>
-                        </a>
+                      <a href = {`/${version}/${lang}/index/`}> <img className = {`w-full`} src = {getFlag(lang)} alt = {lang}/>
+                        <p className = {`text-xl font-semibold mt-2`}>Version: {version}</p>
+                        <p className = {`text-xl font-semibold mb-2`}>Language: {lang}</p>
+                      </a>
 
                       {/*</Link>*/}
 

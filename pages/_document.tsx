@@ -12,7 +12,21 @@ class MyDocument extends Document {
       <Html lang = {"en"}>
 
         <Head>
-          <script data-ad-client="ca-pub-7211841189345460" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script
+            async
+            src = {"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+          />
+          <script
+            dangerouslySetInnerHTML = {{
+              __html: `
+               (adsbygoogle = window.adsbygoogle || []).push({
+                   google_ad_client: "ca-pub-7211841189345460",
+                   enable_page_level_ads: true
+              });
+                `
+            }}
+          />
+
 
         </Head>
         <body>

@@ -19,7 +19,6 @@ function DisplayAd({ client = "ca-pub-7211841189345460", format = "auto", respon
   }
 
   return <div key = {`${current.key}-${current.value}-${slot}`}>
-    <script async src = {"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}/>
     <ins className = {`adsbygoogle block ${className}`}
          data-ad-client = {client}
          data-ad-slot = {slot}

@@ -14,7 +14,7 @@ import axios from 'axios';
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 
-const DisplayAd = dynamic(() => import('../../..//components/ads/DisplayAd'), { ssr: false })
+const DisplayAd = dynamic(() => import('../../../components/ads/DisplayAd'), { ssr: false })
 const Search = ({ theme, version, lang, navs, verlang, search, searchResults, parentFolders }: SearchProps) => {
   const [displayedSearch, setDisplayedSearch] = useState(search);
   const [showingNav, setShowingNav] = useState(false);
@@ -29,15 +29,6 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
     };
     Router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-
-    };
-    const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    script.async = true;
-    script.dataset.adClient = "ca-pub-7211841189345460";
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
       Router.events.off("routeChangeComplete", handleRouteChange);
     }
 
@@ -76,7 +67,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
         <SideNav version = {version} lang = {lang} navs = {navs} current = {{
           key: "search",
           value: "search"
-        }} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders={parentFolders}/>
+        }} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders = {parentFolders}/>
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
             <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
@@ -104,7 +95,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                   <div>
                     {searchResults.count > 0 ? searchResults.results.map((value, index) =>
 
-                      // <Link href = {`/[version]/[lang]/[...slug]`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>
+                        // <Link href = {`/[version]/[lang]/[...slug]`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>
 
                         <a href = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} className = {`px-2 block hover:bg-gray-400 dark-hover:bg-dark-700`}>
 

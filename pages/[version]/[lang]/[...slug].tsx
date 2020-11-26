@@ -21,16 +21,6 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
   const [showingNav, setShowingNav] = useState(false);
   useEffect(() => {
     setShowingNav(false);
-
-    const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    script.async = true;
-    script.dataset.adClient = "ca-pub-7211841189345460";
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    }
-
   }, [current]);
   const simpleBarRef = useRef(null);
   useEffect(() => {
@@ -77,7 +67,7 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
 
       <div className = "flex flex-row">
 
-        <SideNav version = {version} lang = {lang} navs = {navs} current = {current} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders={parentFolders}/>
+        <SideNav version = {version} lang = {lang} navs = {navs} current = {current} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders = {parentFolders}/>
 
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
