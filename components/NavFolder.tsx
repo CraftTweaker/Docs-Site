@@ -24,23 +24,23 @@ function NavFolder({ theme, version, lang, name, current, nav, level, parentExpa
 
 
 
-  // useEffect(() => {
-  //   let parentCurrent = parentNames.concat(name);
-  //   let expanded = true;
-  //   if (parentCurrent.length > parentFolders.length) {
-  //     expanded = false;
-  //   } else {
-  //     for (let i = 0; i < parentCurrent.length; i++) {
-  //       let currentValue = parentCurrent[i];
-  //       let folderValue = parentFolders[i];
-  //       if (currentValue !== folderValue) {
-  //         expanded = false;
-  //       }
-  //     }
-  //   }
-  //   setExpanded(expanded);
-  //   setLoaded(true);
-  // }, [current]);
+  useEffect(() => {
+    let parentCurrent = parentNames.concat(name);
+    let expanded = true;
+    if (parentCurrent.length > parentFolders.length) {
+      expanded = false;
+    } else {
+      for (let i = 0; i < parentCurrent.length; i++) {
+        let currentValue = parentCurrent[i];
+        let folderValue = parentFolders[i];
+        if (currentValue !== folderValue) {
+          expanded = false;
+        }
+      }
+    }
+    setExpanded(expanded);
+    setLoaded(true);
+  }, [current]);
 
   if (!parentExpanded) {
     return <> </>
