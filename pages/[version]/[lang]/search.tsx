@@ -2,7 +2,6 @@ import fs from 'fs-extra';
 import path from 'path'
 import React, { useEffect, useRef, useState } from "react";
 import SimpleBar from 'simplebar-react';
-import yaml from 'yaml';
 import Layout from "../../../components/layout";
 import Link from "next/link";
 import { SearchPageQuery, SearchProps, SearchResults } from "../../../utils/Interfaces";
@@ -95,9 +94,9 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                   <div>
                     {searchResults.count > 0 ? searchResults.results.map((value, index) =>
 
-                        // <Link href = {`/[version]/[lang]/[...slug]`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>
+                      <Link href = {`/[version]/[lang]/[...slug]`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>
 
-                        <a href = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} className = {`px-2 block hover:bg-gray-400 dark-hover:bg-dark-700`}>
+                        <a className = {`px-2 block hover:bg-gray-400 dark-hover:bg-dark-700`}>
 
                           <div className = "py-1 pl-2">
                             <h2 className = "py-2 text-blue-700 dark:text-blue-300">
@@ -110,7 +109,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
 
                         </a>
 
-                      // </Link>
+                      </Link>
                     ) : (searchResults.count === 0 ? <div>
                       <h4>No results found</h4></div> : <></>)}
                   </div>

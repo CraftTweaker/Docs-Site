@@ -2,7 +2,6 @@ import fs from 'fs-extra';
 import path from 'path'
 import React, { useEffect, useRef, useState } from "react";
 import SimpleBar from 'simplebar-react';
-import yaml from 'yaml';
 
 import ArticleNav from "../../../components/ArticleNav";
 import Content from "../../../components/Content";

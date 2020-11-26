@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "./header";
-import Head from "next/head";
 import { LayoutProps } from "../utils/Interfaces";
 import { initGA, pageView } from "../utils/Analytics";
 
