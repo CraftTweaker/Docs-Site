@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nextjs:
+    build: ./
+    ports:
+      - 2901:3000
+    restart: always
+    volumes:
+      - "${docsSiteDir}/:/app/docs"
+    environment:
+      NODE_ENV: production
+    container_name: crafttweaker_docs
