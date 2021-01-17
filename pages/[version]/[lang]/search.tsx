@@ -13,7 +13,6 @@ import axios from 'axios';
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 
-const DisplayAd = dynamic(() => import('../../../components/ads/DisplayAd'), { ssr: false })
 const Search = ({ theme, version, lang, navs, verlang, search, searchResults, parentFolders }: SearchProps) => {
   const [displayedSearch, setDisplayedSearch] = useState(search);
   const [showingNav, setShowingNav] = useState(false);
@@ -71,11 +70,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
             <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
               <div className = {`flex flex-col justify-between`}>
-                <DisplayAd slot = {`2785889097`} className = {`md:mx-auto`} current = {{ key: "Search", value: "Search" }}/>
-                <DisplayAd slot = {`4624233302`} className = {`md:mx-auto`} mediaQuery = {"(min-width: 768px)"} current = {{
-                  key: "Search",
-                  value: "Search"
-                }}/>
+                {/*  TODO Add something cool here */}
               </div>
               <div className = {`w-11/12 md:w-full pt-4 pb-16 px-4 mx-auto dark:text-dark-100`}>
                 <div className = {`w-5/6 mx-auto`}>
@@ -116,11 +111,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                 </div>
               </div>
               <div className = {`flex flex-col justify-between`}>
-                <DisplayAd slot = {`6866063899`} className = {`md:mx-auto`} current = {{ key: "Search", value: "Search" }}/>
-                <DisplayAd slot = {`5174542427`} className = {`md:mx-auto`} mediaQuery = {"(min-width: 768px)"} current = {{
-                  key: "Search",
-                  value: "Search"
-                }}/>
+                {/*  TODO Add something cool here */}
               </div>
             </div>
 

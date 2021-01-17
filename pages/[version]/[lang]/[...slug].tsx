@@ -10,11 +10,9 @@ import SideNav from "../../../components/SideNav";
 import { NavObject, PageProps, PageQuery } from "../../../utils/Interfaces";
 import { NextPageContext } from "next";
 import { DOCS_DEV, getTheme, SITE_DEV, walk } from "../../../utils/Utils";
-import dynamic from "next/dynamic";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
 
-const DisplayAd = dynamic(() => import('../../../components/ads/DisplayAd'), { ssr: false })
 
 const Page = ({ theme, version, lang, previous, current, next, navs, page, verlang, parentFolders }: PageProps) => {
   const [showingNav, setShowingNav] = useState(false);
@@ -73,9 +71,7 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
 
             <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
               <div className = {`flex flex-col justify-between`}>
-                {!SITE_DEV && <DisplayAd slot = {`2785889097`} className = {`md:mx-auto`} current = {current}/>}
-
-                {!SITE_DEV && <DisplayAd slot = {`4624233302`} className = {`md:mx-auto`} mediaQuery = {"(min-width: 768px)"} current = {current}/>}
+              {/*  TODO Add something cool here */}
               </div>
               <div className = {`w-11/12 md:w-full pt-4 pb-16 px-4 mx-auto dark:text-dark-100`}>
                 <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
@@ -83,9 +79,7 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
                 <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
               </div>
               <div className = {`flex flex-col justify-between`}>
-                {!SITE_DEV && <DisplayAd slot = {`6866063899`} className = {`md:mx-auto`} current = {current}/>}
-
-                {!SITE_DEV && <DisplayAd slot = {`5174542427`} className = {`md:mx-auto`} mediaQuery = {"(min-width: 768px)"} current = {current}/>}
+                {/*  TODO Add something cool here */}
               </div>
             </div>
           </SimpleBar>

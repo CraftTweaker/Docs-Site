@@ -8,11 +8,8 @@ import SideNav from "../components/SideNav";
 import { NextPageContext } from "next";
 import { DOCS_DEV, getTheme, SITE_DEV } from "../utils/Utils";
 import { HasTheme, HasVerLang } from "../utils/Interfaces";
-import dynamic from "next/dynamic";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
-
-const DisplayAd = dynamic(() => import('../components/ads/DisplayAd'), { ssr: false })
 
 export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
 
@@ -115,18 +112,6 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
                     </div>
                   })}
 
-                </div>
-                <div className = {`grid gap-4 grid-cols-1 md:grid-cols-2 mb-4`}>
-
-                  {!SITE_DEV && <DisplayAd slot = "6866063899" current = {{
-                    key: "CraftTweaker Documentation",
-                    value: "CraftTweaker Documentation"
-                  }}/>}
-
-                  {!SITE_DEV && <DisplayAd slot = "2785889097" current = {{
-                    key: "CraftTweaker Documentation",
-                    value: "CraftTweaker Documentation"
-                  }}/>}
                 </div>
 
               </div>
