@@ -31,11 +31,11 @@ function makeHeader(level: number, id: string, child: ReactNode[]) {
   }
 }
 
-export default function Heading({ level, children }: HeadingProps) {
+export default function Heading({ level, children }: HeadingProps, headingId: number) {
   let child: any = children[0];
   let id = "invalid";
   if (child.props.value) {
-    id = child.props.value.toLowerCase().replace(/[^a-zA-Z0-9_-]/gmi, "-");
+    id = child.props.value.toLowerCase().replace(/[^a-zA-Z0-9_-]/gmi, "-") + "-" + headingId;
   }
 
   return <a href={`#${id}`} className={`block`}>

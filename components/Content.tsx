@@ -13,7 +13,7 @@ import gfm from 'remark-gfm';
 
 export default function Content({ version, lang, page }: ContentProps) {
 
-
+  let headingId = {current: 0}
   function transform(url: string, image: boolean) {
     if (!url) {
       return ``;
@@ -55,7 +55,10 @@ export default function Content({ version, lang, page }: ContentProps) {
         table: Table,
         tableCell: TableCell,
         link: Clink,
-        heading: Heading
+        heading: (props) => {
+          headingId.current = headingId.current + 1;
+          return Heading(props, headingId.current);
+        }
       }} transformLinkUri = {uri => transform(uri, false)} transformImageUri = {uri => transform(uri, true)} plugins={[gfm]}/>
     </div>
   </>
