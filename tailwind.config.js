@@ -1,4 +1,3 @@
-
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
@@ -123,8 +122,10 @@ module.exports = {
                 800: '#97266d',
                 900: '#702459',
             },
-            dark: colors.trueGray,
-
+            dark: {
+                ...colors.trueGray,
+                850: '#202023'
+            }
         },
         extend: {
             gridTemplateColumns: {
@@ -139,7 +140,8 @@ module.exports = {
                 '48perc': '48%'
             },
             height: {
-                'with-nav': 'calc(100vh - 4rem);'
+                'with-nav': 'calc(100vh - 4rem);',
+                'half-screen': `50vh`
             },
             width: {
                 '48perc': '48%',
