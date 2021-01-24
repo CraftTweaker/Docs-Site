@@ -39,7 +39,7 @@ export default function RequiredMod({ props }: { props: any }) {
         </svg>
         {modLink.length > 0 ? <a className={`font-semibold`} href={modLink}> {props.children}</a> :
           <span className={`font-semibold `}> {props.children}</span>}
-        does not does have built in Mod support, you will need {requiredModLink.length > 0 ?
+        does not does have built in mod support, you will need {requiredModLink.length > 0 ?
         <a className={`font-semibold`} href={requiredModLink}> {requiredMod}</a> :
         <span className={`font-semibold`}> {requiredMod}</span>} for this to work!
       </div>}
