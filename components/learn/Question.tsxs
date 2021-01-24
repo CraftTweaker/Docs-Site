@@ -1,0 +1,35 @@
+import { LearnQuestion } from "../../utils/Interfaces";
+import { useState } from "react";
+
+export default function Question({ question }: { question: LearnQuestion }) {
+
+  let [selectedAnswer, setSelectedAnswer] = useState("");
+  let [wrongAnswer, setWrongAnswer] = useState(false);
+  let [answered, setAnswered] = useState(false);
+
+  return <div className={`border p-4 bg-dark-800 border-dark-700`}>
+    <div className={`flex flex-col gap-y-1`}>
+      <h3 className={`font-medium`}>{question.text}</h3>
+      {question.answers.map(value => {
+        return <div>
+          <div
+            className={`inline-block ${answered ? `cursor-default` : `cursor-pointer hover:bg-gray-800`} py-2 px-4 ${wrongAnswer ? (value.id === question.answer ? `bg-green-500` : `bg-red-500`) : selectedAnswer === value.id ? `bg-gray-800` : ``}`}
+            onClick={(e) => {
+              setSelectedAnswer(value.id);
+            }}><span className={`mr-2`}>{value.id})</span> {value.text}</div>
+        </div>
+      })}
+      <div className={`mt-4`}>
+        {!answered ? <button className={`p-2 bg-blue-800 text-center inline-block`} onClick={event => {
+          setAnswered(true);
+          setWrongAnswer(question.answer !== selectedAnswer)
+        }}>
+          Submit
+        </button> : <div className={`inline-block`}>
+          {wrongAnswer && <p className={`text-xl text-red-500`}>Incorrect, but nice try!</p>}
+          {!wrongAnswer && <p className={`text-xl text-green-500`}>Correct! Good job!</p>}
+        </div>}
+      </div>
+    </div>
+  </div>
+}

@@ -99,6 +99,44 @@ export interface SearchResults {
   results: any[]
 }
 
+export interface LearnProps extends HasVerAndLang, HasTheme, HasVerLang {
+  navs: object
+  parentFolders: string[]
+  learn: LearnSection[]
+  page?: string,
+  current: string[]
+  currentConcept: LearnConcept
+}
+
+export interface LearnSection {
+  name: string
+  categories: LearnCategory[]
+}
+
+export interface LearnCategory {
+  name: string
+  slug: string
+  concepts: LearnConcept[]
+}
+
+export interface LearnConcept {
+  name: string
+  slug: string
+  question: LearnQuestion
+}
+
+export interface LearnQuestion {
+  text: string,
+  answers: LearnAnswer[],
+  answer: string
+}
+
+export interface LearnAnswer {
+  id: string
+  text: string
+}
+
+
 export interface SideNavProps {
   version?: string
   lang?: string
