@@ -1,10 +1,10 @@
 import React from "react";
 
 export default function RequiredMod({ props }: { props: any }) {
-  if (!props.attributes.hasOwnProperty("buildIn")) {
+  if (!props.attributes.hasOwnProperty("builtIn")) {
     return <div className={`bg-red-500 border-2 border-red-500 rounded p-4 bg-opacity-25 my-2`}>
       <p>
-        "buildIn" property missing from requiredMods!
+        "builtIn" property missing from requiredMods!
       </p>
       <div className={`flex flex-col gap-y-1`}>
         {Object.keys(props.attributes).map(key => {
@@ -13,25 +13,25 @@ export default function RequiredMod({ props }: { props: any }) {
       </div>
     </div>
   }
-  let buildIn: boolean = props.attributes.buildIn === "true";
+  let builtIn: boolean = props.attributes.builtIn === "true";
   let modLink: string = props.attributes.modLink ?? ``
   let requiredMod: string = props.attributes.requiredMod ?? ``;
   let requiredModLink: string = props.attributes.requiredModLink ?? ``;
 
-  let bgClass = buildIn ? `bg-teal-500` : `bg-red-500`;
-  let borderClass = buildIn ? `border-teal-500` : `border-red-500`;
+  let bgClass = builtIn ? `bg-teal-500` : `bg-red-500`;
+  let borderClass = builtIn ? `border-teal-500` : `border-red-500`;
 
 
   return <>
     <div className={`${bgClass} border-2 ${borderClass} rounded p-4 bg-opacity-25 my-4`}>
-      {buildIn ? <div className={`flex gap-x-1`}>
+      {builtIn ? <div className={`flex gap-x-1`}>
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                 d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
         </svg>
         {modLink.length > 0 ? <a className={`font-semibold`} href={modLink}> {props.children}</a> :
           <span className={`font-semibold`}> {props.children}</span>}
-        has build in mod support! You don't need any other mods for this to work!
+        has built in mod support! You don't need any other mods for this to work!
       </div> : <div className={`flex gap-x-1`}>
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -39,7 +39,7 @@ export default function RequiredMod({ props }: { props: any }) {
         </svg>
         {modLink.length > 0 ? <a className={`font-semibold`} href={modLink}> {props.children}</a> :
           <span className={`font-semibold `}> {props.children}</span>}
-        does not does have build in Mod support, you will need {requiredModLink.length > 0 ?
+        does not does have built in Mod support, you will need {requiredModLink.length > 0 ?
         <a className={`font-semibold`} href={requiredModLink}> {requiredMod}</a> :
         <span className={`font-semibold`}> {requiredMod}</span>} for this to work!
       </div>}
