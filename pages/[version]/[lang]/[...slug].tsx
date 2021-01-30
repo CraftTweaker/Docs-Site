@@ -9,9 +9,10 @@ import Layout from "../../../components/layout";
 import SideNav from "../../../components/SideNav";
 import { NavObject, PageProps, PageQuery } from "../../../utils/Interfaces";
 import { NextPageContext } from "next";
-import { DOCS_DEV, getTheme, SITE_DEV, walk } from "../../../utils/Utils";
+import { DOCS_DEV, getTheme, SITE_DEV, walk, walkDev } from "../../../utils/Utils";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
+import exec from "child_process"
 
 
 const Page = ({ theme, version, lang, previous, current, next, navs, page, verlang, parentFolders }: PageProps) => {
@@ -129,8 +130,11 @@ export async function getServerSideProps(context: NextPageContext) {
   let docsJsonReversedLocation: string;
 
   if (DOCS_DEV) {
+
     docsJsonLocation = path.join(path.join(process.cwd(), '../'), "docs.json");
     docsJsonReversedLocation = path.join(path.join(process.cwd(), '../'), "docs_reverse_lookup.json");
+    let reversed = walkDev(JSON.parse(fs.readFileSync(docsJsonLocation, "utf-8"))["nav"], {}, [])
+    fs.writeJSONSync(docsJsonReversedLocation, reversed);
   } else {
     docsJsonLocation = path.join(langDir, "docs.json");
     docsJsonReversedLocation = path.join(langDir, "docs_reverse_lookup.json");

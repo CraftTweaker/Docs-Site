@@ -83,3 +83,21 @@ export const walk = function (doc: object[], done: NavObject[]) {
   return done;
 };
 
+export const walkDev = function (doc: object[], done: any, parents: string[]) {
+
+  done = done || {};
+
+  for (let docKey in doc) {
+    if (!doc.hasOwnProperty(docKey)) {
+      // whatever webstorm
+      continue;
+    }
+    let val: any = doc[docKey];
+    if (typeof val === "object") {
+      done = walkDev(val, done, [...parents, docKey]);
+    } else {
+      done[val] = parents
+    }
+  }
+  return done;
+};
