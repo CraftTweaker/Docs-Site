@@ -4,14 +4,14 @@ import { CLinkProps } from "../../utils/Interfaces";
 
 export default function Clink({ href, children }: CLinkProps) {
   if (href.startsWith("http")) {
-    return <a className = {`text-blue-700 dark:text-blue-300 break-all`} href = {href}>
+    return <a className={`text-blue-700 dark:text-blue-300 break-all`} href={href} target={`_blank`} rel={`noopener noreferrer`}>
       {children}
     </a>
   }
   return (
-    <Link href = {`/[version]/[lang]/[...slug]`} as = {href}>
+    <Link href={`/[version]/[lang]/[...slug]`} as={href}>
 
-      <a className = {`text-blue-700 dark:text-blue-300 break-all`}>
+      <a className={`text-blue-700 dark:text-blue-300 break-all`}>
         {children}
       </a>
 
