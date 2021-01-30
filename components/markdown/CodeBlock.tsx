@@ -81,7 +81,7 @@ function CodeBlock({ language, value }: CodeBlockProps) {
   const theme = useContext(ThemeContext);
   return (
     <SimpleBar forceVisible = {"x"} autoHide = {false} direction = {'x'}>
-      <SyntaxHighlighter className = {`whitespace-pre-wrap`} language = {language} style = {getStyle(theme.hljsStyle === "default" ? theme.pageTheme === `dark` ? `a11yDark` : `a11yLight` : theme.hljsStyle)} showLineNumbers = {false}>
+      <SyntaxHighlighter className = {`whitespace-pre-wrap border border-gray-400 dark:border-dark-700`} language = {language} style = {getStyle(theme.hljsStyle === "default" ? theme.pageTheme === `dark` ? `a11yDark` : `a11yLight` : theme.hljsStyle)} showLineNumbers = {false}>
         {value}
       </SyntaxHighlighter> </SimpleBar>
   );
