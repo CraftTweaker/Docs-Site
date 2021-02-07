@@ -44,7 +44,7 @@ export default function RequiredMod({ props }: { props: any }) {
         <div className={`my-auto`}>
           {modLink.length > 0 ? <a className={`font-semibold mr-1`} href={modLink}> {props.children}</a> :
             <span className={`font-semibold mr-1`}> {props.children}</span>}
-          does not does have built in mod support, you will need {requiredModLink.length > 0 ?
+          does not have built in mod support, you will need {requiredModLink.length > 0 ?
           <a className={`font-semibold mr-1`} href={requiredModLink}> {requiredMod}</a> :
           <span className={`font-semibold mr-1`}> {requiredMod}</span>}for this to work!
         </div>
