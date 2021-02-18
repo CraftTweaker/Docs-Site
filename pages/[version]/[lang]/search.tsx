@@ -68,7 +68,6 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
         }} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders = {parentFolders}/>
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
-            <div className = {`page-background min-h-with-nav`}>
             <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
               <div className = {`flex flex-col justify-between`}>
                 {/*  TODO Add something cool here */}
@@ -87,7 +86,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                   }} value = {displayedSearch}/>
 
 
-                  <div className={`bg-gray-100 dark:bg-dark-900 border border-gray-300 dark:border-dark-700`}>
+                  <div className = {`bg-gray-100 dark:bg-dark-900 border border-gray-300 dark:border-dark-700`}>
                     {searchResults.count > 0 ? searchResults.results.map((value, index) =>
 
                       <Link href = {`/[version]/[lang]/[...slug]`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>
@@ -114,7 +113,6 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
               <div className = {`flex flex-col justify-between`}>
                 {/*  TODO Add something cool here */}
               </div>
-            </div>
             </div>
 
           </SimpleBar>

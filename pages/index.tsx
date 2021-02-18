@@ -86,7 +86,6 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
         <SideNav stub = {true} showingNav = {showingNav} parentFolders = {[]}/>
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
-            <div className = {`page-background min-h-with-nav py-2`}>
               <div className = "container mx-auto text-center dark:text-dark-100">
                 <div className = {`w-5/6 mx-auto`}>
                   <h1 className = "text-4xl mt-1 mb-3"> Select Version </h1>
@@ -127,7 +126,6 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
 
                 </div>
               </div>
-            </div>
           </SimpleBar>
         </div>
       </div>
