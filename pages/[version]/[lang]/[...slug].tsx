@@ -70,17 +70,19 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
 
-            <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
-              <div className = {`flex flex-col justify-between`}>
-              {/*  TODO Add something cool here */}
-              </div>
-              <div className = {`w-11/12 md:w-full pt-4 pb-16 px-4 mx-auto dark:text-dark-100`}>
-                <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
-                <Content version = {version} lang = {lang} page = {page}/>
-                <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
-              </div>
-              <div className = {`flex flex-col justify-between`}>
-                {/*  TODO Add something cool here */}
+            <div className = {`page-background min-h-with-nav`}>
+              <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
+                <div className = {`flex flex-col justify-between`}>
+                  {/*  TODO Add something cool here */}
+                </div>
+                <div className = {`w-11/12 lg:w-full p-4 mx-auto dark:text-dark-100 bg-dark-100 dark:bg-dark-850 border border-gray-300 dark:border-dark-700 my-4`}>
+                  <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
+                  <Content version = {version} lang = {lang} page = {page}/>
+                  <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
+                </div>
+                <div className = {`flex flex-col justify-between`}>
+                  {/*  TODO Add something cool here */}
+                </div>
               </div>
             </div>
           </SimpleBar>

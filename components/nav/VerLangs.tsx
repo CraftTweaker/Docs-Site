@@ -4,7 +4,7 @@ import { VerLangsProps } from "../../utils/Interfaces";
 
 export default function VerLangs({ verlang, version, lang, stub, current }: VerLangsProps) {
   let router = useRouter();
-  return <div className = {`flex-none flex flex-row justify-between border-b dark:border-dark-700`}>
+  return <div className = {`flex-none flex flex-row justify-between border-b border-gray-300 dark:border-dark-700`}>
     <div className = "flex-none relative my-auto inline-block py-2 flex flex-row pl-2">
       <label htmlFor = "version-select" className = "text-sm">Version:</label>
       <select id = "version-select" className = {`bg-transparent px-1`} disabled = {stub} onChange = {event => {

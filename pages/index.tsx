@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SimpleBar from "simplebar-react";
 import Layout from "../components/layout";
 import fs from 'fs-extra';
@@ -14,6 +14,7 @@ import { NextSeo } from "next-seo";
 export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
 
   function getFlag(lang: string) {
+
     // This handles lang -> flag, not great, but there isn't a proper solution
     if (lang === "en") {
       lang = "gb";
@@ -26,6 +27,7 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
     }
     return `https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/flags/4x3/${lang}.svg`
   }
+
 
   const simpleBarRef = useRef(null);
   useEffect(() => {
@@ -42,9 +44,10 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
   }, []);
 
 
-  let [version, setVersion] = useState(Object.keys(verlang).sort((a, b) => b.localeCompare(a))[0]);
+  let [selectedVersion, setVersion] = useState(Object.keys(verlang).sort((a, b) => b.localeCompare(a))[0]);
 
   const [showingNav, setShowingNav] = useState(false);
+
   return (<>
     <Layout theme = {theme} showingNav = {showingNav} setShowingNav = {setShowingNav} current = {{
       key: "CraftTweaker Documentation",
@@ -83,40 +86,48 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
         <SideNav stub = {true} showingNav = {showingNav} parentFolders = {[]}/>
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
-            <div className = "container mx-auto text-center mt-1 dark:text-dark-100">
-              <div className = {`w-5/6 mx-auto`}>
-                <label className = "text-4xl" htmlFor = "main-version-select"> Select Version </label>
-                <select id = "main-version-select" className = "bg-transparent block w-full p-2 border border-gray-400 dark:border-dark-600"
-                        onChange = {event => {
-                          setVersion(event.target.value);
-                          event.target.blur();
-                        }}>
-                  {Object.keys(verlang).sort((a, b) => b.localeCompare(a)).map(version =>
-                    <option key = {version} value = {version} className = {`text-black`}>{version}</option>
-                  )}
-                </select>
+            <div className = {`page-background min-h-with-nav py-2`}>
+              <div className = "container mx-auto text-center dark:text-dark-100">
+                <div className = {`w-5/6 mx-auto`}>
+                  <h1 className = "text-4xl mt-1 mb-3"> Select Version </h1>
 
-                <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-2 my-4`}>
+                  <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-2`}>
+                    {Object.keys(verlang).sort((a, b) => b.localeCompare(a)).map(version =>
+                      <div className = {`select-none w-full h-16 grid border border-gray-400 dark:border-dark-600 ${selectedVersion === version ? `ring ring-inset bg-blue-200 dark:bg-blue-900` : `cursor-pointer hover:ring bg-gray-200 dark:bg-dark-800 hover:bg-gray-300 dark:hover:bg-dark-750`}`} onClick = {event => {
+                        if (selectedVersion === version) {
+                          return;
+                        }
+                        setVersion(version)
+                      }}
+                           key = {version}>
+                        <p className = {`mx-auto my-auto text-xl font-semibold`}>
+                          {version}
+                        </p>
+                      </div>
+                    )}
+                  </div>
 
-                  {verlang[version].map((lang: string) => {
-                    return <div className = {`border bg-gray-400 dark:bg-dark-800 dark:border-dark-700`} key = {`${lang}-${version}`}>
-                      <Link href = {`/[version]/[lang]/[...slug]`} as = {`/${version}/${lang}/index/`}>
+                  <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-2 my-4`}>
 
-                        <a> <img className = {`w-full`} src = {getFlag(lang)} alt = {lang}/>
-                          <p className = {`text-xl font-semibold mt-2`}>Version: {version}</p>
-                          <p className = {`text-xl font-semibold mb-2`}>Language: {lang}</p>
-                        </a>
+                    {verlang[selectedVersion].map((lang: string) => {
+                      return <div className = {`border border-gray-400 bg-gray-200 dark:bg-dark-800 hover:bg-gray-300 dark:hover:bg-dark-750 hover:ring dark:border-dark-600`} key = {`${lang}-${selectedVersion}`}>
+                        <Link href = {`/[version]/[lang]/[...slug]`} as = {`/${selectedVersion}/${lang}/index/`}>
 
-                      </Link>
+                          <a> <img className = {`w-full`} src = {getFlag(lang)} alt = {lang}/>
+                            <p className = {`text-xl font-semibold pt-2`}>Version: {selectedVersion}</p>
+                            <p className = {`text-xl font-semibold pb-2`}>Language: {lang}</p>
+                          </a>
 
-                    </div>
-                  })}
+                        </Link>
+
+                      </div>
+                    })}
+
+                  </div>
 
                 </div>
-
               </div>
             </div>
-
           </SimpleBar>
         </div>
       </div>

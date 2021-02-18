@@ -1,5 +1,7 @@
 import "../css/index.css";
 import "../css/nprogress.css";
+import "../css/markdown.css";
+import "../css/theme.css";
 import 'simplebar/dist/simplebar.min.css';
 import React from "react";
 import { AppProps } from "next/app";

@@ -35,7 +35,7 @@ function Layout({ theme, current, showingNav, setShowingNav, children }: LayoutP
         })
       }
     }}>
-      <div className = {`${themeState.pageTheme === "dark" ? `mode-dark` : `mode-light`}`}>
+      <div className = {`${themeState.pageTheme === "dark" ? `dark` : `light`}`}>
         <div className = "flex flex-col min-h-screen bg-gray-100 dark:bg-dark-900">
 
           <Header showingNav = {showingNav} setShowingNav = {setShowingNav}/>

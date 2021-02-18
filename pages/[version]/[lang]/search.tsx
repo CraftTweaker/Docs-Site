@@ -68,6 +68,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
         }} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders = {parentFolders}/>
         <div className = {`w-full md:w-content`}>
           <SimpleBar className = {`mx-auto max-h-with-nav w-full`} ref = {simpleBarRef}>
+            <div className = {`page-background min-h-with-nav`}>
             <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
               <div className = {`flex flex-col justify-between`}>
                 {/*  TODO Add something cool here */}
@@ -75,7 +76,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
               <div className = {`w-11/12 md:w-full pt-4 pb-16 px-4 mx-auto dark:text-dark-100`}>
                 <div className = {`w-5/6 mx-auto`}>
                   <label className = "text-4xl" htmlFor = "main-search">Search</label>
-                  <input disabled = {DOCS_DEV} id = "main-search" className = "bg-transparent block w-full p-2 border border-gray-400 dark:border-dark-600" onChange = {(event) => {
+                  <input disabled = {DOCS_DEV} id = "main-search" className = "bg-gray-200 dark:bg-dark-800 block w-full p-2 border border-gray-400 dark:border-dark-600" onChange = {(event) => {
                     setDisplayedSearch((event.target.value));
 
                     if (event.target.value.length < 3) {
@@ -86,12 +87,12 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                   }} value = {displayedSearch}/>
 
 
-                  <div>
+                  <div className={`bg-gray-100 dark:bg-dark-900 border border-gray-300 dark:border-dark-700`}>
                     {searchResults.count > 0 ? searchResults.results.map((value, index) =>
 
                       <Link href = {`/[version]/[lang]/[...slug]`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>
 
-                        <a className = {`px-2 block hover:bg-gray-400 dark-hover:bg-dark-700`}>
+                        <a className = {`px-2 block hover:bg-gray-300 dark:hover:bg-dark-800`}>
 
                           <div className = "py-1 pl-2">
                             <h2 className = "py-2 text-blue-700 dark:text-blue-300">
@@ -114,7 +115,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                 {/*  TODO Add something cool here */}
               </div>
             </div>
-
+            </div>
 
           </SimpleBar>
         </div>

@@ -4,6 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     purge: ["./components/**/*.ts", "./pages/**/*.ts", "./components/**/*.tsx", "./pages/**/*.tsx"],
+    darkMode: 'class',
     theme: {
         colors: {
             transparent: 'transparent',
@@ -12,17 +13,7 @@ module.exports = {
             black: '#000',
             white: '#fff',
 
-            gray: {
-                100: '#f7fafc',
-                200: '#edf2f7',
-                300: '#e2e8f0',
-                400: '#cbd5e0',
-                500: '#a0aec0',
-                600: '#718096',
-                700: '#4a5568',
-                800: '#2d3748',
-                900: '#1a202c',
-            },
+            gray: colors.trueGray,
             red: {
                 100: '#fff5f5',
                 200: '#fed7d7',
@@ -124,7 +115,11 @@ module.exports = {
             },
             dark: {
                 ...colors.trueGray,
-                850: '#202023'
+                150: '#EDEDED',
+                650: '#494949',
+                750: '#333333',
+                850: '#202023',
+                950: '#0C0C0C'
             }
         },
         extend: {
@@ -151,11 +146,11 @@ module.exports = {
         },
     },
     variants: {
-        backgroundColor: ['responsive', 'hover', 'focus', 'dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
-        textColor: ['responsive', 'hover', 'focus', 'dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
-        borderColor: ['responsive', 'hover', 'focus', 'dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd']
+        backgroundColor: ['responsive', 'hover', 'focus', 'dark', 'group-hover'],
+        textColor: ['responsive', 'hover', 'focus', 'dark', 'group-hover'],
+        borderColor: ['responsive', 'hover', 'focus', 'dark'],
+        ringWidth: ['hover', 'active'],
     },
     plugins: [
-        require('tailwindcss-dark-mode')(),
     ],
 };

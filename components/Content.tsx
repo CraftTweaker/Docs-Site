@@ -8,10 +8,8 @@ import TableCell from "./markdown/TableCell";
 import Heading from "./markdown/Heading";
 import { ContentProps } from "../utils/Interfaces";
 import directive from 'remark-directive'
-
-import visit from 'unist-util-visit'
-import h from 'hastscript'
-
+// @ts-ignore
+import normalizeHeadings from 'remark-normalize-headings';
 import gfm from 'remark-gfm';
 import Question from "./markdown/custom/Question";
 import Answer from "./markdown/custom/Answer";
@@ -68,7 +66,7 @@ export default function Content({ version, lang, page }: ContentProps) {
   };
 
   return <>
-    <div id="content" className="markdown pb-3 w-full">
+    <div id="content" className="markdown w-full">
       <ReactMarkdown source={page} escapeHtml={false} renderers={{
         code: CodeBlock,
         inlineCode: InlineCode,
@@ -96,7 +94,7 @@ export default function Content({ version, lang, page }: ContentProps) {
           }
           return directives[props.name](props);
         }
-      }} transformLinkUri={uri => transform(uri, false)} transformImageUri={uri => transform(uri, true)} plugins={[gfm, directive]}/>
+      }} transformLinkUri={uri => transform(uri, false)} transformImageUri={uri => transform(uri, true)} plugins={[gfm, directive, normalizeHeadings]}/>
     </div>
   </>
 }

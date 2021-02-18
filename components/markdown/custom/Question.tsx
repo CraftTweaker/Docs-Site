@@ -43,7 +43,7 @@ export default function Question({ props }: { props: any }) {
             setQuestions(randomizeQuestions())
           }
           }
-               className={`cursor-pointer hover:text-blue-600 dark-hover:text-blue-400`}>
+               className={`cursor-pointer hover:text-blue-600 dark:hover:text-blue-400`}>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -63,7 +63,7 @@ export default function Question({ props }: { props: any }) {
           let selected = selectedAnswer === id;
           return <div key={answer.key}
                       className={`rounded p-2 flex ${!answered ? `cursor-pointer` : `cursor-default`} ${
-                        (answered && selected) ? (correct ? `ring ring-green-500 bg-green-200 dark:bg-green-800` : `ring ring-red-500 bg-red-200 dark:bg-red-800`) : (selected ? `bg-blue-200 dark:bg-gray-800 font-semibold ring` : `bg-gray-400 dark:bg-dark-700`)} ${!answered ? (selected ? `bg-blue-200 dark:bg-gray-800 font-semibold ring` : `bg-gray-400 hover:bg-gray-500 dark:bg-dark-700 dark-hover:bg-dark-600`) : ``}`}
+                        (answered && selected) ? (correct ? `ring ring-green-500 bg-green-200 dark:bg-green-800` : `ring ring-red-500 bg-red-200 dark:bg-red-800`) : (selected ? `bg-blue-200 dark:bg-gray-800 font-semibold ring` : `bg-gray-400 dark:bg-dark-700`)} ${!answered ? (selected ? `bg-blue-200 dark:bg-gray-800 font-semibold ring` : `bg-gray-400 hover:bg-gray-500 dark:bg-dark-700 dark:hover:bg-dark-600`) : ``}`}
                       onClick={event => {
                         if (answered) {
                           return;

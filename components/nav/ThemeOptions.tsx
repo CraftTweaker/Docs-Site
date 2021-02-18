@@ -10,7 +10,7 @@ export default function ThemeOptions() {
     height: themeOptionsOpen ? "100%" : 0
   }
   return <>
-    <div className = "flex-none relative my-auto inline-block border-b dark:border-dark-700 py-2 flex flex-row pl-2 text-center cursor-pointer hover:bg-gray-400 dark-hover:bg-dark-700 select-none" onClick = {() => {
+    <div className = "flex-none relative my-auto inline-block border-b border-gray-300 dark:border-dark-700 py-2 flex flex-row pl-2 text-center cursor-pointer hover:bg-gray-300 dark:hover:bg-dark-700 select-none" onClick = {() => {
       setThemeOptionsOpen(!themeOptionsOpen)
     }}>
             <span className = {`mx-auto`}>
@@ -23,7 +23,7 @@ export default function ThemeOptions() {
       className = {`overflow-hidden`}
     >
       <div className = {`bg-gray-100 dark:bg-dark-900`}>
-        <div className = "flex-none relative my-auto inline-block border-b dark:border-dark-700 py-2 flex flex-row px-2">
+        <div className = "flex-none relative my-auto inline-block border-b border-gray-300 dark:border-dark-700 py-2 flex flex-row px-2">
           <label htmlFor = "theme-select" className = "">Theme:</label>
           <select id = "theme-select" className = {`bg-transparent px-1 flex-grow`} onChange = {event => {
             theme.setTheme(event.target.value, theme.hljsStyle);
@@ -32,7 +32,7 @@ export default function ThemeOptions() {
             <option value = {`dark`} className = {`text-black`}>Dark</option>
           </select>
         </div>
-        <div className = "flex-none relative my-auto inline-block border-b dark:border-dark-700 py-2 flex flex-row px-2">
+        <div className = "flex-none relative my-auto inline-block border-b border-gray-300 dark:border-dark-700 py-2 flex flex-row px-2">
           <label htmlFor = "hljs-style" className = "">Code Theme:</label>
           <select id = "hljs-style" className = {`bg-transparent px-1 flex-grow`} onChange = {event => {
             theme.setTheme(theme.pageTheme, event.target.value);

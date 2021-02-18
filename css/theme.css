@@ -1,0 +1,75 @@
+/* purgecss start ignore */
+@layer base {
+
+  .nav-closed {
+    content: "";
+  }
+
+  .nav-closed::before {
+    content:          "";
+    background-image: url("https://blamejared.com/svg/cheveron-right.svg");
+    display:          inline-block;
+    width:            14px;
+    height:           14px;
+    margin-top:       auto;
+    margin-bottom:    auto;
+  }
+
+  .nav-closed-dark {
+    content: "";
+  }
+
+  .nav-closed-dark::before {
+    content:          "";
+    background-image: url("https://blamejared.com/svg/dark/cheveron-right.svg");
+    display:          inline-block;
+    width:            14px;
+    height:           14px;
+    margin-top:       auto;
+    margin-bottom:    auto;
+  }
+
+  .nav-open {
+    content: "";
+  }
+
+  .nav-open::before {
+    content:          "";
+    background-image: url("https://blamejared.com/svg/cheveron-down.svg");
+    display:          inline-block;
+    width:            14px;
+    height:           14px;
+    margin-top:       auto;
+    margin-bottom:    auto;
+  }
+
+  .nav-open-dark {
+    content: "";
+  }
+
+  .nav-open-dark::before {
+    content:          "";
+    background-image: url("https://blamejared.com/svg/dark/cheveron-down.svg");
+    display:          inline-block;
+    width:            14px;
+    height:           14px;
+    margin-top:       auto;
+    margin-bottom:    auto;
+  }
+
+  .simplebar-scrollbar::before {
+    background-color: #3DA6E4 !important;
+    border:           1px solid #1A6996 !important;
+  }
+
+  .light .page-background {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e5e5e5' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .dark .page-background {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23262626' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+}
+
+/* purgecss end ignore */

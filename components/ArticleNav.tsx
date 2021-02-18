@@ -12,8 +12,8 @@ export default function ArticleNav({ version, lang, previous, next }: ArticleNav
       <Link href = {`/[version]/[lang]/[...slug]`} as = {`/${version}/${lang}/${previous.value}`}>
 
         <a className = {`flex text-gray-700 dark:text-dark-300`}>
-          <div className = {`flex flex-row w-full`}>
-            <div className = "flex flex-row inline-block pr-2 mr-0 md:mr-1 border border-gray-500 dark:border-dark-700 bg-white dark:bg-black hover:bg-gray-400 dark-hover:bg-dark-800">
+          <div className = {`group flex w-full`}>
+            <div className = "flex inline-block pr-2 mr-0 md:mr-1 border border-gray-500 dark:border-dark-700 bg-white dark:bg-black group-hover:bg-blue-200 dark:group-hover:bg-blue-900">
               <img className = "flex-none my-auto inline-block w-4 h-4" src = {`https://blamejared.com/svg${theme.pageTheme === "dark" ? `/dark` : ``}/cheveron-left.svg`} alt = "cheveron-left"/>
               <span className = "flex-shrink">
                                 Previous
@@ -32,9 +32,9 @@ export default function ArticleNav({ version, lang, previous, next }: ArticleNav
     <Link href = {`/[version]/[lang]/[...slug]`} as = {`/${version}/${lang}/${next.value}`}>
 
       <a className = {`flex text-gray-700 dark:text-dark-300`}>
-        <div className = {`flex flex-row w-full`}>
+        <div className = {`group flex w-full`}>
           <span className = {`sr-only md:not-sr-only truncate`}>{next.key}</span>
-          <div className = "flex flex-row inline-block pl-2 ml-0 md:ml-1 border border-gray-500 dark:border-dark-700 bg-white dark:bg-black hover:bg-gray-400 dark-hover:bg-dark-800">
+          <div className = "flex inline-block pl-2 ml-0 md:ml-1 border border-gray-500 dark:border-dark-700 bg-white dark:bg-black group-hover:bg-blue-200 dark:group-hover:bg-blue-900">
                          <span className = "flex-shrink">
                              Next
                          </span>

@@ -50,7 +50,7 @@ function NavFolder({ theme, version, lang, name, current, nav, level, parentExpa
     <span onClick={() => {
       setExpanded(!expanded);
     }}
-          className={`select-none cursor-pointer pr-2 py-1 block hover:bg-gray-400 dark-hover:bg-dark-700 ${expanded ? `${theme.pageTheme === "dark" ? `nav-open-dark` : `nav-open`}` : `${theme.pageTheme === "dark" ? `nav-closed-dark` : `nav-closed`}`}`}
+          className={`select-none cursor-pointer pr-2 py-1 block hover:bg-gray-300 dark:hover:bg-dark-700 ${expanded ? `${theme.pageTheme === "dark" ? `nav-open-dark` : `nav-open`}` : `${theme.pageTheme === "dark" ? `nav-closed-dark` : `nav-closed`}`}`}
           style={{ paddingLeft: `${level + 1}rem` }}>{name.replace("&#58;", ":")}</span>
       <motion.div
         initial={{
