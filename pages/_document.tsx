@@ -12,6 +12,7 @@ class MyDocument extends Document {
       <Html lang = {"en"}>
 
         <Head>
+          <script async defer data-website-id="50e143af-e1f3-4c99-90c9-eb644de304c8" src="https://analytics.blamejared.com/umami.js"/>
         </Head>
         <body>
         <Main/>
