@@ -63,7 +63,7 @@ export default function SearchNav({ version, lang }: HasVerAndLang) {
       }}
       className = {`overflow-hidden`}
     >
-      <div className = {`bg-gray-100 dark:bg-dark-900`}>
+      <div className = {`bg-dark-150 dark:bg-dark-900`}>
         {searchResults.count > 0 ? searchResults.results.map((value, index) =>
 
           <Link href = {`/[version]/[lang]/[...slug]/`} as = {(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")} key = {`${index}`}>

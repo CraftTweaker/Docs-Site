@@ -27,8 +27,8 @@ export default function Question({ props }: { props: any }) {
 
   let [questions, setQuestions] = useState(randomizeQuestions());
   return <>
-    <div className={`bg-gray-300 dark:bg-dark-850 border border-gray-400 dark:border-dark-600 p-4 w-full rounded`}>
-      <div className={`flex justify-between border-b  border-gray-400 dark:border-dark-600 -mx-4 px-4`}>
+    <div className={`bg-gray-200 dark:bg-dark-900 border border-gray-400 dark:border-dark-600 p-4 my-2 w-full rounded`}>
+      <div className={`flex justify-between border-b border-gray-400 dark:border-dark-600 -mx-4 px-4`}>
 
         {
           props.children[0].type === "p" ? <div className={`flex`}>
@@ -36,7 +36,6 @@ export default function Question({ props }: { props: any }) {
             {props.children[0]}</span>
           </div> : `Question`
         }
-        <div>
           <div onClick={event => {
             setSelectedAnswer("");
             setAnswered(false);
@@ -49,7 +48,6 @@ export default function Question({ props }: { props: any }) {
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
             </svg>
           </div>
-        </div>
       </div>
 
       <div className={`flex flex-col gap-y-2 my-4`}>
@@ -62,8 +60,8 @@ export default function Question({ props }: { props: any }) {
           let correct = answer.props.attributes.correct === "true";
           let selected = selectedAnswer === id;
           return <div key={answer.key}
-                      className={`rounded p-2 flex ${!answered ? `cursor-pointer` : `cursor-default`} ${
-                        (answered && selected) ? (correct ? `ring ring-green-500 bg-green-200 dark:bg-green-800` : `ring ring-red-500 bg-red-200 dark:bg-red-800`) : (selected ? `bg-blue-200 dark:bg-gray-800 font-semibold ring` : `bg-gray-400 dark:bg-dark-700`)} ${!answered ? (selected ? `bg-blue-200 dark:bg-gray-800 font-semibold ring` : `bg-gray-400 hover:bg-gray-500 dark:bg-dark-700 dark:hover:bg-dark-600`) : ``}`}
+                      className={`rounded p-2 flex border border-dark-400 dark:border-dark-600 ${!answered ? `cursor-pointer` : `cursor-default`} ${
+                        (answered && selected) ? (correct ? `ring ring-green-500 bg-green-200 dark:bg-green-800` : `ring ring-red-500 bg-red-200 dark:bg-red-800`) : (selected ? `bg-blue-200 dark:bg-gray-800 ring` : ``)} ${!answered ? (selected ? `bg-blue-200 dark:bg-gray-800 ring ring-inset` : `hover:ring bg-gray-300 hover:bg-dark-350 dark:bg-dark-750 dark:hover:bg-dark-800`) : ``}`}
                       onClick={event => {
                         if (answered) {
                           return;
