@@ -33,7 +33,6 @@ function Layout({ theme, current, showingNav, setShowingNav, children }: LayoutP
 
       setTheme: (pageTheme, style, lineNumbers) => {
         setTheme({ pageTheme: pageTheme, hljsStyle: style, lineNumbers: lineNumbers });
-        console.log(lineNumbers);
         axios.post("/api/set_theme", { pageTheme: pageTheme, hljsStyle: style, lineNumbers: lineNumbers }).then(() => {
         }).catch(reason => {
           console.log(reason);
