@@ -123,7 +123,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
 }
 
 export async function getServerSideProps(context: NextPageContext) {
-  let { pageTheme, hljsStyle } = getTheme(context);
+  let { pageTheme, hljsStyle, lineNumbers } = getTheme(context);
 
   let { lang, version, search = "" } = context.query as unknown as SearchPageQuery;
 
@@ -185,7 +185,8 @@ export async function getServerSideProps(context: NextPageContext) {
     props: {
       theme: {
         pageTheme,
-        hljsStyle
+        hljsStyle,
+        lineNumbers
       },
       version: version,
       lang: lang,

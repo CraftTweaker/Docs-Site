@@ -14,17 +14,21 @@ import gfm from 'remark-gfm';
 import Question from "./markdown/custom/Question";
 import Answer from "./markdown/custom/Answer";
 import RequiredMod from "./markdown/custom/RequiredMod";
+import Method from "./markdown/custom/Method";
 
 
 const directives: any = {
-  question: (props: PropsWithChildren<any>) => {
-    return <Question props={props}/>
+  question: (props: PropsWithChildren<any>, custom: any) => {
+    return <Question props = {props}/>
   },
-  answer: (props: PropsWithChildren<any>) => {
-    return <Answer props={props}/>
+  answer: (props: PropsWithChildren<any>, custom: any) => {
+    return <Answer props = {props}/>
   },
-  requiredMod: (props: PropsWithChildren<any>) =>{
-    return <RequiredMod props={props}/>
+  requiredMod: (props: PropsWithChildren<any>, custom: any) => {
+    return <RequiredMod props = {props}/>
+  },
+  method: (props: PropsWithChildren<any>, custom: any) => {
+    return <Method props = {props} custom={custom}/>;
   }
 }
 
@@ -66,8 +70,8 @@ export default function Content({ version, lang, page }: ContentProps) {
   };
 
   return <>
-    <div id="content" className="markdown w-full">
-      <ReactMarkdown source={page} escapeHtml={false} renderers={{
+    <div id = "content" className = "markdown w-full">
+      <ReactMarkdown source = {page} escapeHtml = {false} renderers = {{
         code: CodeBlock,
         inlineCode: InlineCode,
         linkReference: linkReferenceRenderer,
@@ -79,22 +83,24 @@ export default function Content({ version, lang, page }: ContentProps) {
           return Heading(props, headingId.current);
         },
         containerDirective: (props) => {
-          if(!directives.hasOwnProperty(props.name)){
+          if (!directives.hasOwnProperty(props.name)) {
             return <>Invalid container directive! `{props.name}`</>
           }
-          return directives[props.name](props);
+          headingId.current = headingId.current + 1;
+          return directives[props.name](props, { headingId: headingId.current });
         },
         textDirective: props => {
           // This feels super scuffed, will need to monitor it to make sure it is fine
           return <>:{props.name}</>;
         },
         leafDirective: props => {
-          if(!directives.hasOwnProperty(props.name)){
+          if (!directives.hasOwnProperty(props.name)) {
             return <>Invalid leaf directive! `{props.name}`</>
           }
-          return directives[props.name](props);
+          headingId.current = headingId.current + 1;
+          return directives[props.name](props, { headingId: headingId.current });
         }
-      }} transformLinkUri={uri => transform(uri, false)} transformImageUri={uri => transform(uri, true)} plugins={[gfm, directive, normalizeHeadings]}/>
+      }} transformLinkUri = {uri => transform(uri, false)} transformImageUri = {uri => transform(uri, true)} plugins = {[gfm, directive, normalizeHeadings]}/>
     </div>
   </>
 }

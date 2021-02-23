@@ -27,6 +27,7 @@ export function matchesMedia(query: string) {
 export function getTheme(context: NextPageContext): Theme {
   let pageTheme = "light";
   let hljsStyle = "default";
+  let lineNumbers = false;
   if (context.req) {
     if (context.req.headers.cookie) {
       if (parse(context.req.headers.cookie)["pageTheme"]) {
@@ -38,9 +39,12 @@ export function getTheme(context: NextPageContext): Theme {
       if (parse(context.req.headers.cookie)["hljsStyle"]) {
         hljsStyle = parse(context.req.headers.cookie)["hljsStyle"];
       }
+      if (parse(context.req.headers.cookie).hasOwnProperty("lineNumbers")) {
+        lineNumbers = parse(context.req.headers.cookie)["lineNumbers"] === "true";
+      }
     }
   }
-  return { pageTheme, hljsStyle }
+  return { pageTheme, hljsStyle, lineNumbers }
 }
 
 

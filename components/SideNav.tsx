@@ -12,7 +12,6 @@ import { SideNavProps } from "../utils/Interfaces";
 export default function SideNav({ version, lang, navs, current, verlang, stub = false, showingNav, parentFolders }: SideNavProps) {
 
 
-  const theme = useContext(ThemeContext);
   return (<>
     <div
       className={`w-full md:w-72 bg-gray-200 dark:bg-dark-800 dark:text-dark-100 z-10 shadow-lg border-r border-gray-300 dark:border-dark-700 h-with-nav break-all absolute md:static left-0 md:left-auto ${showingNav ? `` : `hidden md:block`}`}>
@@ -40,7 +39,7 @@ export default function SideNav({ version, lang, navs, current, verlang, stub = 
                     return <NavItem version={version ? version : ``} lang={lang ? lang : ``} nav={key} path={path}
                                     selected={current ? path === current.value : false} key={`/${version}/${lang}/${path}`} level={0}/>
                   } else {
-                    return <NavFolder theme={theme} version={version ? version : ``} lang={lang ? lang : ``} name={key} nav={navs[key]}
+                    return <NavFolder version={version ? version : ``} lang={lang ? lang : ``} name={key} nav={navs[key]}
                                       current={current} key={key} level={0} parentExpanded={true} parentNames={[]} parentFolders={parentFolders}/>
                   }
                 })

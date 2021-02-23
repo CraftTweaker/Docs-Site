@@ -151,6 +151,8 @@ module.exports = {
         textColor: ['responsive', 'hover', 'focus', 'dark', 'group-hover'],
         borderColor: ['responsive', 'hover', 'focus', 'dark'],
         ringWidth: ['hover', 'active'],
+        display: ['responsive', 'hover', 'focus', 'group-hover'],
+        visibility: ['hover', 'focus', 'group-hover']
     },
     plugins: [],
 };

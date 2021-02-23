@@ -26,7 +26,7 @@ export default function ThemeOptions() {
         <div className = "flex-none relative my-auto inline-block border-b border-gray-300 dark:border-dark-700 py-2 flex flex-row px-2">
           <label htmlFor = "theme-select" className = "">Theme:</label>
           <select id = "theme-select" className = {`bg-transparent px-1 flex-grow`} onChange = {event => {
-            theme.setTheme(event.target.value, theme.hljsStyle);
+            theme.setTheme(event.target.value, theme.hljsStyle, theme.lineNumbers);
           }} defaultValue = {theme.pageTheme}>
             <option value = {`light`} className = {`text-black`}>Light</option>
             <option value = {`dark`} className = {`text-black`}>Dark</option>
@@ -35,11 +35,20 @@ export default function ThemeOptions() {
         <div className = "flex-none relative my-auto inline-block border-b border-gray-300 dark:border-dark-700 py-2 flex flex-row px-2">
           <label htmlFor = "hljs-style" className = "">Code Theme:</label>
           <select id = "hljs-style" className = {`bg-transparent px-1 flex-grow`} onChange = {event => {
-            theme.setTheme(theme.pageTheme, event.target.value);
+            theme.setTheme(theme.pageTheme, event.target.value, theme.lineNumbers);
           }} defaultValue = {theme.hljsStyle}>
             <option value = {`default`} className = {`text-black`}>Default</option>
             {Object.keys(listStyles()).map(value =>
               <option key = {value} value = {value} className = {`text-black`}>{value}</option>)}
+          </select>
+        </div>
+        <div className = "flex-none relative my-auto inline-block border-b border-gray-300 dark:border-dark-700 py-2 flex flex-row px-2">
+          <label htmlFor = "line-numbers" className = "">Line numbers:</label>
+          <select id = "line-numbers" className = {`bg-transparent px-1 flex-grow`} onChange = {event => {
+            theme.setTheme(theme.pageTheme, theme.hljsStyle, event.target.value === `true`);
+          }} defaultValue = {`${theme.lineNumbers}`}>
+            <option value = {`false`} className = {`text-black`}>Hidden</option>
+            <option value = {`true`} className = {`text-black`}>Shown</option>
           </select>
         </div>
       </div>

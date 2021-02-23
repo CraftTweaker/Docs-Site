@@ -91,7 +91,7 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
 }
 
 export async function getServerSideProps(context: NextPageContext) {
-  let { pageTheme, hljsStyle } = getTheme(context);
+  let { pageTheme, hljsStyle, lineNumbers } = getTheme(context);
   let { lang, slug, version } = context.query as unknown as PageQuery;
 
   if (!slug) {
@@ -184,7 +184,8 @@ export async function getServerSideProps(context: NextPageContext) {
     props: {
       theme: {
         pageTheme,
-        hljsStyle
+        hljsStyle,
+        lineNumbers
       },
       version: version,
       lang: lang,

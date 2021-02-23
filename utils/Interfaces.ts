@@ -44,7 +44,7 @@ export interface HeadingProps extends HasChildren, HasLevel {
   children: ReactNode[]
 }
 
-export interface NavFolderProps extends HasVerAndLang, HasTheme, HasNav, HasLevel {
+export interface NavFolderProps extends HasVerAndLang, HasNav, HasLevel {
   name: string
   current: any
   parentExpanded: boolean
@@ -117,6 +117,7 @@ export interface TableCellProps extends HasChildren {
 export interface Theme {
   pageTheme: string
   hljsStyle: string
+  lineNumbers: boolean
 }
 
 export interface VerLangsProps extends HasVerAndLang, HasVerLang {

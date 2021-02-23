@@ -7,7 +7,8 @@ import { initGA, pageView } from "../utils/Analytics";
 export const ThemeContext = React.createContext({
   pageTheme: "light",
   hljsStyle: "default",
-  setTheme: (pageTheme: string, style: string) => {
+  lineNumbers: false,
+  setTheme: (pageTheme: string, style: string, lineNumbers: boolean) => {
   }
 });
 
@@ -15,6 +16,7 @@ function Layout({ theme, current, showingNav, setShowingNav, children }: LayoutP
   const [themeState, setTheme] = useState({
     pageTheme: theme.pageTheme,
     hljsStyle: theme.hljsStyle,
+    lineNumbers: theme.lineNumbers
   });
   useEffect(() => {
     if (!window.GA_INITIALIZED) {
@@ -27,9 +29,12 @@ function Layout({ theme, current, showingNav, setShowingNav, children }: LayoutP
     <ThemeContext.Provider value = {{
       pageTheme: themeState.pageTheme,
       hljsStyle: themeState.hljsStyle,
-      setTheme: (pageTheme, style) => {
-        setTheme({ pageTheme: pageTheme, hljsStyle: style });
-        axios.post("/api/set_theme", { pageTheme: pageTheme, hljsStyle: style }).then(() => {
+      lineNumbers: themeState.lineNumbers,
+
+      setTheme: (pageTheme, style, lineNumbers) => {
+        setTheme({ pageTheme: pageTheme, hljsStyle: style, lineNumbers: lineNumbers });
+        console.log(lineNumbers);
+        axios.post("/api/set_theme", { pageTheme: pageTheme, hljsStyle: style, lineNumbers: lineNumbers }).then(() => {
         }).catch(reason => {
           console.log(reason);
         })

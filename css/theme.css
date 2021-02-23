@@ -1,60 +1,38 @@
 /* purgecss start ignore */
 @layer base {
 
+
   .nav-closed {
     content: "";
-  }
-
-  .nav-closed::before {
-    content:          "";
-    background-image: url("https://blamejared.com/svg/cheveron-right.svg");
-    display:          inline-block;
-    width:            14px;
-    height:           14px;
-    margin-top:       auto;
-    margin-bottom:    auto;
-  }
-
-  .nav-closed-dark {
-    content: "";
-  }
-
-  .nav-closed-dark::before {
-    content:          "";
-    background-image: url("https://blamejared.com/svg/dark/cheveron-right.svg");
-    display:          inline-block;
-    width:            14px;
-    height:           14px;
-    margin-top:       auto;
-    margin-bottom:    auto;
   }
 
   .nav-open {
     content: "";
   }
 
+  .nav-icon::before {
+    content:       "";
+    display:       inline-block;
+    width:         14px;
+    height:        14px;
+    margin-top:    auto;
+    margin-bottom: auto;
+  }
+
+  .nav-closed::before {
+    background-image: url("https://blamejared.com/svg/cheveron-right.svg");
+  }
+
   .nav-open::before {
-    content:          "";
     background-image: url("https://blamejared.com/svg/cheveron-down.svg");
-    display:          inline-block;
-    width:            14px;
-    height:           14px;
-    margin-top:       auto;
-    margin-bottom:    auto;
   }
 
-  .nav-open-dark {
-    content: "";
+  .dark .nav-closed::before {
+    background-image: url("https://blamejared.com/svg/dark/cheveron-right.svg");
   }
 
-  .nav-open-dark::before {
-    content:          "";
+  .dark .nav-open::before {
     background-image: url("https://blamejared.com/svg/dark/cheveron-down.svg");
-    display:          inline-block;
-    width:            14px;
-    height:           14px;
-    margin-top:       auto;
-    margin-bottom:    auto;
   }
 
   .simplebar-scrollbar::before {

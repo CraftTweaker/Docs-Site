@@ -135,7 +135,7 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
 
 
 export async function getServerSideProps(context: NextPageContext) {
-  let { pageTheme, hljsStyle } = getTheme(context);
+  let { pageTheme, hljsStyle, lineNumbers } = getTheme(context);
   let verlang: any = {};
   if (DOCS_DEV) {
     verlang["0.00"] = ["en"];
@@ -153,7 +153,8 @@ export async function getServerSideProps(context: NextPageContext) {
     props: {
       theme: {
         pageTheme,
-        hljsStyle
+        hljsStyle,
+        lineNumbers
       },
       verlang
     },
