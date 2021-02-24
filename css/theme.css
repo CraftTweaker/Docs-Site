@@ -1,7 +1,6 @@
 /* purgecss start ignore */
 @layer base {
 
-
   .nav-closed {
     content: "";
   }
@@ -34,12 +33,12 @@
   .dark .nav-open::before {
     background-image: url("https://blamejared.com/svg/dark/cheveron-down.svg");
   }
-
+  /* purgecss start ignore */
   .simplebar-scrollbar::before {
     background-color: #3DA6E4 !important;
     border:           1px solid #1A6996 !important;
   }
-
+  /* purgecss end ignore */
 }
 
 /* purgecss end ignore */
