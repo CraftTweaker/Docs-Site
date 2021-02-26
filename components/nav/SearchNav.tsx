@@ -95,9 +95,9 @@ export default function SearchNav({ version, lang }: HasVerAndLang) {
         </div> : <> </>}
 
         {searchResults && searchResults.totalCount > 5 && <div>
-          <Link href = {`/[version]/[lang]/search/`} as = {`/${version}/${lang}/search/?search=${searchValue}`}>
+          {/*<Link href = {`/[version]/[lang]/search/`} as = {`/${version}/${lang}/search?search=${searchValue}`}>*/}
 
-            <a className = {`px-2 block hover:bg-gray-300 dark:hover:bg-dark-700 border-t border-b border-gray-300 dark:border-dark-700`}>
+            <a href = {`/${version}/${lang}/search?search=${searchValue}`} className = {`px-2 block hover:bg-gray-300 dark:hover:bg-dark-700 border-t border-b border-gray-300 dark:border-dark-700`}>
 
               <div className = "py-1 pl-2">
                 <h4 className = "my-0 text-base truncate">
@@ -108,7 +108,7 @@ export default function SearchNav({ version, lang }: HasVerAndLang) {
 
             </a>
 
-          </Link>
+          {/*</Link>*/}
         </div>}
       </div>
     </motion.div>
