@@ -175,7 +175,7 @@ export async function getServerSideProps(context: NextPageContext) {
   }
   if (search.length >= 3) {
     // Forcing http isn't ideal, but no way to figure the protocol out, and this is just a local connection anyway.
-    let response = await axios.get(`http://${context.req?.headers["host"]}/api/search?v=${version}&lang=${lang}&q=${search}&limit=5000`);
+    let response = await axios.get(`http://127.0.0.1:3000/api/search?v=${version}&lang=${lang}&q=${search}&limit=5000`);
     if (response.data)
       searchResults = response.data;
   }
