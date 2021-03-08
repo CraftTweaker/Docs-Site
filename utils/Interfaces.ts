@@ -41,7 +41,8 @@ export interface HeaderProps {
 }
 
 export interface HeadingProps extends HasChildren, HasLevel {
-  children: ReactNode[]
+  children: ReactNode[];
+  node: { data: { id: string } }
 }
 
 export interface NavFolderProps extends HasVerAndLang, HasNav, HasLevel {

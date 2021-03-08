@@ -14,8 +14,11 @@ import gfm from 'remark-gfm';
 import Question from "./markdown/custom/Question";
 import Answer from "./markdown/custom/Answer";
 import RequiredMod from "./markdown/custom/RequiredMod";
-import Method from "./markdown/custom/Method";
-
+import Group from "./markdown/custom/Group";
+// @ts-ignore
+import slug from 'remark-slug';
+// @ts-ignore
+import GithubSlugger from 'github-slugger';
 
 const directives: any = {
   question: (props: PropsWithChildren<any>, custom: any) => {
@@ -27,14 +30,14 @@ const directives: any = {
   requiredMod: (props: PropsWithChildren<any>, custom: any) => {
     return <RequiredMod props = {props}/>
   },
-  method: (props: PropsWithChildren<any>, custom: any) => {
-    return <Method props = {props} custom={custom}/>;
+  group: (props: PropsWithChildren<any>, custom: any) => {
+    return <Group props = {props} custom={custom}/>;
   }
 }
 
 export default function Content({ version, lang, page }: ContentProps) {
 
-  let headingId = { current: 0 }
+  const slugger = new GithubSlugger()
 
   function transform(url: string, image: boolean) {
     if (!url) {
@@ -68,7 +71,7 @@ export default function Content({ version, lang, page }: ContentProps) {
     }
     return `[][]`
   };
-
+  
   return <>
     <div id = "content" className = "markdown w-full">
       <ReactMarkdown source = {page} escapeHtml = {false} renderers = {{
@@ -79,15 +82,13 @@ export default function Content({ version, lang, page }: ContentProps) {
         tableCell: TableCell,
         link: Clink,
         heading: (props) => {
-          headingId.current = headingId.current + 1;
-          return Heading(props, headingId.current);
+          return Heading(props);
         },
         containerDirective: (props) => {
           if (!directives.hasOwnProperty(props.name)) {
             return <>Invalid container directive! `{props.name}`</>
           }
-          headingId.current = headingId.current + 1;
-          return directives[props.name](props, { headingId: headingId.current });
+          return directives[props.name](props, { headingId: slugger.slug(props.attributes.name) });
         },
         textDirective: props => {
           // This feels super scuffed, will need to monitor it to make sure it is fine
@@ -97,10 +98,9 @@ export default function Content({ version, lang, page }: ContentProps) {
           if (!directives.hasOwnProperty(props.name)) {
             return <>Invalid leaf directive! `{props.name}`</>
           }
-          headingId.current = headingId.current + 1;
-          return directives[props.name](props, { headingId: headingId.current });
+          return directives[props.name](props, { headingId: slugger.slug(props.attributes.name) });
         }
-      }} transformLinkUri = {uri => transform(uri, false)} transformImageUri = {uri => transform(uri, true)} plugins = {[gfm, directive, normalizeHeadings]}/>
+      }} transformLinkUri = {uri => transform(uri, false)} transformImageUri = {uri => transform(uri, true)} plugins = {[gfm, directive, normalizeHeadings, slug]}/>
     </div>
   </>
 }

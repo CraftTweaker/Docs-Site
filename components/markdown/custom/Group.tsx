@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CodeBlock from "../CodeBlock";
 import InlineCode from "../InlineCode";
 
-export default function Method({ props, custom }: { props: any, custom: any }) {
+export default function Group({ props, custom }: { props: any, custom: any }) {
   if (!props.attributes.hasOwnProperty("name")) {
     return <div className = {`bg-red-500 border-2 border-red-500 rounded p-4 bg-opacity-25 my-2`}>
       <p>
@@ -16,9 +16,8 @@ export default function Method({ props, custom }: { props: any, custom: any }) {
     </div>
   }
   let name: string = props.attributes.name;
-  let headingId: string = custom.headingId;
   let [collapsed, setCollapsed] = useState(false);
-  let id = name.toLowerCase().replace(/[^a-zA-Z0-9_-]/gmi, "-") + "-" + headingId;
+  let id = `g-${custom.headingId}`
   return <>
     <div className = {`px-4 py-2 my-4 border bg-gray-50 border-gray-300 dark:border-dark-700 dark:bg-dark-900`}>
       <div className = {`border-b border-gray-300 dark:border-dark-700 -mx-4 px-4 pb-2`}>
