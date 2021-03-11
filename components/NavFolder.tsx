@@ -53,6 +53,9 @@ function NavFolder({ version, lang, name, current, nav, level, parentExpanded, p
           style = {{ paddingLeft: `${level + 1}rem` }}>{name.replace("&#58;", ":")}
     </span>
             <motion.div
+                initial = {{
+                    height: expanded ? "100%" : "0",
+                }}
                 animate = {{
                     height: expanded ? "100%" : "0",
                 }}
