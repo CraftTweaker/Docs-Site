@@ -33,6 +33,10 @@ function RenderAd({
     }, [loaded])
 
     useEffect(() => {
+        //@ts-ignore
+        if (typeof ethicalads === "undefined") {
+            return;
+        }
         if (!matches) {
             setLoaded(false)
             return;
