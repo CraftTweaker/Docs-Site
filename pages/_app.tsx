@@ -7,14 +7,20 @@ import React from "react";
 import { AppProps } from "next/app";
 import Router from "next/router";
 import NProgress from "nprogress";
+import { Breakpoint, BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
+setDefaultBreakpoints([
+    { mdu: 769 },
+    { mdd: 767 },
+]);
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+    return <BreakpointProvider> <Component {...pageProps} /> </BreakpointProvider>;
 }
 
 export default MyApp;

@@ -129,15 +129,20 @@ module.exports = {
                 'content': `0.6fr 1.8fr 0.6fr`
             },
             minHeight: {
-                'with-nav': 'calc(100vh - 4rem);'
+                'with-nav': 'calc(100vh - 4rem);',
+                'with-ad': 'calc(100vh - 21rem);'
             },
             maxHeight: {
                 'with-nav': 'calc(100vh - 4rem);',
-                '48perc': '48%'
+                '48perc': '48%',
+                'with-ad': 'calc(100vh - 21rem);'
             },
             height: {
                 'with-nav': 'calc(100vh - 4rem);',
-                'half-screen': `50vh`
+                'half-screen': `50vh`,
+                'with-ad': 'calc(100vh - 21rem);',
+                '25': '6.25rem'
+
             },
             width: {
                 '48perc': '48%',

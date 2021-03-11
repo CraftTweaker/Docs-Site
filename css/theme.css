@@ -11,13 +11,13 @@
 
   .nav::before {
     background-image: url("https://blamejared.com/svg/cheveron-right.svg");
-    content:       "";
-    display:       inline-block;
-    width:         14px;
-    height:        14px;
-    margin-top:    auto;
-    margin-bottom: auto;
-    transition: transform 50ms ease-in;
+    content:          "";
+    display:          inline-block;
+    width:            14px;
+    height:           14px;
+    margin-top:       auto;
+    margin-bottom:    auto;
+    transition:       transform 50ms ease-in;
 
   }
 
@@ -33,6 +33,25 @@
   .simplebar-scrollbar::before {
     background-color: #3DA6E4 !important;
     border:           1px solid #1A6996 !important;
+  }
+
+  .dark .ea-content {
+    background:    #202023 !important;
+    border:        #404040 1px solid !important;
+    border-radius: 0 !important;
+  }
+
+  .dark .ea-text a {
+    color: #E5E5E5 !important;
+  }
+
+  .dark .ea-text a:hover {
+    color: #EDEDED !important;
+  }
+
+
+  .dark .ea-callout a {
+    color: #E5E5E5 !important;
   }
 
   /* purgecss end ignore */
