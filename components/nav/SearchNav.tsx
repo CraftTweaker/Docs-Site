@@ -55,11 +55,8 @@ export default function SearchNav({ version, lang }: HasVerAndLang) {
     />
 
     <motion.div
-      initial = {{
-        height: searchFocused && (searchResults.count === 0 || searchResults.results.length > 0) ? "100%" : 0
-      }}
       animate = {{
-        height: searchFocused && (searchResults.count === 0 || searchResults.results.length > 0) ? "100%" : 0
+        height: searchFocused && (searchResults.count === 0 || searchResults.results.length > 0) ? "100%" : "0"
       }}
       className = {`overflow-hidden`}
     >

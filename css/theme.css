@@ -1,7 +1,7 @@
 /* purgecss start ignore */
 @layer base {
 
-  .nav-closed {
+  .nav {
     content: "";
   }
 
@@ -9,35 +9,32 @@
     content: "";
   }
 
-  .nav-icon::before {
+  .nav::before {
+    background-image: url("https://blamejared.com/svg/cheveron-right.svg");
     content:       "";
     display:       inline-block;
     width:         14px;
     height:        14px;
     margin-top:    auto;
     margin-bottom: auto;
+    transition: transform 50ms ease-in;
+
   }
 
-  .nav-closed::before {
-    background-image: url("https://blamejared.com/svg/cheveron-right.svg");
-  }
-
-  .nav-open::before {
-    background-image: url("https://blamejared.com/svg/cheveron-down.svg");
-  }
-
-  .dark .nav-closed::before {
+  .dark .nav::before {
     background-image: url("https://blamejared.com/svg/dark/cheveron-right.svg");
   }
 
-  .dark .nav-open::before {
-    background-image: url("https://blamejared.com/svg/dark/cheveron-down.svg");
+  .nav-open::before {
+    transform: rotate(90deg);
   }
+
   /* purgecss start ignore */
   .simplebar-scrollbar::before {
     background-color: #3DA6E4 !important;
     border:           1px solid #1A6996 !important;
   }
+
   /* purgecss end ignore */
 }
 
