@@ -15,8 +15,8 @@ export default function SideNav({ version, lang, navs, current, verlang, stub = 
 
     return (<>
         <div
-            className = {`w-full md:w-72 bg-gray-200 dark:bg-dark-800 dark:text-dark-100 z-10 shadow-lg border-r border-gray-300 dark:border-dark-700 h-with-nav break-all absolute md:static left-0 md:left-auto ${showingNav ? `` : `hidden md:block`}`}>
-            <SimpleBar className = {`h-with-nav md:h-with-ad min-h-with-ad`}>
+            className = {`w-full md:w-72 bg-gray-200 dark:bg-dark-800 dark:text-dark-100 z-10 shadow-lg border-r border-gray-300 dark:border-dark-700 h-with-nav break-all absolute md:static left-0 md:left-auto ${showingNav ? `` : `hidden md:flex flex-col`}`}>
+            <SimpleBar className = {`h-with-nav md:h-with-ad min-h-with-ad flex-grow`}>
                 <div className = {`h-full min-h-with-nav md:min-h-with-ad flex flex-col`}>
                     <OutLinks/>
 
@@ -54,12 +54,12 @@ export default function SideNav({ version, lang, navs, current, verlang, stub = 
 
                 </div>
             </SimpleBar>
-            <div className = {`hidden md:block`} key = {current?.key}>
+            <div className = {`hidden md:block flex-none border-t border-gray-300 dark:border-dark-700 bg-dark-150 dark:bg-dark-850`} key = {current?.key}>
 
                     <DesktopAd id = {"side-nav-ad"} current = {current || {
                         key: new Date().toString(),
                         value: "value"
-                    }} type = {"image"}/>
+                    }} type = {"text"}/>
 
             </div>
         </div>
