@@ -1,17 +1,16 @@
 import Link from "next/link";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SimpleBar from "simplebar-react";
 import Layout from "../components/layout";
 import fs from 'fs-extra';
 import path from 'path';
 import SideNav from "../components/SideNav";
 import { NextPageContext } from "next";
-import { DOCS_DEV, getTheme, SITE_DEV } from "../utils/Utils";
+import { DOCS_DEV, getTheme } from "../utils/Utils";
 import { HasTheme, HasVerLang } from "../utils/Interfaces";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
 import { MobileAd } from "../components/ads/Ads";
-import { Breakpoint } from "react-socks";
 
 
 export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
