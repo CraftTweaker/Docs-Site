@@ -1,4 +1,4 @@
-import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React from "react";
 import { DOCS_DEV, SITE_DEV } from "../utils/Utils";
 
