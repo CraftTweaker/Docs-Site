@@ -51,7 +51,8 @@ import {
   from 'react-syntax-highlighter/dist/cjs/styles/hljs/index';
 import SimpleBar from "simplebar-react";
 import { ThemeContext } from "../layout";
-import zenscript from '../zenscript';
+// @ts-ignore
+import zenscript from 'highlightjs-zenscript';
 import { CodeBlockProps } from "../../utils/Interfaces";
 
 SyntaxHighlighter.registerLanguage('zenscript', zenscript);
