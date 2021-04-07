@@ -9,12 +9,10 @@ import Layout from "../../../components/layout";
 import SideNav from "../../../components/SideNav";
 import { NavObject, PageProps, PageQuery } from "../../../utils/Interfaces";
 import { NextPageContext } from "next";
-import { DOCS_DEV, getTheme, SITE_DEV, walk, walkDev } from "../../../utils/Utils";
+import { DOCS_DEV, getTheme, walk, walkDev } from "../../../utils/Utils";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
-import exec from "child_process"
 import { MobileAd } from "../../../components/ads/Ads";
-import { Breakpoint } from "react-socks";
 
 
 const Page = ({ theme, version, lang, previous, current, next, navs, page, verlang, parentFolders }: PageProps) => {

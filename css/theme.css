@@ -1,5 +1,4 @@
 /* purgecss start ignore */
-@layer base {
 
   .nav {
     content: "";
@@ -29,7 +28,6 @@
     transform: rotate(90deg);
   }
 
-  /* purgecss start ignore */
   .simplebar-scrollbar::before {
     background-color: #3DA6E4 !important;
     border:           1px solid #1A6996 !important;
@@ -49,12 +47,9 @@
     color: #EDEDED !important;
   }
 
-
   .dark .ea-callout a {
     color: #E5E5E5 !important;
   }
 
-  /* purgecss end ignore */
-}
 
 /* purgecss end ignore */

@@ -1,5 +1,4 @@
 /* purgecss start ignore */
-@layer base {
   .markdown {
     @apply leading-relaxed text-base;
   }
@@ -66,7 +65,5 @@
   .markdown p > code {
     @apply text-sm;
   }
-
-}
 
 /* purgecss end ignore */

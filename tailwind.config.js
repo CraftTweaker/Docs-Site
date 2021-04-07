@@ -3,6 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 
 module.exports = {
+    mode: 'jit',
     purge: ["./components/**/*.ts", "./pages/**/*.ts", "./components/**/*.tsx", "./pages/**/*.tsx"],
     darkMode: 'class',
     theme: {
@@ -130,17 +131,17 @@ module.exports = {
             },
             minHeight: {
                 'with-nav': 'calc(100vh - 4rem);',
-                'with-ad': 'calc(100vh - 21rem);'
+                'with-ad': 'calc(100vh - 22rem);'
             },
             maxHeight: {
                 'with-nav': 'calc(100vh - 4rem);',
                 '48perc': '48%',
-                'with-ad': 'calc(100vh - 21rem);'
+                'with-ad': 'calc(100vh - 22rem);'
             },
             height: {
                 'with-nav': 'calc(100vh - 4rem);',
                 'half-screen': `50vh`,
-                'with-ad': 'calc(100vh - 21rem);',
+                'with-ad': 'calc(100vh - 22rem);',
                 '25': '6.25rem'
 
             },
