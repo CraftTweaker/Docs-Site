@@ -44,7 +44,7 @@ export default function SearchNav({ version, lang }: HasVerAndLang) {
                                return;
                            }
 
-                           axios.get(`/api/search?v=${version}&lang=${lang}&q=${event.target.value}&limit=5`).then(value => {
+                           axios.get(`/api/search2?v=${version}&lang=${lang}&q=${event.target.value}&limit=5`).then(value => {
                                setSearchResults(value.data);
                            }).catch(reason => {
                                console.log(reason);
