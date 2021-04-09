@@ -59,7 +59,7 @@ module.exports = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } else {
     index = lunr(function () {
-      this.field('title', { boost: 10 });
+      this.field('title');
       this.field('text');
       this.ref('location');
       for (let i = 0; i < data.docs.length; i++) {
@@ -69,11 +69,21 @@ module.exports = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     });
   }
+  // Strip the fuzzyness
+  query.replace(/~\d*/, "")
   // Makes the search a bit more greedy, may need to adjust number in the future
   if (query.indexOf("~") !== -1) {
-    query += "~8"
+    query += "~2"
   }
-  let results = index.search(query);
+  let results;
+  try {
+    results = index.search(query);
+  } catch (err) {
+    console.log(err);
+    res.send({ count: 1, totalCount: 1, results: [{ title: "Error While searching", text: err.message }] });
+    return;
+  }
+
   let returned = [];
   for (let index in results) {
     if (limit > 0 || limit === -1) {
