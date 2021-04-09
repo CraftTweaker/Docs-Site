@@ -99,7 +99,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
 
                                     <div className={`bg-gray-100 dark:bg-dark-900 border border-gray-300 dark:border-dark-700`}>
                                         {searchResults.error ? <> There was an error performing the search.
-                                            Message: {searchResults.results[0]}</> : searchResults.count > 0 ? searchResults.results.map((value, index) =>
+                                            Message: {JSON.stringify(searchResults.results[0])}</> : searchResults.count > 0 ? searchResults.results.map((value, index) =>
 
                                             <Link href={`/[version]/[lang]/[...slug]`}
                                                   as={(value.location.startsWith("/") ? value.location : `/${value.location}`).replace(/\.md/, "")}
