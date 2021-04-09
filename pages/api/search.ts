@@ -80,7 +80,7 @@ module.exports = async (req: NextApiRequest, res: NextApiResponse) => {
     results = index.search(query);
   } catch (err) {
     console.log(err);
-    res.send({ count: 1, totalCount: 1, results: [{ title: "Error While searching", text: err.message }] });
+    res.send({ error: true, results: [{ title: "Error While searching", text: err.message }] });
     return;
   }
 
