@@ -16,6 +16,7 @@ import { MobileAd } from "../../../components/ads/Ads";
 
 
 const Page = ({ theme, version, lang, previous, current, next, navs, page, verlang, parentFolders }: PageProps) => {
+    current = current || {key: "ERROR", value: "ERROR"}
     const [showingNav, setShowingNav] = useState(false);
     useEffect(() => {
         setShowingNav(false);
