@@ -19,7 +19,7 @@ module.exports = async (req: NextApiRequest, res: NextApiResponse) => {
             res.end(JSON.stringify({ error: "Page not found!" }))
             return;
         }
-        res.end(JSON.stringify({ pages: found }));
+        res.end(JSON.stringify({ pages: found.map(value => value.replace(/\.md/, "")) }));
     } else {
         res.end(JSON.stringify({ error: "Only single pages are supported!" }))
     }
