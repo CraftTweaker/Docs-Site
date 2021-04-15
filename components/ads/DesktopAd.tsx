@@ -48,5 +48,5 @@ function RenderAd({
     if (!loaded) {
         return <></>
     }
-    return <div className = {`mx-auto bordered`} data-ea-publisher = "docs-blamejared-com" data-ea-type = {type} data-ea-manual = "true" id = {id}/>;
+    return <div className = {`mx-auto bordered`} data-ea-publisher = "docs-blamejared-com" data-ea-type = {type} data-ea-manual = "true" data-ea-keywords = {"devops"} id = {id}/>;
 }
