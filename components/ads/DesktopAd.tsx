@@ -10,7 +10,7 @@ export default function DesktopAd({
     type,
 }: { id: string, current: NavObject, type: "image" | "text" }) {
 
-    return <Breakpoint mdu up className = {`grid`}>
+    return <Breakpoint md up className = {`grid`}>
 
         <RenderAd id = {id} current = {current} type = {type}/>
 

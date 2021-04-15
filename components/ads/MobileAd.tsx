@@ -11,7 +11,7 @@ export default function EthicalAd({
 }: { id: string, current: NavObject, type: "image" | "text" }) {
 
 
-    return <Breakpoint mdd down>
+    return <Breakpoint md down>
 
         <RenderAd id = {id} current = {current} type = {type}/>
 

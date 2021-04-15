@@ -15,6 +15,7 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 setDefaultBreakpoints([
+    { md: 768 },
     { mdu: 769 },
     { mdd: 767 },
 ]);

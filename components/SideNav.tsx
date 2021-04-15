@@ -59,7 +59,7 @@ export default function SideNav({ version, lang, navs, current, verlang, stub = 
                     <DesktopAd id = {"side-nav-ad"} current = {current || {
                         key: new Date().toString(),
                         value: "value"
-                    }} type = {new Date().getMinutes() % 2 === 0 ? "text" : "image"}/>
+                    }} type = { "image"}/>
 
             </div>
         </div>
