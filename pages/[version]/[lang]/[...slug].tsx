@@ -12,7 +12,7 @@ import { NextPageContext } from "next";
 import { DOCS_DEV, getTheme, walk, walkDev } from "../../../utils/Utils";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
-import { MobileAd } from "../../../components/ads/Ads";
+import { AD_REFRESH_RATE, MobileAd } from "../../../components/ads/Ads";
 
 
 const Page = ({ theme, version, lang, previous, current, next, navs, page, verlang, parentFolders }: PageProps) => {
@@ -33,6 +33,10 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
             Router.events.off("routeChangeComplete", handleRouteChange);
         };
     }, []);
+    const lastRender = useRef(0);
+    setInterval(args => {
+        lastRender.current = lastRender.current+1;
+    }, AD_REFRESH_RATE)
     return (
         <Layout theme = {theme} showingNav = {showingNav} setShowingNav = {setShowingNav} current = {current}>
 
@@ -73,7 +77,7 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
 
                         <div className = {`grid grid-cols-1 lg:grid-cols-content`}>
                             <div className = {`flex flex-col justify-between`}>
-                                <div className = "w-full px-4 mx-auto h-28 sm:h-24 md:hidden">
+                                <div className = "w-full px-4 mx-auto h-28 sm:h-24 md:hidden" key = {lastRender.current}>
 
                                     <MobileAd id = {"top-page-ad"} current = {{
                                         key: new Date().toString(),

@@ -11,7 +11,7 @@ import SideNav from "../../../components/SideNav";
 import { Router, useRouter } from "next/router";
 import axios from 'axios';
 import { NextSeo } from "next-seo";
-import { MobileAd } from "../../../components/ads/Ads";
+import { AD_REFRESH_RATE, MobileAd } from "../../../components/ads/Ads";
 
 const Search = ({ theme, version, lang, navs, verlang, search, searchResults, parentFolders }: SearchProps) => {
     const [displayedSearch, setDisplayedSearch] = useState(search);
@@ -31,6 +31,12 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
         }
 
     }, []);
+
+    const lastRender = useRef(0);
+    setInterval(args => {
+        lastRender.current = lastRender.current+1;
+    }, AD_REFRESH_RATE)
+
     return (
         <Layout theme={theme} showingNav={showingNav} setShowingNav={setShowingNav} current={{ key: "Search", value: "Search" }}>
 
@@ -70,7 +76,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
                     <SimpleBar className={`mx-auto max-h-with-nav w-full`} ref={simpleBarRef}>
                         <div className={`grid grid-cols-1 lg:grid-cols-content`}>
                             <div className={`flex flex-col justify-between`}>
-                                <div className="w-full px-4 mx-auto h-28 sm:h-24 md:hidden">
+                                <div className="w-full px-4 mx-auto h-28 sm:h-24 md:hidden" key = {lastRender.current}>
 
                                     <MobileAd id={"top-search-ad"} current={{
                                         key: new Date().toString(),

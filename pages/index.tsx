@@ -10,7 +10,7 @@ import { DOCS_DEV, getTheme } from "../utils/Utils";
 import { HasTheme, HasVerLang } from "../utils/Interfaces";
 import { Router } from "next/router";
 import { NextSeo } from "next-seo";
-import { MobileAd } from "../components/ads/Ads";
+import { AD_REFRESH_RATE, MobileAd } from "../components/ads/Ads";
 
 
 export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
@@ -49,6 +49,11 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
     let [selectedVersion, setVersion] = useState(Object.keys(verlang).sort((a, b) => b.localeCompare(a))[0]);
 
     const [showingNav, setShowingNav] = useState(false);
+
+    const lastRender = useRef(0);
+    setInterval(args => {
+        lastRender.current = lastRender.current+1;
+    }, AD_REFRESH_RATE)
 
     return (<>
         <Layout theme = {theme} showingNav = {showingNav} setShowingNav = {setShowingNav} current = {{
@@ -107,7 +112,7 @@ export default function Index({ theme, verlang }: HasTheme & HasVerLang) {
                                     )}
                                 </div>
 
-                                <div className = "h-28 sm:h-24 md:hidden my-4">
+                                <div className = "h-28 sm:h-24 md:hidden my-4" key = {lastRender.current}>
                                     <MobileAd id = {"top-home-ad"} current = {{
                                         key: new Date().toString(),
                                         value: "value"

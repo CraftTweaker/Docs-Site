@@ -8,11 +8,11 @@ export default function OutLinks() {
     <a rel = "noreferrer" className = "px-3 py-1 hover:bg-gray-300 dark:hover:bg-dark-700 block w-full" href = "https://github.com/CraftTweaker/CraftTweaker-Documentation/" target = "_blank">
       <Github/>
 
-      <span className = {`pl-1`}>Visit this wiki on Github</span> </a>
+      <span className = {`pl-1`}>Visit Github</span> </a>
     <a rel = "noreferrer" className = "px-3 py-1 hover:bg-gray-300 dark:hover:bg-dark-700 block w-full" href = "https://www.patreon.com/jaredlll08?s=docs" target = "_blank">
       <Patreon/>
 
-      <span className = {`pl-1`}>Support this wiki on Patreon</span> </a>
+      <span className = {`pl-1`}>Support on Patreon</span> </a>
     <a rel = "noreferrer" className = "px-3 py-1 hover:bg-gray-300 dark:hover:bg-dark-700 block w-full" href = "https://discord.blamejared.com" target = "_blank">
       <Discord/>
 
