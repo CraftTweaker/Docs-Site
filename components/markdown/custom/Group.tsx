@@ -21,7 +21,7 @@ export default function Group({ props, custom }: { props: any, custom: any }) {
     let [collapsed, setCollapsed] = useState(false);
     let id = `g-${custom.headingId}`
     return <>
-        <div className = {`px-4 py-2 my-4 border bg-gray-50 border-gray-300 dark:border-dark-700 dark:bg-dark-900`}>
+        <div className = {`px-4 py-2 my-4 border even:bg-gray-50 odd:bg-[#eef7fc] border-gray-300 dark:border-dark-700 dark:even:bg-dark-900 dark:odd:bg-dark-950`}>
             <div className = {`border-b border-gray-300 dark:border-dark-700 -mx-4 px-4 pb-2`}>
                 <div className = {`flex justify-between`}>
                     <div className = {`flex gap-x-1 my-auto`}>
