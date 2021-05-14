@@ -28,7 +28,7 @@
   }
 
   .markdown pre {
-    @apply mb-2 text-sm;
+    @apply text-sm;
   }
 
   .markdown ul,

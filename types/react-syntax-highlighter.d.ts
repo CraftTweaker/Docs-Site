@@ -1,48 +1,53 @@
-
 declare module 'react-syntax-highlighter/dist/cjs/styles/hljs/index' {
-    export const a11yDark: () => {}
-    export const a11yLight: () => {}
-    export const agate: () => {}
-    export const androidstudio: () => {}
-    export const anOldHope: () => {}
-    export const arduinoLight: () => {}
-    export const atomOneDark: () => {}
-    export const atomOneLight: () => {}
-    export const codepenEmbed: () => {}
-    export const colorBrewer: () => {}
-    export const darcula: () => {}
-    export const docco: () => {}
-    export const dracula: () => {}
-    export const foundation: () => {}
-    export const github: () => {}
-    export const githubGist: () => {}
-    export const gml: () => {}
-    export const googlecode: () => {}
-    export const hopscotch: () => {}
-    export const hybrid: () => {}
-    export const irBlack: () => {}
-    export const isblEditorDark: () => {}
-    export const isblEditorLight: () => {}
-    export const magula: () => {}
-    export const monoBlue: () => {}
-    export const monokai: () => {}
-    export const monokaiSublime: () => {}
-    export const obsidian: () => {}
-    export const ocean: () => {}
-    export const purebasic: () => {}
-    export const qtcreatorDark: () => {}
-    export const qtcreatorLight: () => {}
-    export const railscasts: () => {}
-    export const rainbow: () => {}
-    export const routeros: () => {}
-    export const solarizedDark: () => {}
-    export const solarizedLight: () => {}
-    export const sunburst: () => {}
-    export const vs: () => {}
-    export const vs2015: () => {}
-    export const xcode: () => {}
-    export const xt256: () => {}
-    export const zenburn: () => {}
+    const hljsTheme: {
+        "hljs": {
+            "background": string,
+            "color": string
+        }
+    }
+    export const a11yDark: hljsTheme
+    export const a11yLight: hljsTheme
+    export const agate: hljsTheme
+    export const androidstudio: hljsTheme
+    export const anOldHope: hljsTheme
+    export const arduinoLight: hljsTheme
+    export const atomOneDark: hljsTheme
+    export const atomOneLight: hljsTheme
+    export const codepenEmbed: hljsTheme
+    export const colorBrewer: hljsTheme
+    export const darcula: hljsTheme
+    export const docco: hljsTheme
+    export const dracula: hljsTheme
+    export const foundation: hljsTheme
+    export const github: hljsTheme
+    export const githubGist: hljsTheme
+    export const gml: hljsTheme
+    export const googlecode: hljsTheme
+    export const hopscotch: hljsTheme
+    export const hybrid: hljsTheme
+    export const irBlack: hljsTheme
+    export const isblEditorDark: hljsTheme
+    export const isblEditorLight: hljsTheme
+    export const magula: hljsTheme
+    export const monoBlue: hljsTheme
+    export const monokai: hljsTheme
+    export const monokaiSublime: hljsTheme
+    export const obsidian: hljsTheme
+    export const ocean: hljsTheme
+    export const purebasic: hljsTheme
+    export const qtcreatorDark: hljsTheme
+    export const qtcreatorLight: hljsTheme
+    export const railscasts: hljsTheme
+    export const rainbow: hljsTheme
+    export const routeros: hljsTheme
+    export const solarizedDark: hljsTheme
+    export const solarizedLight: hljsTheme
+    export const sunburst: hljsTheme
+    export const vs: hljsTheme
+    export const vs2015: hljsTheme
+    export const xcode: hljsTheme
+    export const xt256: hljsTheme
+    export const zenburn: hljsTheme
 
 
 }
