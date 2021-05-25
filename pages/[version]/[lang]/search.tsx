@@ -85,7 +85,7 @@ const Search = ({ theme, version, lang, navs, verlang, search, searchResults, pa
 
                                 </div>
                             </div>
-                            <div className={`w-11/12 lg:w-full p-4 pb-16 px-4 mx-auto dark:text-dark-100`}>
+                            <div className={`w-11/12 lg:w-full p-4 pb-16 px-4 mx-auto text-black dark:text-dark-100`}>
                                 <div className={`w-5/6 mx-auto`}>
                                     <div className={`text-center mb-2`}>
                                         <label className="text-4xl" htmlFor="main-search">Search</label>

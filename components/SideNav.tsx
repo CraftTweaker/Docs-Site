@@ -18,7 +18,7 @@ export default function SideNav({ version, lang, navs, current, verlang, stub = 
     }, AD_REFRESH_RATE)
     return (<>
         <div
-            className = {`w-full md:w-72 bg-gray-200 dark:bg-dark-800 dark:text-dark-100 z-10 shadow-lg border-r border-gray-300 dark:border-dark-700 h-with-nav break-all absolute md:static left-0 md:left-auto ${showingNav ? `` : `hidden md:flex flex-col`}`}>
+            className = {`w-full md:w-72 bg-gray-200 dark:bg-dark-800 text-black dark:text-dark-100 z-10 shadow-lg border-r border-gray-300 dark:border-dark-700 h-with-nav break-all absolute md:static left-0 md:left-auto ${showingNav ? `` : `hidden md:flex flex-col`}`}>
             <SimpleBar className = {`h-with-nav md:h-with-ad min-h-with-ad flex-grow`}>
                 <div className = {`h-full min-h-with-nav md:min-h-with-ad flex flex-col`}>
                     <OutLinks/>
