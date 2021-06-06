@@ -1,10 +1,6 @@
 /* purgecss start ignore */
   .markdown {
-    @apply leading-relaxed text-base;
-  }
-
-  .markdown > a > h1 {
-    @apply text-center;
+    @apply leading-relaxed text-lg;
   }
 
   .markdown h1,
@@ -28,7 +24,7 @@
   }
 
   .markdown pre {
-    @apply text-sm;
+    @apply text-base;
   }
 
   .markdown ul,
@@ -63,7 +59,7 @@
   }
 
   .markdown p > code {
-    @apply text-sm;
+    @apply text-base;
   }
 
 /* purgecss end ignore */
