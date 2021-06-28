@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Element, ReactBaseProps, ReactMarkdownProps } from "react-markdown/src/ast-to-react";
 
 declare global {
     interface Window {
@@ -26,10 +27,9 @@ export interface CLinkProps extends HasChildren {
     href: string
 }
 
-export interface CodeBlockProps {
-    language: string
-    value: string
-}
+export type CodeBlockProps = ReactBaseProps & ReactMarkdownProps & {
+    inline?: boolean
+};
 
 export interface ContentProps extends HasVerAndLang {
     page: string
@@ -42,7 +42,7 @@ export interface HeaderProps {
 
 export interface HeadingProps extends HasChildren, HasLevel {
     children: ReactNode[];
-    node: { data: { id: string } }
+    node: Element
 }
 
 export interface NavFolderProps extends HasVerAndLang, HasNav, HasLevel {

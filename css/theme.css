@@ -1,55 +1,55 @@
 /* purgecss start ignore */
 
-  .nav {
-    content: "";
-  }
+.nav {
+  content: "";
+}
 
-  .nav-open {
-    content: "";
-  }
+.nav-open {
+  content: "";
+}
 
-  .nav::before {
-    background-image: url("https://blamejared.com/svg/cheveron-right.svg");
-    content:          "";
-    display:          inline-block;
-    width:            14px;
-    height:           14px;
-    margin-top:       auto;
-    margin-bottom:    auto;
-    transition:       transform 50ms ease-in;
+.nav::before {
+  background-image: url("https://blamejared.com/svg/cheveron-right.svg");
+  content:          "";
+  display:          inline-block;
+  width:            14px;
+  height:           14px;
+  margin-top:       auto;
+  margin-bottom:    auto;
+  transition:       transform 50ms ease-in;
 
-  }
+}
 
-  .dark .nav::before {
-    background-image: url("https://blamejared.com/svg/dark/cheveron-right.svg");
-  }
+.dark .nav::before {
+  background-image: url("https://blamejared.com/svg/dark/cheveron-right.svg");
+}
 
-  .nav-open::before {
-    transform: rotate(90deg);
-  }
+.nav-open::before {
+  transform: rotate(90deg);
+}
 
-  .simplebar-scrollbar::before {
-    background-color: #3DA6E4 !important;
-    border:           1px solid #1A6996 !important;
-  }
+.simplebar-scrollbar::before {
+  background-color: #3DA6E4 !important;
+  border:           1px solid #1A6996 !important;
+}
 
-  .dark .ea-content {
-    background:    #333333 !important;
-    border:        #404040 1px solid !important;
-    border-radius: 0 !important;
-  }
+.dark .ea-content {
+  background:    #333333 !important;
+  border:        #404040 1px solid !important;
+  border-radius: 0 !important;
+}
 
-  .dark .ea-text a {
-    color: #E5E5E5 !important;
-  }
+.dark .ea-text a {
+  color: #E5E5E5 !important;
+}
 
-  .dark .ea-text a:hover {
-    color: #EDEDED !important;
-  }
+.dark .ea-text a:hover {
+  color: #EDEDED !important;
+}
 
-  .dark .ea-callout a {
-    color: #E5E5E5 !important;
-  }
+.dark .ea-callout a {
+  color: #E5E5E5 !important;
+}
 
 
 /* purgecss end ignore */

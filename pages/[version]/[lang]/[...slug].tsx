@@ -68,7 +68,7 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
             />
 
 
-            <div className = "flex flex-row">
+            <div className = "flex">
 
                 <SideNav version = {version} lang = {lang} navs = {navs} current = {current} verlang = {verlang} stub = {false} showingNav = {showingNav} parentFolders = {parentFolders}/>
 
@@ -86,12 +86,10 @@ const Page = ({ theme, version, lang, previous, current, next, navs, page, verla
 
                                 </div>
                             </div>
-                            <div className = {`w-11/12 lg:w-full p-4 mx-auto text-black dark:text-dark-100 bg-dark-150 dark:bg-dark-850 border border-gray-300 dark:border-dark-700 my-4`}>
+                            <div className = {`w-11/12 p-4 mx-auto text-black dark:text-dark-100 bg-dark-150 dark:bg-dark-850 border border-gray-300 dark:border-dark-700 my-4`}>
                                 <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
                                 <Content version = {version} lang = {lang} page = {page}/>
                                 <ArticleNav version = {version} lang = {lang} previous = {previous} next = {next}/>
-                            </div>
-                            <div className = {`flex flex-col justify-between`}>
                             </div>
                         </div>
                     </SimpleBar>

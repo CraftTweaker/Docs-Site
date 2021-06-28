@@ -5,11 +5,11 @@ export default function Question({ props }: { props: any }) {
   let [answered, setAnswered] = useState(false);
   const correctId = useMemo(() => {
     for (let child of props.children) {
-      if (!child.props.attributes || !child.props.attributes.hasOwnProperty("correct") || !child.props.attributes.hasOwnProperty("id")) {
+      if (!child.props || !child.props.hasOwnProperty("correct") || !child.props.hasOwnProperty("id")) {
         continue;
       }
-      if (child.props.attributes.correct === "true") {
-        return child.props.attributes.id;
+      if (child.props.correct === "true") {
+        return child.props.id;
       }
     }
     // Should hopefully make it that no one can actually use this as an id
@@ -52,12 +52,12 @@ export default function Question({ props }: { props: any }) {
 
       <div className={`flex flex-col gap-y-2 my-4`}>
         {questions.map((answer: any, index: number) => {
-          if (!answer.props.attributes || !answer.props.attributes.hasOwnProperty("correct") || !answer.props.attributes.hasOwnProperty("id")) {
+          if (!answer.props || !answer.props.hasOwnProperty("correct") || !answer.props.hasOwnProperty("id")) {
             return answer
           }
 
-          let id = answer.props.attributes.id;
-          let correct = answer.props.attributes.correct === "true";
+          let id = answer.props.id;
+          let correct = answer.props.correct === "true";
           let selected = selectedAnswer === id;
           return <div key={answer.key}
                       className={`rounded p-2 flex border border-dark-400 dark:border-dark-600 ${!answered ? `cursor-pointer` : `cursor-default`} ${

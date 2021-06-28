@@ -51,6 +51,7 @@ import SimpleBar from "simplebar-react";
 import { ThemeContext } from "../layout";
 import zenscript from 'highlightjs-zenscript';
 import { CodeBlockProps } from "../../utils/Interfaces";
+import { ReactBaseProps, ReactMarkdownProps, ReactNode } from "react-markdown/src/ast-to-react";
 
 SyntaxHighlighter.registerLanguage('zenscript', zenscript);
 
@@ -145,66 +146,67 @@ function modifyBrightness(hex: string, isDark: boolean, percent: number): string
         getHex(b);
 }
 
-function CodeBlock({ language, value }: CodeBlockProps) {
+function CodeBlock({ children, className }: CodeBlockProps): JSX.Element {
 
+    let language = (className || "").replace("language-", "").trim();
     const theme = useContext(ThemeContext);
     let [copied, setCopied] = useState(false);
     let hljsStyle = getStyle(theme.hljsStyle === "default" ? theme.pageTheme === `dark` ? "sunburst" : "vs" : theme.hljsStyle);
-    return (<div className={`relative`}>
-            <SimpleBar forceVisible={"x"} autoHide={false} direction={'x'}>
-                <div className={`border border-gray-400 dark:border-dark-700 mb-2`}>
-                    <div className={`pl-4  flex`}
-                         style={{
-                             backgroundColor: modifyBrightness(hljsStyle.hljs.background || "#ffffff", isDark(hljsStyle), 10),
-                             color: modifyBrightness(hljsStyle.hljs.color || "#000000", isDark(hljsStyle), 10)
-                         }}>
-                        <div className={`flex-grow my-auto`}>
-                            {(language || "") === "zenscript" ? "ZenScript" : (language || "").toLowerCase() === "plaintext" ? "" : language}
-                        </div>
 
-                        <CopyToClipboard
-                            onCopy={() => {
-                                setCopied(true);
-                                setTimeout(() => {
-                                    setCopied(false);
-                                }, 1000);
-                            }}
+    return <div className = {``}>
+        <SimpleBar forceVisible = {"x"} autoHide = {false}>
+            <div className = {`border border-gray-400 dark:border-dark-700 mb-2`}>
+                <div className = {`pl-4  flex`}
+                     style = {{
+                         backgroundColor: modifyBrightness(hljsStyle.hljs.background || "#FFFFFF", isDark(hljsStyle), 10),
+                         color: modifyBrightness(hljsStyle.hljs.color || "#000000", isDark(hljsStyle), 10)
+                     }}>
+                    <div className = {`flex-grow my-auto`}>
+                        {language === "zenscript" ? "ZenScript" : language}
+                    </div>
 
-                            text={value}>
-                            <div className={`h-full px-2 py-1.5 border-l border-gray-400 dark:border-dark-700 cursor-pointer group`} style={{
-                                backgroundColor: modifyBrightness(hljsStyle.hljs.background || "#ffffff", isDark(hljsStyle), 20),
-                                color: modifyBrightness(hljsStyle.hljs.color || "#000000", isDark(hljsStyle), 20)
-                            }}>
-                                <div className={`flex my-auto gap-x-1 ${copied ? `text-green-600 dark:text-green-500` : `group-hover:text-blue-600 dark:group-hover:text-blue-500`}`}>
+                    <CopyToClipboard
+                        onCopy = {() => {
+                            setCopied(true);
+                            setTimeout(() => {
+                                setCopied(false);
+                            }, 1000);
+                        }}
 
-                                    <span className={`cursor-pointer my-auto`}
-                                          style={{ color: !copied ? hljsStyle.hljs.color : undefined }}>
+                        text = {children.join()}>
+                        <div className = {`h-full px-2 py-1.5 border-l border-gray-400 dark:border-dark-700 cursor-pointer group`} style = {{
+                            backgroundColor: modifyBrightness(hljsStyle.hljs.background || "#FFFFFF", isDark(hljsStyle), 20),
+                            color: modifyBrightness(hljsStyle.hljs.color || "#000000", isDark(hljsStyle), 20)
+                        }}>
+                            <div className = {`flex my-auto gap-x-1 ${copied ? `text-green-600 dark:text-green-500` : `group-hover:text-blue-600 dark:group-hover:text-blue-500`}`}>
 
-                                        <svg className={`w-5 h-5 ${!copied ? `group-hover:text-blue-600 dark:group-hover:text-blue-500` : ``}`} fill="none" stroke="currentColor"
-                                             viewBox="0 0 24 24"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                  d={`M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2${copied ? `m-6 9l2 2 4-4` : ``}`}/>
+                                    <span className = {`cursor-pointer my-auto`}
+                                          style = {{ color: !copied ? hljsStyle.hljs.color : undefined }}>
+
+                                        <svg className = {`w-5 h-5 ${!copied ? `group-hover:text-blue-600 dark:group-hover:text-blue-500` : ``}`} fill = "none" stroke = "currentColor"
+                                             viewBox = "0 0 24 24"
+                                             xmlns = "http://www.w3.org/2000/svg">
+                                            <path strokeLinecap = "round" strokeLinejoin = "round" strokeWidth = {2}
+                                                  d = {`M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2${copied ? `m-6 9l2 2 4-4` : ``}`}/>
                                         </svg>
-                                    </span>
-                                    <span>
+                                    </span> <span>
                                         Copy
                                     </span>
-                                </div>
                             </div>
-                        </CopyToClipboard>
-
-                    </div>
-                    <SyntaxHighlighter className={`whitespace-pre-wrap  border-t border-gray-400 dark:border-dark-700`} language={language}
-                                       style={hljsStyle} showLineNumbers={theme.lineNumbers} customStyle={{ padding: "1rem" }}>
-                        {value}
-                    </SyntaxHighlighter>
+                        </div>
+                    </CopyToClipboard>
 
                 </div>
-
-            </SimpleBar>
-        </div>
-    );
+                <SyntaxHighlighter className = {`whitespace-pre-wrap border-t border-gray-400 dark:border-dark-700`}
+                                   language = {language}
+                                   wrapLongLines = {false}
+                                   style = {hljsStyle}
+                                   showLineNumbers = {theme.lineNumbers}
+                                   customStyle = {{ padding: "1rem" }}
+                                   children = {String(children).replace(/\n$/, '')}/>
+            </div>
+        </SimpleBar>
+    </div>
 }
 
 export default CodeBlock;

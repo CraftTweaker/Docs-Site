@@ -127,7 +127,7 @@ module.exports = {
         extend: {
             gridTemplateColumns: {
                 '3-auto': `auto auto auto`,
-                'content': `0.6fr 1.8fr 0.6fr`
+                'content': `0.6fr 2.4fr 0.6fr`
             },
             minHeight: {
                 'with-nav': 'calc(100vh - 4rem);',
@@ -147,8 +147,8 @@ module.exports = {
             },
             width: {
                 '48perc': '48%',
-                '72': "18rem",
-                'content': `calc(100vw - 18rem)`
+                '72': "22rem",
+                'content': `calc(100vw - 22rem)`
             }
         },
     },
