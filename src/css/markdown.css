@@ -1,0 +1,90 @@
+/* purgecss start ignore */
+.markdown {
+  @apply leading-relaxed text-lg;
+}
+
+.markdown h1 {
+  @apply text-3.5xl text-center;
+}
+
+.markdown h2 {
+  @apply text-2xl;
+}
+
+.markdown h3 {
+  @apply text-xl;
+}
+
+.markdown h4 {
+  @apply text-base;
+}
+
+.markdown h5 {
+  @apply text-sm;
+}
+
+.markdown h6 {
+  @apply text-xs text-gray-600 dark:text-gray-400;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  @apply mt-4 mb-2 font-semibold;
+}
+
+.markdown .link {
+  @apply text-blue-700 dark:text-blue-400 hover:underline;
+}
+
+.markdown p {
+  @apply mb-2.5 mt-0;
+}
+
+.markdown pre {
+  @apply text-base py-4 overflow-auto scrollbar-h-2 scrollbar-custom;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply mt-0 mb-4 pl-8;
+}
+
+.markdown li > p,
+.markdown li > ul,
+.markdown li > ol {
+  @apply mb-0;
+}
+
+.markdown ol {
+  @apply list-decimal;
+}
+
+.markdown ul {
+  @apply list-disc;
+}
+
+.markdown li {
+  @apply my-2;
+}
+
+.markdown blockquote {
+  @apply p-0 p-2 mx-6 bg-gray-200 dark:bg-gray-800 mb-4 border-l-4 border-darkBlue-400 italic;
+}
+
+.markdown blockquote > p {
+  @apply mb-0;
+}
+
+.markdown p > code {
+  @apply text-base;
+}
+
+.markdown hr {
+  @apply border-t-2 border-gray-300 dark:border-gray-600;
+}
+
+/* purgecss end ignore */

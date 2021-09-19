@@ -1,0 +1,1 @@
+export const SITE_DEV = process.env.NEXT_PUBLIC_SITE_DEV === "true";

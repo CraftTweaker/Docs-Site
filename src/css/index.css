@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  @apply tracking-wide;
+}
+
+@layer components {
+  .themeSwitcher {
+    @apply w-full h-7 md:w-5 md:h-5 mx-auto my-auto fill-current;
+  }
+
+  .themeSwitcherContainer {
+    @apply p-1.5 md:p-0 cursor-pointer hover:text-diluv-600 dark:hover:text-diluv-500 select-none;
+  }
+
+  .component {
+    @apply shadow-md dark:shadow-none border border-transparent dark:border-black;
+  }
+
+  .navbar-component {
+    @apply shadow-md dark:shadow-none border-b border-transparent dark:border-black;
+  }
+
+
+  .selectable {
+    @apply cursor-pointer hover:ring focus:ring focus:outline-none;
+    @apply bg-white hover:bg-opacity-50 hover:bg-blue-200 hover:border-blue-300;
+    @apply focus:bg-opacity-50 focus:bg-blue-200 focus:border-blue-300;
+    @apply active:hover:bg-opacity-60 active:hover:bg-blue-300;
+
+    @apply dark:bg-gray-800 dark:hover:bg-opacity-50 dark:hover:bg-darkBlue-900 dark:hover:border-darkBlue-800;
+    @apply dark:focus:bg-opacity-50 dark:focus:bg-darkBlue-900 dark:focus:border-darkBlue-800;
+    @apply dark:active:hover:bg-opacity-60 dark:active:hover:bg-darkBlue-800;
+  }
+
+  .versionButtonBase {
+    @apply select-none w-full h-16 grid component;
+  }
+
+  .versionButton {
+    @apply versionButtonBase selectable
+  }
+
+  .versionButtonSelected {
+    @apply versionButtonBase ring ring-inset bg-blue-200 dark:bg-darkBlue-900 focus:outline-none focus:ring-blue-500
+  }
+
+  .versionText {
+    @apply mx-auto my-auto text-xl font-semibold;
+  }
+
+  .nav-item {
+    @apply focus:ring focus:ring-inset focus:outline-none;
+    @apply hover:bg-gray-200 focus:bg-gray-200 ;
+    @apply dark:hover:bg-gray-700 focus:bg-gray-700;
+  }
+
+  .nav-item-selected {
+    @apply text-white bg-oldBlue-900 hover:bg-oldBlue-900 focus:bg-oldBlue-900 dark:hover:bg-oldBlue-900 dark:focus:bg-oldBlue-900;
+  }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: 32px;
+    }
+  }
+  .nav-open {
+    animation-name:     slideDown;
+    animation-duration: 0.25s;
+  }
+
+  .scroll-margin {
+    scroll-margin-top: 6.5rem
+  }
+
+  .markdown-table {
+    @apply w-full table-fixed xl:table-auto mb-6;
+  }
+
+  .markdown-td {
+    @apply flex justify-between gap-x-2 xl:table-cell xl:gap-x-0 px-2 py-1.5 border border-gray-400 dark:border-black group-hover:bg-blue-500 group-hover:bg-opacity-30 dark:group-hover:bg-blue-800 dark:group-hover:bg-opacity-10;
+  }
+
+  .markdown-th {
+    @apply px-2 py-1.5 border border-gray-400 dark:border-black bg-gray-300 dark:bg-gray-900;
+  }
+
+  .markdown-tr {
+    @apply bg-gray-100 dark:bg-gray-850 even:bg-gray-200 dark:even:bg-gray-800  my-2 xl:my-0 first:mt-0 last:mb-0 block xl:table-row;
+  }
+
+  .markdown-thead {
+    @apply hidden xl:table-row;
+  }
+
+  .markdown-inline-header {
+    @apply flex flex-col justify-center -ml-2 -my-1.5 px-2 xl:hidden bg-gray-300 dark:bg-gray-900 border-r border-black w-1/2;
+  }
+
+  .markdown-content {
+    @apply w-1/2 xl:w-auto overflow-x-auto scrollbar-h-2 scrollbar-custom;
+  }
+}
+
+[data-color-scheme="dark"] {
+  color-scheme: dark;
+}
+
+[data-color-scheme="light"] {
+  color-scheme: light;
+}

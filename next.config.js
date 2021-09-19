@@ -1,20 +1,27 @@
-module.exports = {
-    future: {
-        strictPostcssConfiguration: true
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+})
+module.exports = withBundleAnalyzer({
+    reactStrictMode: true,
+    images: {
+        domains: ['blamejared.com'],
     },
-    trailingSlash: true,
-    async redirects() {
-        return [
-            {
-                source: '/:version(\\d\\.\\d\\d)',
-                destination: '/',
-                permanent: true,
-            },
-            {
-                source: '/:version(\\d\\.\\d\\d)/:lang(\\w\\w)/',
-                destination: '/:version/:lang/index/',
-                permanent: true,
-            },
-        ]
-    }
-}
+    experimental: {
+        esmExternals: true
+    },
+    eslint: {
+        dirs: ['src'],
+    },
+    webpack: (config, {dev, isServer}) => {
+        if (!dev && !isServer) {
+            // Replace React with Preact only in client production build
+            Object.assign(config.resolve.alias, {
+                react: 'preact/compat',
+                'react-dom/test-utils': 'preact/test-utils',
+                'react-dom': 'preact/compat',
+            })
+        }
+
+        return config
+    },
+})
