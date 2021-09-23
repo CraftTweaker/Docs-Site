@@ -55,7 +55,7 @@ body {
   .nav-item {
     @apply focus:ring focus:ring-inset focus:outline-none;
     @apply hover:bg-gray-200 focus:bg-gray-200 ;
-    @apply dark:hover:bg-gray-700 focus:bg-gray-700;
+    @apply dark:hover:bg-gray-700 dark:focus:bg-gray-700;
   }
 
   .nav-item-selected {
@@ -104,7 +104,7 @@ body {
   }
 
   .markdown-content {
-    @apply w-1/2 xl:w-auto overflow-x-auto scrollbar-h-2 scrollbar-custom;
+    @apply w-1/2 xl:w-auto overflow-x-auto scrollbar-h-2 scrollbar-light dark:scrollbar-dark;
   }
 }
 

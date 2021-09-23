@@ -37,7 +37,7 @@ export default function Sidenav(props: SideNavProps): ReactElement {
         return props.slug === path;
     }
 
-    return <div className = {`${nav.open ? `` : `hidden lg:block`} flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black overflow-y-scroll fixed lg:sticky lg:top-18 scrollbar-h-2 scrollbar-custom`}>
+    return <div className = {`${nav.open ? `` : `hidden lg:block`} flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black overflow-y-scroll fixed lg:sticky lg:top-18 scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
         {data &&
         <NavFolder path = {`nav`} nav = {data["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>}
     </div>;
@@ -66,7 +66,7 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
     return <div className = {`flex flex-col`}>
 
         {!props.root &&
-        <button style = {{ paddingLeft: `${props.level * 0.75}ch` }} className = {`p-1 block h-8 flex gap-x-0 nav-item`} onClick = {toggleFolder}>
+        <button style = {{ paddingLeft: `${0.5 +( props.level * 0.75)}ch` }} className = {`p-1 block h-8 flex gap-x-0 nav-item`} onClick = {toggleFolder}>
             <ChevronRightIcon className = {`w-4 h-4 my-auto transform transition-transform duration-150 ${open ? `rotate-90` : ``}`}/>
             <p className = {`my-auto mr-2`}>{props.name}</p>
         </button>}
@@ -104,7 +104,7 @@ function NavItem(props: SideNavItemProps): ReactElement {
 
     return <Link href = {`/${props.version}/${props.language}/${pagePath}`}>
 
-        <a className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${props.level * 0.75}ch` }}>
+        <a className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${0.5 +( props.level * 0.75)}ch` }}>
 
             {props.name}
         </a>

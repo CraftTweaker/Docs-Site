@@ -45,7 +45,7 @@
 }
 
 .markdown pre {
-  @apply text-base py-4 overflow-auto scrollbar-h-2 scrollbar-custom;
+  @apply text-base py-4 overflow-auto scrollbar-h-2 scrollbar-light dark:scrollbar-dark;
 }
 
 .markdown ul,

@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const colors = require('tailwindcss/colors')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugin = require('tailwindcss/plugin')
 module.exports = {
     mode: "jit",
@@ -23,6 +24,7 @@ module.exports = {
                 gray: {
                     ...colors.trueGray,
                     150: "#EDEDED",
+                    250: "#DDDDDD",
                     825: "#232323",
                     850: "#1F1F1F",
                     875: "#1B1B1B",
@@ -107,7 +109,7 @@ module.exports = {
                         height: "0.5rem"
                     }
                 },
-                '.scrollbar-custom': {
+                '.scrollbar-dark': {
                     scrollbarColor: `${colors.darkBlue["600"]} ${colors.gray["700"]}`,
                     '&::-webkit-scrollbar-track': {
                         background: colors.gray["700"]
@@ -115,7 +117,17 @@ module.exports = {
                     '&::-webkit-scrollbar-thumb': {
                         background: colors.darkBlue["600"],
                     }
+                },
+                '.scrollbar-light': {
+                    scrollbarColor: `${colors.darkBlue["400"]} ${colors.gray["300"]}`,
+                    '&::-webkit-scrollbar-track': {
+                        background: colors.gray["300"]
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        background: colors.darkBlue["400"],
+                    }
                 }
+
             }
 
             addUtilities(newUtilities)
