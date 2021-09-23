@@ -8,7 +8,7 @@ export function getBaseDir(): string {
 }
 
 export function getDocsDir(): string {
-    return path.join(getBaseDir(), SITE_DEV ? `../docs` : `./docs`);
+    return path.join(getBaseDir(), `./docs`);
 }
 
 export function getVersions(): string[] {
@@ -64,7 +64,7 @@ export function collectPages(doc: Nav, done: Page[] = []): Page[] {
         if (typeof val === "object") {
             done = collectPages(val, done);
         } else {
-            done.push({ key: docKey, value: val });
+            done.push({ name: docKey, path: val });
         }
     }
     return done;

@@ -23,10 +23,7 @@ export type DocsReverseLookup = { [key: string]: string[] };
 
 export type Nav = { [key: string]: Nav };
 
-export interface Page {
-    key: string;
-    value: string;
-}
+
 
 export type ThemeValues = `light` | `dark`;
 
@@ -37,12 +34,13 @@ export interface SlugStaticProps extends ParsedUrlQuery, Verlang {
 
 export interface SlugPageProps extends Verlang {
     content: string;
-    folder: string;
+    meta: DocsMeta;
     slug: string;
 }
 
 export interface PageContentProps extends Verlang {
     content: string;
+    meta: DocsMeta;
 }
 
 export interface SideNavProps extends Verlang {
@@ -80,4 +78,23 @@ declare global {
             "leafdirective": DirectiveProps<LeafDirective>;
         }
     }
+}
+
+export interface DocsMeta {
+    ownerModId: string;
+    path?: string;
+    searchTerms: string[];
+    shortDescription?: string;
+    since?: string;
+    deprecation?: string;
+    zenCodeName: string;
+    folders: string[],
+    previous?: Page,
+    next?: Page
+}
+
+
+export interface Page {
+    name: string
+    path: string
 }

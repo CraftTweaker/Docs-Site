@@ -5,7 +5,7 @@ import React, { ReactElement, useContext } from "react";
 import fs from "fs";
 import path from "path";
 import Sidenav from "components/Sidenav";
-import { SlugPageProps, SlugStaticProps } from "../../../util/Types";
+import { DocsMeta, SlugPageProps, SlugStaticProps } from "../../../util/Types";
 import { MenuIcon } from "@heroicons/react/outline";
 import { NavContext } from "../../../util/Context";
 import PageContent from "../../../components/PageContent";
@@ -16,8 +16,8 @@ export default function Page(props: SlugPageProps): ReactElement {
 
     return <Layout>
         <div className = {`flex min-h-content max-w-screen`}>
-            <Sidenav version = {props.version} language = {props.language} folder = {props.folder} slug = {props.slug}/>
-            <PageContent content = {props.content} version = {props.version} language = {props.language}/>
+            <Sidenav version = {props.version} language = {props.language} folder = {props.meta.folders.join("/")} slug = {props.slug}/>
+            <PageContent content = {props.content} version = {props.version} language = {props.language} meta={props.meta}/>
             <button className = {`fixed right-10 bottom-10 p-2 rounded bg-blue-800 cursor-pointer text-white shadow-lg border-2 border-white dark:border-black lg:hidden`} onClick = {() => {
                 nav.toggleOpen();
             }}>
@@ -35,10 +35,10 @@ export async function getStaticProps(context: GetStaticPropsContext<SlugStaticPr
     }
     const { version, language, slug } = context.params;
     let content = "";
-    let folder = "";
+    let meta: DocsMeta | undefined = undefined;
     try {
         content = fs.readFileSync(path.join(getContentDir(version, language), ...slug) + ".md", "utf-8");
-        folder = getReverseDocsJson(version, language)[path.join(...slug) + ".md"].join("/");
+        meta = JSON.parse(fs.readFileSync(path.join(getContentDir(version, language), ...slug) + ".json", "utf-8"));
     } catch (e) {
         console.log(`Cannot build page: ${version}/${language}/${slug.join("/")}`);
     }
@@ -48,7 +48,7 @@ export async function getStaticProps(context: GetStaticPropsContext<SlugStaticPr
             version,
             language,
             content: content,
-            folder: folder,
+            meta: meta as DocsMeta,
             slug: slug.join("/")
         }
     };
@@ -68,7 +68,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult<SlugStaticP
                     params: {
                         version: version.version,
                         language: language,
-                        slug: page.value.replace(/\.md/, "").split("/")
+                        slug: page.path.replace(/\.md/, "").split("/")
                     }
                 });
             });

@@ -6,6 +6,7 @@ interface NavProps {
     addFolder: (name: string) => void;
     removeFolder: (name: string) => void;
     clearFolders: () => void;
+    isOpen: (folder: string) => boolean;
     open: boolean;
     setOpen: (state: boolean) => void;
     toggleOpen: () => void;
@@ -28,6 +29,9 @@ export const NavContext = React.createContext<NavProps>({
 
     folders: ["nav"],
     open: false,
+    isOpen() {
+        return false;
+    },
     addFolder() {
         // no-op
     },

@@ -49,17 +49,17 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
 
     const children = useRef<string[]>(Object.keys(props.nav));
     const nav = useContext(NavContext);
-    const [open, setOpen] = useState(nav.folders.some(value => value.startsWith(props.path)));
+    const open = nav.isOpen(props.path);
     const [opening, setOpening] = useState(false);
 
     function toggleFolder() {
-        if (open) {
+        if (nav.isOpen(props.path)) {
             nav.removeFolder(props.path);
         } else {
             nav.addFolder(props.path);
         }
         setOpening(true);
-        setOpen(!open);
+        // setOpen(!open);
     }
 
 

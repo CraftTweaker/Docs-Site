@@ -52,6 +52,9 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
             },
             toggleOpen: () => {
                 setNavOpen(!navOpen);
+            },
+            isOpen: (folder: string) => {
+                return folders.some(value => value.startsWith(folder));
             }
         }}>
 
