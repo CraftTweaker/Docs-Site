@@ -4,7 +4,7 @@ const Dark = {
         "overflowX": "auto",
         "padding": "1rem",
         "background": "#1E1E1E",
-        "color": "#DCDCDC"
+        "color": "#d4d4d4"
     },
     "hljs-keyword": {
         "color": "#569CD6"
