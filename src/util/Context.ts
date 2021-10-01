@@ -17,6 +17,15 @@ interface ThemeProps {
     setTheme: (pageTheme: ThemeValues) => void;
 }
 
+interface VerLangProps {
+    version: string;
+    language: string;
+    versions: string[];
+    languages: string[];
+    hasInfo: boolean;
+}
+
+
 export const ThemeContext = React.createContext<ThemeProps>({
 
     pageTheme: "light",
@@ -48,4 +57,12 @@ export const NavContext = React.createContext<NavProps>({
         // no-op
     }
 
+});
+
+export const VerLangContext = React.createContext<VerLangProps>({
+    version: "",
+    language: "",
+    versions: [],
+    languages: [],
+    hasInfo: false
 });

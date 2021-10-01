@@ -9,11 +9,11 @@ body {
 
 @layer components {
   .themeSwitcher {
-    @apply w-full h-7 md:w-5 md:h-5 mx-auto my-auto fill-current;
+    @apply w-full h-7 md:w-5 md:h-5 fill-current group-hover:text-blue-600 dark:group-hover:text-blue-500;
   }
 
   .themeSwitcherContainer {
-    @apply p-1.5 md:p-0 cursor-pointer hover:text-diluv-600 dark:hover:text-diluv-500 select-none;
+    @apply p-1.5 md:p-0 cursor-pointer select-none;
   }
 
   .component {

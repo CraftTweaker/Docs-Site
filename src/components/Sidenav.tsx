@@ -1,19 +1,17 @@
 import { ReactElement, useContext, useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import Link from "next/link";
-import { SideNavFolderProps, SideNavItemProps, SideNavProps } from "../util/Types";
-import { ChevronRightIcon } from "@heroicons/react/outline";
+import { Docs, SideNavFolderProps, SideNavItemProps, SideNavProps } from "../util/Types";
+import { ChevronRightIcon } from "@heroicons/react/solid";
 import { NavContext } from "../util/Context";
 import { LazyMotion, m } from "framer-motion";
 import { Router } from "next/router";
-
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+import SidebarOutlinks from "./ui/SidebarOutlinks";
 
 const loadFeatures = () => import("./dynamic/DomAnimation").then(res => res.default);
 
 export default function Sidenav(props: SideNavProps): ReactElement {
 
-    const { data } = useSWR(`/api/${props.version}/${props.language}/nav`, fetcher);
     const nav = useContext(NavContext);
     useEffect(() => {
         nav.addFolder(`nav/${props.folder}`);
@@ -38,16 +36,15 @@ export default function Sidenav(props: SideNavProps): ReactElement {
     }
 
     return <div className = {`${nav.open ? `` : `hidden lg:block`} flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black overflow-y-scroll fixed lg:sticky lg:top-18 scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
-        {data &&
-        <NavFolder path = {`nav`} nav = {data["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>}
+        <SidebarOutlinks/>
+        <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
     </div>;
 
 }
 
 
 function NavFolder(props: SideNavFolderProps): ReactElement {
-
-    const children = useRef<string[]>(Object.keys(props.nav));
+    const children = Object.keys(props.nav);
     const nav = useContext(NavContext);
     const open = nav.isOpen(props.path);
     const [opening, setOpening] = useState(false);
@@ -66,7 +63,7 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
     return <div className = {`flex flex-col`}>
 
         {!props.root &&
-        <button style = {{ paddingLeft: `${0.5 +( props.level * 0.75)}ch` }} className = {`p-1 block h-8 flex gap-x-0 nav-item`} onClick = {toggleFolder}>
+        <button style = {{ paddingLeft: `${0.5 + (props.level * 0.75)}ch` }} className = {`p-1 block flex gap-x-0 nav-item text-left`} onClick = {toggleFolder}>
             <ChevronRightIcon className = {`w-4 h-4 my-auto transform transition-transform duration-150 ${open ? `rotate-90` : ``}`}/>
             <p className = {`my-auto mr-2`}>{props.name}</p>
         </button>}
@@ -86,7 +83,7 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
                 }}
                 className = {`overflow-hidden flex flex-col`}
             >
-                {(open || opening) && children.current.map(value => {
+                {(open || opening) && children.map(value => {
                         if (typeof props.nav[value] === "string") {
                             return <NavItem name = {value} version = {props.version} language = {props.language} key = {props.nav[value] as unknown as string} path = {props.nav[value] as unknown as string} level = {props.level + 1} current = {false} isCurrent = {props.isCurrent}/>;
                         }
@@ -104,7 +101,7 @@ function NavItem(props: SideNavItemProps): ReactElement {
 
     return <Link href = {`/${props.version}/${props.language}/${pagePath}`}>
 
-        <a className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${0.5 +( props.level * 0.75)}ch` }}>
+        <a className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${0.5 + (props.level * 0.75)}ch` }}>
 
             {props.name}
         </a>

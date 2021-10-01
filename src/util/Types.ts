@@ -10,6 +10,11 @@ export interface Verlang {
     language: string;
 }
 
+export interface VersLangs extends Verlang{
+    versions: string[];
+    languages: string[];
+}
+
 export interface Version {
     version: string;
     languages: string[];
@@ -32,10 +37,11 @@ export interface SlugStaticProps extends ParsedUrlQuery, Verlang {
     slug: string[];
 }
 
-export interface SlugPageProps extends Verlang {
+export interface SlugPageProps extends Verlang, VersLangs {
     content: string;
     meta: DocsMeta;
     slug: string;
+    nav: Docs;
 }
 
 export interface PageContentProps extends Verlang {
@@ -46,6 +52,8 @@ export interface PageContentProps extends Verlang {
 export interface SideNavProps extends Verlang {
     folder: string;
     slug: string;
+
+    nav: Docs;
 }
 
 interface NavProps {

@@ -2,7 +2,7 @@ import Markdown from "./markdown/Markdown";
 import React, { ReactElement } from "react";
 import { DocsMeta, PageContentProps, Verlang } from "../util/Types";
 import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
 function PageContent(props: PageContentProps): ReactElement {
 

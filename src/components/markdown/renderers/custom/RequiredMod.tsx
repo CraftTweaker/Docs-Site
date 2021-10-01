@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from "react";
 import { DirectiveProps } from "util/Types";
 import { LeafDirective } from "mdast-util-directive/complex-types";
-import { ShieldCheckIcon, ShieldExclamationIcon } from "@heroicons/react/outline";
+import { ShieldCheckIcon, ShieldExclamationIcon } from "@heroicons/react/solid";
 
 export default function RequiredMod({ props }: { props: DirectiveProps<LeafDirective> }): ReactElement {
     const attributes: Record<string, string> = props.attributes || {};
