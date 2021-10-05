@@ -55,17 +55,18 @@ module.exports = async (req: NextApiRequest, res: NextApiResponse) => {
         index = lunr.Index.load(data.idx);
         for (let i = 0; i < data.docs.length; i++) {
             let doc = data.docs[i];
-            documents[doc.location] = doc;
+            documents[doc.key] = doc;
         }
     } else {
         index = lunr(function () {
-            this.field('title');
-            this.field('text');
-            this.ref('location');
+            this.field("title");
+            this.field("text");
+            this.field("location");
+            this.ref("key");
             for (let i = 0; i < data.docs.length; i++) {
                 let doc = data.docs[i];
                 this.add(doc);
-                documents[doc.location] = doc;
+                documents[doc.key] = doc;
             }
         });
     }
