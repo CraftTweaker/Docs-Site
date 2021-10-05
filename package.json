@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/CraftTweaker/Docs-Site#readme",
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "cookie": "^0.4.1",
     "framer-motion": "4.1.17",
     "fs-extra": "10.0.0",
