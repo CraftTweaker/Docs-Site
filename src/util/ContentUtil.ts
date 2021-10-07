@@ -1,7 +1,6 @@
-import { SITE_DEV } from "./EnvUtil";
 import path from "path";
 import fs from "fs";
-import { Nav, Docs, Page, Version, DocsReverseLookup } from "./Types";
+import { Docs, DocsReverseLookup, Nav, Page, Version } from "./Types";
 
 export function getBaseDir(): string {
     return process.cwd();

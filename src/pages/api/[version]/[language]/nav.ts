@@ -9,5 +9,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
     } catch (e) {
         console.log(e);
     }
-    res.json(content)
+    res.json(content);
 }

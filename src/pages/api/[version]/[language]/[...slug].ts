@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
         content = fs.readFileSync(path.join(getContentDir(version, language), ...slug) + ".md", "utf-8");
     } catch (e) {
         console.log(`Cannot build page: ${version}/${language}/${slug.join("/")}`);
-        console.log(e)
+        console.log(e);
     }
     res.end(content);
 }

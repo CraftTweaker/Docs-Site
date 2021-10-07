@@ -1,7 +1,6 @@
-import { ReactElement, useContext, useEffect, useRef, useState } from "react";
-import useSWR from "swr";
+import { ReactElement, useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { Docs, SideNavFolderProps, SideNavItemProps, SideNavProps } from "../util/Types";
+import { SideNavFolderProps, SideNavItemProps, SideNavProps } from "../util/Types";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import { NavContext } from "../util/Context";
 import { LazyMotion, m } from "framer-motion";

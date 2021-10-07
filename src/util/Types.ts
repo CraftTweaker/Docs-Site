@@ -10,7 +10,7 @@ export interface Verlang {
     language: string;
 }
 
-export interface VersLangs extends Verlang{
+export interface VersLangs extends Verlang {
     versions: string[];
     languages: string[];
 }
@@ -29,7 +29,6 @@ export type DocsReverseLookup = { [key: string]: string[] };
 export type Nav = { [key: string]: Nav };
 
 
-
 export type ThemeValues = `light` | `dark`;
 
 
@@ -42,6 +41,28 @@ export interface SlugPageProps extends Verlang, VersLangs {
     meta: DocsMeta;
     slug: string;
     nav: Docs;
+}
+
+export interface SearchProps extends ParsedUrlQuery, Verlang {
+
+}
+
+export interface SearchPageProps extends Verlang, VersLangs {
+    nav: Docs;
+}
+
+export interface SearchResults {
+    count: number,
+    totalCount: number,
+    results: SearchResult[],
+    error?: boolean
+}
+
+export interface SearchResult {
+    title: string;
+    location: string;
+    text: string;
+    key: string;
 }
 
 export interface PageContentProps extends Verlang {
@@ -103,6 +124,13 @@ export interface DocsMeta {
 
 
 export interface Page {
-    name: string
-    path: string
+    name: string;
+    path: string;
+}
+
+export interface SearchDoc {
+    location: string,
+    title: string,
+    text: string;
+    key: string;
 }

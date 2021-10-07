@@ -23,7 +23,7 @@ const directives: Record<string, (props: DirectiveProps<DirectiveFields>, custom
         return <RequiredMod props = {props as DirectiveProps<LeafDirective>}/>;
     },
     deprecated(props) {
-        return <Deprecated props={props as DirectiveProps<LeafDirective>}/>
+        return <Deprecated props = {props as DirectiveProps<LeafDirective>}/>;
     }
 };
 

@@ -25,6 +25,6 @@ export default function NavbarOutlinks(): ReactElement {
         </a>
 
 
-        <ThemeSwitcher switcherClassName={`mx-auto my-auto`} containerClassName={`h-10`} textClassName={`sr-only`}/>
+        <ThemeSwitcher switcherClassName = {`mx-auto my-auto w-full`} containerClassName = {`h-10`} textClassName = {`sr-only`}/>
     </div>;
 }

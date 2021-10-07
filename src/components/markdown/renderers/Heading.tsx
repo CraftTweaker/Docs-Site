@@ -11,17 +11,17 @@ type HeadingProps = JSX.IntrinsicElements["h1"] &
 function makeHeader(level: number, id: string, child: ReactNode[], className: string) {
     switch (level) {
         case 1:
-            return <h1 id = {id} className={className}>{child}</h1>;
+            return <h1 id = {id} className = {className}>{child}</h1>;
         case 2:
-            return <h2 id = {id} className={className}>{child}</h2>;
+            return <h2 id = {id} className = {className}>{child}</h2>;
         case 3:
-            return <h3 id = {id} className={className}>{child}</h3>;
+            return <h3 id = {id} className = {className}>{child}</h3>;
         case 4:
-            return <h4 id = {id} className={className}>{child}</h4>;
+            return <h4 id = {id} className = {className}>{child}</h4>;
         case 5:
-            return <h5 id = {id} className={className}>{child}</h5>;
+            return <h5 id = {id} className = {className}>{child}</h5>;
         case 6:
-            return <h6 id = {id} className={className}>{child}</h6>;
+            return <h6 id = {id} className = {className}>{child}</h6>;
     }
 }
 

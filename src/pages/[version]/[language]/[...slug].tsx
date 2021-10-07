@@ -5,10 +5,10 @@ import React, { ReactElement, useContext } from "react";
 import fs from "fs";
 import path from "path";
 import Sidenav from "components/Sidenav";
-import { DocsMeta, SlugPageProps, SlugStaticProps } from "../../../util/Types";
+import { DocsMeta, SlugPageProps, SlugStaticProps } from "util/Types";
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
-import { NavContext, VerLangContext } from "../../../util/Context";
-import PageContent from "../../../components/PageContent";
+import { NavContext, VerLangContext } from "util/Context";
+import PageContent from "components/PageContent";
 
 export default function Page(props: SlugPageProps): ReactElement {
 
@@ -27,7 +27,7 @@ export default function Page(props: SlugPageProps): ReactElement {
         hasInfo: true
     }}><Layout>
         <div className = {`flex min-h-content max-w-screen`}>
-            <Sidenav version = {props.version} language = {props.language} folder = {props.meta.folders.join("/")} slug = {props.slug} nav={props.nav}/>
+            <Sidenav version = {props.version} language = {props.language} folder = {props.meta.folders.join("/")} slug = {props.slug} nav = {props.nav}/>
             <PageContent content = {props.content} version = {props.version} language = {props.language} meta = {props.meta}/>
             <button className = {`fixed right-5 bottom-5 p-2 rounded bg-blue-800 cursor-pointer text-white shadow-lg border-2 border-white dark:border-black lg:hidden z-[5001]`} onClick = {() => {
                 nav.toggleOpen();
