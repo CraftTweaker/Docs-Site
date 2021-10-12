@@ -1,5 +1,12 @@
-User-agent: AhrefsBot
-User-agent: Ezooms
-User-agent: MJ12bot
-User-agent: XoviBot
-Disallow: /
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://docs.blamejared.com
+
+# Sitemaps
+Sitemap: https://docs.blamejared.com/sitemap.xml
+Sitemap: https://docs.blamejared.com/sitemap-1.xml
+Sitemap: https://docs.blamejared.com/sitemap-2.xml
+Sitemap: https://docs.blamejared.com/sitemap-3.xml

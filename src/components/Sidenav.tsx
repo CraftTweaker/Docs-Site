@@ -13,7 +13,11 @@ export default function Sidenav(props: SideNavProps): ReactElement {
 
     const nav = useContext(NavContext);
     useEffect(() => {
-        nav.addFolder(`nav/${props.folder}`);
+        let folders = "nav";
+        for (const folder of props.folder.split("/")) {
+            folders += `/${folder}`;
+            nav.addFolder(`${folders}`);
+        }
     }, [props.folder]);
 
     useEffect(() => {
@@ -34,7 +38,7 @@ export default function Sidenav(props: SideNavProps): ReactElement {
         return props.slug === path;
     }
 
-    return <div className = {`${nav.open ? `` : `hidden lg:block`} flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black overflow-y-scroll fixed lg:sticky lg:top-18 scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
+    return <div className = {`${nav.open ? `` : `hidden lg:block`} flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black overflow-y-auto fixed lg:sticky lg:top-18 scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
         <SidebarOutlinks/>
         <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
     </div>;
@@ -55,7 +59,6 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
             nav.addFolder(props.path);
         }
         setOpening(true);
-        // setOpen(!open);
     }
 
 
@@ -80,6 +83,7 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
                         setOpening(false);
                     }
                 }}
+                transition = {{ type: "tween", ease: "anticipate" }}
                 className = {`overflow-hidden flex flex-col`}
             >
                 {(open || opening) && children.map(value => {

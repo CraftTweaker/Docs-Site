@@ -9,6 +9,7 @@ import { DocsMeta, SlugPageProps, SlugStaticProps } from "util/Types";
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
 import { NavContext, VerLangContext } from "util/Context";
 import PageContent from "components/PageContent";
+import { NextSeo } from "next-seo";
 
 export default function Page(props: SlugPageProps): ReactElement {
 
@@ -26,6 +27,32 @@ export default function Page(props: SlugPageProps): ReactElement {
         languages: languages,
         hasInfo: true
     }}><Layout>
+        <NextSeo
+            title = {`${props.meta.current.name} - CraftTweaker Documentation`}
+            description = {`Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`}
+            canonical = {`https://docs.blamejared.com/${version}/${language}/${props.slug}/`}
+            openGraph = {{
+                type: `website`,
+                url: `https://docs.blamejared.com/${version}/${language}/${props.slug}/`,
+                title: `${props.meta.current.name} - CraftTweaker Documentation`,
+                description: `Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`,
+                images: [
+                    {
+                        url: `https://docs.blamejared.com/og_image.png`,
+                        width: 90,
+                        height: 92,
+                        alt: `CraftTweaker logo`,
+                    }
+                ],
+            }}
+            additionalMetaTags = {[{
+                property: 'keywords',
+                content: `CraftTweaker,CraftTweaker docs,CraftTweaker documentation,CraftTweaker wiki,CraftTweaker ${props.meta.current.name},CraftTweaker Docs ${props.meta.current.name},${props.meta.current.name},CraftTweaker mod`
+            }, {
+                property: 'charset',
+                content: `utf-8`
+            }]}
+        />
         <div className = {`flex min-h-content max-w-screen`}>
             <Sidenav version = {props.version} language = {props.language} folder = {props.meta.folders.join("/")} slug = {props.slug} nav = {props.nav}/>
             <PageContent content = {props.content} version = {props.version} language = {props.language} meta = {props.meta}/>

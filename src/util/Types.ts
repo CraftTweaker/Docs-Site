@@ -119,6 +119,7 @@ export interface DocsMeta {
     zenCodeName: string;
     folders: string[],
     previous?: Page,
+    current: Page,
     next?: Page
 }
 

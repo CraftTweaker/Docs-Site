@@ -4,7 +4,6 @@ import { ReactElement, useContext } from "react";
 import NavbarOutlinks from "./ui/NavbarOutlinks";
 import { VerLangContext } from "../util/Context";
 import { useRouter } from "next/router";
-import ReactModal from 'react-modal';
 
 export default function Navbar(): ReactElement {
 
@@ -56,24 +55,6 @@ export default function Navbar(): ReactElement {
             </div>
 
             <div className = {`flex gap-x-4`}>
-
-                <Link href = {`/${verLangs.version}/${verLangs.language}/search`}>
-
-                    <a className = {`my-auto bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable  py-2 px-4`}> Search </a>
-
-                </Link>
-
-                <ReactModal
-                    isOpen={true}
-                    contentLabel="onRequestClose Example"
-                    onRequestClose={() => {}}
-                    className="Modal bg-red-500 blur-none z-[60000000]"
-                    overlayClassName="blur bg-white bg-opacity-10 w-screen h-screen absolute top-0 left-0 z-[50000]"
-                >
-                    <p>Modal text!</p>
-                    <button>Close Modal</button>
-                </ReactModal>
-
 
                 <NavbarOutlinks/>
             </div>

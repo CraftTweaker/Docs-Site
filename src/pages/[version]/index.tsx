@@ -47,7 +47,7 @@ export default function VersionIndex(props: { version: Version, versions: string
 
                                 <a>
                                     <div className = {`group component selectable w-full flex flex-col text-center`}>
-                                        <Image src = {`https://blamejared.com/svg/flags/${lang}.svg`} alt = {lang} width = {300} height = {225} layout = {`responsive`} className = {`dark:brightness-[80%]`} priority = {true} loading = {`eager`}/>
+                                        <Image src = {`https://blamejared.com/svg/flags/${lang}.svg`} alt = {lang} width = {564} height = {423} layout = {`responsive`} className = {`dark:brightness-[80%]`} priority = {true} loading = {`eager`}/>
                                         <div className = {`flex flex-col text-xl gap-y-1 py-2 select-none font-semibold`}>
                                             <p>Version: {props.version.version}</p>
                                             <p>Language: {lang}</p>

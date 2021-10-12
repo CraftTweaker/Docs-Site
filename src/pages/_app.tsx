@@ -39,7 +39,9 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
             folders: folders,
             open: navOpen,
             addFolder: name => {
-                setFolders(prevState => [...prevState, name]);
+                if (!folders.some(value => value === name)) {
+                    setFolders(prevState => [...prevState, name]);
+                }
             },
             removeFolder: name => {
                 setFolders(prevState => prevState.filter(value => value !== name));
@@ -54,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
                 setNavOpen(!navOpen);
             },
             isOpen: (folder: string) => {
-                return folders.some(value => value.startsWith(folder));
+                return folders.some(other => other === folder);
             }
         }}>
 
