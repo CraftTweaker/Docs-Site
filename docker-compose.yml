@@ -7,4 +7,4 @@ services:
     restart: unless-stopped
     environment:
       NODE_ENV: production
-    container_name: crafttweaker_docs
+    container_name: crafttweaker_docs_new
