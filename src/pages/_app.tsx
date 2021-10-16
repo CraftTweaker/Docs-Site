@@ -2,7 +2,6 @@ import "css/index.css";
 import "css/nprogress.css";
 import "css/markdown.css";
 import "css/code.css";
-import "css/table.css";
 import type { AppProps } from "next/app";
 import { NavContext, ThemeContext } from "util/Context";
 import { ReactElement, useEffect, useState } from "react";
@@ -20,9 +19,6 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 setDefaultBreakpoints([
-    { md: 768 },
-    { mdu: 769 },
-    { mdd: 767 },
     { lg: 1024 }
 ]);
 

@@ -116,7 +116,7 @@ body {
     background:    #282828 !important;
     border:        black 1px solid !important;
     border-radius: 0 !important;
-    margin-top: 0 !important;
+    margin-top:    0 !important;
   }
 
   .dark .ea-text a {
@@ -128,7 +128,7 @@ body {
   }
 
   .dark .ea-callout a {
-    color: #F5F5F5 !important;
+    color:         #F5F5F5 !important;
     margin-bottom: 0.5em !important;
   }
 }

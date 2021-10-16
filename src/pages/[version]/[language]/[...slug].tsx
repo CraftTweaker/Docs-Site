@@ -10,7 +10,6 @@ import { MenuIcon, XIcon } from "@heroicons/react/solid";
 import { NavContext, VerLangContext } from "util/Context";
 import PageContent from "components/PageContent";
 import { NextSeo } from "next-seo";
-import { MobileAd } from "../../../components/ads/Ads";
 
 export default function Page(props: SlugPageProps): ReactElement {
 

@@ -1,11 +1,11 @@
 import gfm from "remark-gfm";
 import slug from "remark-slug";
 import ReactMarkdown from "react-markdown";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import Code from "components/markdown/renderers/Code";
 import Group from "./renderers/custom/Group";
 import directive from "remark-directive";
-import { ContainerDirective, DirectiveFields, LeafDirective } from "mdast-util-directive/complex-types";
+import { ContainerDirective, DirectiveFields, LeafDirective, TextDirective } from "mdast-util-directive/complex-types";
 import { DirectiveProps } from "../../util/Types";
 import GithubSlugger from "github-slugger";
 import { RemarkTable } from "./plugins/RemarkTable";
@@ -14,6 +14,7 @@ import Link from "./renderers/Link";
 import Heading from "./renderers/Heading";
 import RequiredMod from "./renderers/custom/RequiredMod";
 import Deprecated from "./renderers/Deprecated";
+import { ReactMarkdownProps } from "react-markdown/lib/complex-types";
 
 const directives: Record<string, (props: DirectiveProps<DirectiveFields>, custom: any) => ReactElement> = {
     group(props, custom) {
@@ -70,10 +71,10 @@ export default function Markdown(props: { content: string, version: string, lang
                 }
                 return directives[props.name](props, { headingId: slugger.slug(props.attributes?.name || "") });
             },
-            textdirective(props) {
+            textdirective(props: TextDirective & ReactMarkdownProps & { children?: React.ReactNode | undefined }) {
                 return <>:{props.name}</>;
             },
-            leafdirective(props) {
+            leafdirective(props: LeafDirective & ReactMarkdownProps & { children?: React.ReactNode | undefined }) {
                 if (!(props.name in directives)) {
                     return <>Invalid leaf directive! `{props.name}`</>;
                 }

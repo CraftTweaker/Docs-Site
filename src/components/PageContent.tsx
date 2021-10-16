@@ -8,7 +8,7 @@ import { AD_REFRESH_RATE, MobileAd } from "./ads/Ads";
 function PageContent(props: PageContentProps): ReactElement {
 
     const lastRender = useRef(0);
-    setInterval(args => {
+    setInterval(() => {
         lastRender.current = lastRender.current + 1;
     }, AD_REFRESH_RATE);
 

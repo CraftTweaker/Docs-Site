@@ -11,36 +11,38 @@ import { Ad, AD_REFRESH_RATE } from "../../components/ads/Ads";
 export default function VersionIndex(props: { version: Version, versions: string[] }): ReactElement {
 
     const lastRender = useRef(0);
-    setInterval(args => {
+    setInterval(() => {
         lastRender.current = lastRender.current + 1;
     }, AD_REFRESH_RATE);
 
-    return <Layout> <NextSeo
-        title = {`CraftTweaker Documentation`}
-        description = {`Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`}
-        canonical = {`https://docs.blamejared.com/`}
-        openGraph = {{
-            type: `website`,
-            url: `https://docs.blamejared.com/`,
-            title: `CraftTweaker Documentation`,
-            description: `Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`,
-            images: [
-                {
-                    url: `https://docs.blamejared.com/og_image.png`,
-                    width: 90,
-                    height: 92,
-                    alt: `CraftTweaker logo`
-                }
-            ]
-        }}
-        additionalMetaTags = {[{
-            property: "keywords",
-            content: `CraftTweaker,CraftTweaker docs,CraftTweaker documentation,CraftTweaker wiki,CraftTweaker mod`
-        }, {
-            property: "charset",
-            content: `utf-8`
-        }]}
-    />
+    return <Layout>
+
+        <NextSeo
+            title = {`CraftTweaker Documentation`}
+            description = {`Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`}
+            canonical = {`https://docs.blamejared.com/`}
+            openGraph = {{
+                type: `website`,
+                url: `https://docs.blamejared.com/`,
+                title: `CraftTweaker Documentation`,
+                description: `Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`,
+                images: [
+                    {
+                        url: `https://docs.blamejared.com/og_image.png`,
+                        width: 90,
+                        height: 92,
+                        alt: `CraftTweaker logo`
+                    }
+                ]
+            }}
+            additionalMetaTags = {[{
+                property: "keywords",
+                content: `CraftTweaker,CraftTweaker docs,CraftTweaker documentation,CraftTweaker wiki,CraftTweaker mod`
+            }, {
+                property: "charset",
+                content: `utf-8`
+            }]}
+        />
         <div className = {`flex min-h-screen`}>
 
             <div className = {`flex-grow`}>

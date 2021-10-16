@@ -35,6 +35,7 @@
         "react-hooks/exhaustive-deps": 0,
         "@typescript-eslint/no-namespace": 0,
         "@typescript-eslint/ban-ts-comment": 0,
-        "jsx-a11y/no-onchange": "off"
+        "jsx-a11y/no-onchange": "off",
+        "@typescript-eslint/no-explicit-any": 0
     }
 }

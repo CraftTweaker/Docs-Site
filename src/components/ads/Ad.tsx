@@ -8,13 +8,7 @@ export default function EthicalAd({
     className
 }: { id: string, current: Page, type: "image" | "text", className?: string }): ReactElement {
 
-    return (
-        // <Breakpoint md down>
-
-        <RenderAd id = {id} current = {current} type = {type} className = {className}/>
-
-        // </Breakpoint>
-    );
+    return <RenderAd id = {id} current = {current} type = {type} className = {className}/>;
 }
 
 function RenderAd({

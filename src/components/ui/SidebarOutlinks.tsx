@@ -12,11 +12,9 @@ export default function SidebarOutlinks(): ReactElement {
 
     return <div className = {`my-1 flex flex-col lg:hidden gap-x-2 pl-0.5`}>
 
-        <div className={`flex gap-x-2 p-1.5`}>
-            <label htmlFor={`sidenav-version-select`} className={`my-auto`}>
-                Version:
-            </label>
-            <select id={`sidenav-version-select`} className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable  my-auto`} defaultValue = {verLangs.version} onChange = {event => {
+        <div className = {`flex gap-x-2 p-1.5`}>
+            <label htmlFor = {`sidenav-version-select`} className = {`my-auto`}> Version: </label>
+            <select id = {`sidenav-version-select`} className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable  my-auto`} defaultValue = {verLangs.version} onChange = {event => {
                 const value = event.currentTarget.value;
                 if (value === verLangs.version) {
                     return;
@@ -29,11 +27,9 @@ export default function SidebarOutlinks(): ReactElement {
 
             </select>
         </div>
-        <div className={`flex gap-x-2 p-1.5`}>
-            <label htmlFor={`sidenav-language-select`} className={`my-auto`}>
-                Language:
-            </label>
-            <select id={`sidenav-language-select`}  className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable`} defaultValue = {verLangs.language} onChange = {event => {
+        <div className = {`flex gap-x-2 p-1.5`}>
+            <label htmlFor = {`sidenav-language-select`} className = {`my-auto`}> Language: </label>
+            <select id = {`sidenav-language-select`} className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable`} defaultValue = {verLangs.language} onChange = {event => {
                 const value = event.currentTarget.value;
                 if (value === verLangs.language) {
                     return;

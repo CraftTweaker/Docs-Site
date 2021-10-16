@@ -7,7 +7,7 @@ export default function Layout({ children }: React.PropsWithChildren<unknown>): 
         <header className = {`sticky top-0 z-[5000]`}>
             <Navbar/>
         </header>
-        <main className = {``}>
+        <main>
             {children}
         </main>
     </div>;

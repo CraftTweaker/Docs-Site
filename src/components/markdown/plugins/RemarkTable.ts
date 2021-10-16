@@ -3,7 +3,6 @@ import { visit } from "unist-util-visit";
 import { Tree } from "util/Types";
 import { Plugin } from "unified";
 
-
 const classNames = {
     table: `markdown-table`,
     td: `markdown-td`,

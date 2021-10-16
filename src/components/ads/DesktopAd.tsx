@@ -9,11 +9,11 @@ export default function DesktopAd({
     current,
     type,
     className
-}: { id: string, current: Page, type: "image" | "text", className?: string  }): ReactElement {
+}: { id: string, current: Page, type: "image" | "text", className?: string }): ReactElement {
 
     return <Breakpoint lg up className = {`grid`}>
 
-        <RenderAd id = {id} current = {current} type = {type} className={className}/>
+        <RenderAd id = {id} current = {current} type = {type} className = {className}/>
 
     </Breakpoint>;
 }
@@ -22,7 +22,7 @@ function RenderAd({
     id,
     current,
     type
-}: { id: string, current: Page, type: "image" | "text", className?: string  }) {
+}: { id: string, current: Page, type: "image" | "text", className?: string }) {
     const matches = matchesMedia("(min-width: 768px)");
     const [loaded, setLoaded] = useState(false);
 

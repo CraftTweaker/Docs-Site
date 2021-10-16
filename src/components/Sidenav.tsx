@@ -13,7 +13,7 @@ const loadFeatures = () => import("./dynamic/DomAnimation").then(res => res.defa
 export default function Sidenav(props: SideNavProps): ReactElement {
 
     const lastRender = useRef(0);
-    setInterval(args => {
+    setInterval(() => {
         lastRender.current = lastRender.current + 1;
     }, AD_REFRESH_RATE);
 
