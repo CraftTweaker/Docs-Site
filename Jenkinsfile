@@ -3,9 +3,9 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy') {
+        stage('build') {
             steps {
-                sh "docker-compose up -d --build"
+                build wait: false, job: 'docs'
             }
         }
     }
