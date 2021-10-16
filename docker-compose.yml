@@ -3,8 +3,8 @@ services:
   nextjs:
     build: ./
     ports:
-      - 2904:3000
+      - 2901:3000
     restart: unless-stopped
     environment:
       NODE_ENV: production
-    container_name: crafttweaker_docs_new
+    container_name: crafttweaker_docs
