@@ -1,4 +1,4 @@
-import { ReactElement, useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SideNavFolderProps, SideNavItemProps, SideNavProps } from "../util/Types";
 import { ChevronRightIcon } from "@heroicons/react/solid";
@@ -6,10 +6,16 @@ import { NavContext } from "../util/Context";
 import { LazyMotion, m } from "framer-motion";
 import { Router } from "next/router";
 import SidebarOutlinks from "./ui/SidebarOutlinks";
+import { AD_REFRESH_RATE, DesktopAd } from "./ads/Ads";
 
 const loadFeatures = () => import("./dynamic/DomAnimation").then(res => res.default);
 
 export default function Sidenav(props: SideNavProps): ReactElement {
+
+    const lastRender = useRef(0);
+    setInterval(args => {
+        lastRender.current = lastRender.current + 1;
+    }, AD_REFRESH_RATE);
 
     const nav = useContext(NavContext);
     useEffect(() => {
@@ -38,9 +44,18 @@ export default function Sidenav(props: SideNavProps): ReactElement {
         return props.slug === path;
     }
 
-    return <div className = {`${nav.open ? `` : `hidden lg:block`} flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black overflow-y-auto fixed lg:sticky lg:top-18 scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
-        <SidebarOutlinks/>
-        <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
+    return <div className = {`${nav.open ? `` : `hidden lg:flex`} flex-col justify-between flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black fixed lg:sticky lg:top-18`}>
+        <div className = {`overflow-y-auto scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
+            <SidebarOutlinks/>
+            <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
+        </div>
+        <div key = {lastRender.current}>
+            <DesktopAd id = {"side-nav-ad\t"} current = {{
+                name: new Date().toString(),
+                path: "value"
+            }} type = {"image"} className = {`mx-auto pt-4 hidden lg:block`}/>
+        </div>
+
     </div>;
 
 }

@@ -20,6 +20,7 @@ export default function Navbar(): ReactElement {
                         <Image width = {48} height = {48} src = "/crafttweaker.svg" alt = "crafttweaker_logo" priority = {true} loading = {`eager`}/>
 
                         <span className = "text-lg hidden sm:block">CraftTweaker Documentation</span>
+                        <span className = "text-lg block sm:hidden">CraftTweaker Docs</span>
 
                     </a>
 

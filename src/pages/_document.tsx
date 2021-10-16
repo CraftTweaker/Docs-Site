@@ -11,8 +11,8 @@ class MyDocument extends Document {
 
                 <Head>
                     {!SITE_DEV &&
-                    <script async defer data-website-id = "50e143af-e1f3-4c99-90c9-eb644de304c8" src = "https://analytics.blamejared.com/umami.js"/> &&
-                    <script async src = "https://media.ethicalads.io/media/client/ethicalads.min.js"/>}
+                    <script async defer data-website-id = "50e143af-e1f3-4c99-90c9-eb644de304c8" src = "https://analytics.blamejared.com/umami.js"/>}
+                    <script async src = "https://media.ethicalads.io/media/client/ethicalads.min.js"/>
                     <link rel = "apple-touch-icon" sizes = "180x180" href = "/apple-touch-icon.png?v=1"/>
                     <link rel = "icon" type = "image/png" sizes = "32x32" href = "/favicon-32x32.png?v=1"/>
                     <link rel = "icon" type = "image/png" sizes = "192x192" href = "/android-chrome-192x192.png?v=1"/>

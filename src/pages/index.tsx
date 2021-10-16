@@ -10,7 +10,6 @@ export default function Home(props: { version: Version, versions: string[] }): R
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<{ version: Version, versions: string[] }>> {
-
     return {
         props: {
             version: getVersion(getVersions()[0]),

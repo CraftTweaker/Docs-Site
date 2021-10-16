@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // https://usehooks.com/useLocalStorage/
 export function useLocalStorage(key: string, initialValue: string, json = false): [string, (value: unknown) => void] {
@@ -32,4 +32,24 @@ export function useLocalStorage(key: string, initialValue: string, json = false)
         }
     };
     return [storedValue, setValue];
+}
+
+export function matchesMedia(query: string): boolean {
+    const mediaQuery = window.matchMedia(query);
+    const getValue = () => {
+        return mediaQuery.matches;
+    };
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = useState(getValue);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(
+        () => {
+            const handler = () => setValue(getValue);
+            mediaQuery.addListener(handler);
+            return () => mediaQuery.removeListener(handler);
+        },
+        []
+    );
+
+    return value;
 }

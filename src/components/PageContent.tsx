@@ -1,14 +1,24 @@
 import Markdown from "./markdown/Markdown";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useRef } from "react";
 import { DocsMeta, PageContentProps, Verlang } from "util/Types";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { AD_REFRESH_RATE, MobileAd } from "./ads/Ads";
 
 function PageContent(props: PageContentProps): ReactElement {
 
+    const lastRender = useRef(0);
+    setInterval(args => {
+        lastRender.current = lastRender.current + 1;
+    }, AD_REFRESH_RATE);
 
     return <div className = {`w-full lg:w-content`}>
-
+        <div className = "" key = {lastRender.current}>
+            <MobileAd id = {"top-home-ad"} current = {{
+                name: new Date().toString(),
+                path: "value"
+            }} type = {"text"} className = {`w-full block lg:hidden h-32 sm:h-24 mt-4`}/>
+        </div>
         <div className = {`w-10/12 lg:w-8/12 mx-auto my-4 mb-32 flex flex-col`}>
 
             <NextPrevNav meta = {props.meta} version = {props.version} language = {props.language}/>

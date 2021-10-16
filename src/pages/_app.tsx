@@ -10,6 +10,7 @@ import NProgress from "nprogress";
 import Router from "next/router";
 import { ThemeValues } from "../util/Types";
 import { saveTheme } from "../util/ThemeUtil";
+import { BreakpointProvider, setDefaultBreakpoints } from "react-socks";
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () => {
@@ -17,6 +18,14 @@ Router.events.on("routeChangeStart", () => {
 });
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
+
+setDefaultBreakpoints([
+    { md: 768 },
+    { mdu: 769 },
+    { mdd: 767 },
+    { lg: 1024 }
+]);
+
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
@@ -27,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
     useEffect(() => {
         setTheme((localStorage.getItem(`pageTheme`) || `light`) as ThemeValues);
     }, []);
-    return <ThemeContext.Provider value = {{
+    return <BreakpointProvider><ThemeContext.Provider value = {{
         pageTheme: theme,
         setTheme: (pageTheme) => {
             setTheme(pageTheme);
@@ -64,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
         </NavContext.Provider>
 
-    </ThemeContext.Provider>;
+    </ThemeContext.Provider> </BreakpointProvider>;
 
 }
 
