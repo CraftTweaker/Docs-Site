@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                build wait: false, job: 'docs/master'
+                build wait: false, job: 'docs/main'
             }
         }
     }
