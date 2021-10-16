@@ -5,8 +5,6 @@ services:
     ports:
       - 2901:3000
     restart: unless-stopped
-    volumes:
-      - "${docsSiteDir}/:/app/docs"
     environment:
       NODE_ENV: production
     container_name: crafttweaker_docs
