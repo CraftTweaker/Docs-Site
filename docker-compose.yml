@@ -3,7 +3,7 @@ services:
   nextjs:
     build: ./
     ports:
-      - 2901:3000
+      - 2904:3000
     restart: unless-stopped
     environment:
       NODE_ENV: production
