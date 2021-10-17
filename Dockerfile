@@ -26,7 +26,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-RUN addgroup -g 1001 -S nodejs
+RUN addgroup -g 1002 -S nodejs
 RUN adduser -S nextjs -u 1001
 USER nextjs
 
