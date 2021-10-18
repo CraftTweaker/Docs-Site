@@ -84,6 +84,9 @@ export async function getStaticProps(context: GetStaticPropsContext<SlugStaticPr
         meta = JSON.parse(fs.readFileSync(path.join(getContentDir(version, language), ...slug) + ".json", "utf-8"));
     } catch (e) {
         console.log(`Cannot build page: ${version}/${language}/${slug.join("/")}`);
+        return {
+            notFound: true
+        }
     }
 
     return {

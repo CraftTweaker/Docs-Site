@@ -75,7 +75,8 @@ module.exports = {
             },
             height: {
                 "18": "4.5rem",
-                "content": "calc(100vh - 4.5rem)"
+                "content": "calc(100vh - 4.5rem)",
+                'with-ad': 'calc(100vh - 23rem);',
             },
             width: {
                 content: "calc(100vw - (100vw - 100%) - 20rem)"
