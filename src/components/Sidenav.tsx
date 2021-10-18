@@ -45,7 +45,7 @@ export default function Sidenav(props: SideNavProps): ReactElement {
     }
 
     return <div className = {`${nav.open ? `` : `hidden lg:flex`} flex-col justify-between flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black fixed lg:sticky lg:top-18`}>
-        <div className = {`overflow-y-auto h-content lg:h-with-ad scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
+        <div className = {`overflow-y-auto h-content lg:h-with-ad min-h-with-ad flex-grow scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
             <SidebarOutlinks/>
             <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
         </div>
