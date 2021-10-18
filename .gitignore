@@ -29,3 +29,4 @@ yarn-error.log*
 docs/
 public/sitemap*.xml
 public/robots.txt
+public/[0-9].[0-9][0-9]/*

@@ -33,7 +33,7 @@ export default function Markdown(props: { content: string, version: string, lang
 
     const slugger = new GithubSlugger();
 
-    const linkTarget = (href: string) => {
+    const linkTarget = (href: string, image = false) => {
 
         if (!href) {
             return ``;
@@ -45,18 +45,18 @@ export default function Markdown(props: { content: string, version: string, lang
             return `../${href}`;
         }
 
-        const newUrl = href.startsWith("/") ? href : `/${href}`;
-        // if (!image) {
-        //     if (!newUrl.endsWith("/")) {
-        //         newUrl += "/";
-        //     }
-        // }
+        let newUrl = href.startsWith("/") ? href : `/${href}`;
+        if (!image) {
+            if (!newUrl.endsWith("/")) {
+                newUrl += "/";
+            }
+        }
         return `/${props.version}/${props.language}${newUrl}`;
     };
 
 
     return <div id = "content" className = "markdown">
-        <ReactMarkdown skipHtml = {false} remarkPlugins = {[gfm, RemarkDirective, directive, slug, RemarkTable]} transformLinkUri = {linkTarget} components = {{
+        <ReactMarkdown skipHtml = {false} remarkPlugins = {[gfm, RemarkDirective, directive, slug, RemarkTable]} transformLinkUri = {href => linkTarget(href)} transformImageUri = {uri => linkTarget(uri, true)} components = {{
             code: Code,
             a: Link,
             h1: Heading,
