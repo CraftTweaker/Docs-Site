@@ -15,7 +15,7 @@ export default function VersionIndex(props: { version: Version, versions: string
         lastRender.current = lastRender.current + 1;
     }, AD_REFRESH_RATE);
 
-    return <Layout>
+    return <Layout pageKey={`${props.version}`}>
 
         <NextSeo
             title = {`CraftTweaker Documentation`}

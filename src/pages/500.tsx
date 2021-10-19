@@ -2,8 +2,8 @@ import Layout from "../components/Layout";
 import React, { ReactElement } from "react";
 import Link from "next/link";
 
-export default function NotFound(): ReactElement {
-    return <Layout>
+export default function Error(): ReactElement {
+    return <Layout pageKey = "error">
         <div className = {`flex min-h-screen`}>
 
             <div className = {`flex-grow`}>

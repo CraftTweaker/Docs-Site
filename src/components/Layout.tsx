@@ -1,7 +1,16 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import Navbar from "./Navbar";
+import { initGA, pageView } from "../util/Analytics";
 
-export default function Layout({ children }: React.PropsWithChildren<unknown>): ReactElement {
+export default function Layout({ children, pageKey }: React.PropsWithChildren<{ pageKey: string }>): ReactElement {
+
+    useEffect(() => {
+        if (!window.GA_INITIALIZED) {
+            initGA();
+            window.GA_INITIALIZED = true;
+        }
+        pageView();
+    }, [pageKey]);
 
     return <div className = {`min-h-screen flex flex-col text-black dark:text-gray-50`}>
         <header className = {`sticky top-0 z-[5000]`}>

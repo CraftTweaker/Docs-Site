@@ -107,6 +107,10 @@ declare global {
             "leafdirective": DirectiveProps<LeafDirective>;
         }
     }
+
+    interface Window {
+        GA_INITIALIZED: boolean;
+    }
 }
 
 export interface DocsMeta {

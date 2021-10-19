@@ -31,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
     useEffect(() => {
         setTheme((localStorage.getItem(`pageTheme`) || `light`) as ThemeValues);
+
     }, []);
     return <BreakpointProvider><ThemeContext.Provider value = {{
         pageTheme: theme,
