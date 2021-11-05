@@ -42,7 +42,7 @@ function NextPrevNav(props: Verlang & { meta: DocsMeta }): ReactElement {
 
                 <a className = {`flex text-gray-800 dark:text-gray-100`}>
                     <div className = {`group flex w-full`}>
-                        <div className = "flex inline-block pr-2 mr-0 md:mr-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800">
+                        <div className = "flex inline-block pr-2 mr-0 md:mr-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800 items-center">
                             <ChevronLeftIcon className = {`my-auto inline-block w-4 h-4`}/>
 
                             <span className = "flex-shrink">
@@ -65,7 +65,7 @@ function NextPrevNav(props: Verlang & { meta: DocsMeta }): ReactElement {
 
                 <div className = {`group flex w-full`}>
                     <span className = {`sr-only md:not-sr-only truncate`}>{props.meta.next.name}</span>
-                    <div className = "flex inline-block pl-2 ml-0 md:ml-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800">
+                    <div className = "flex inline-block pl-2 ml-0 md:ml-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800 items-center">
                          <span className = "flex-shrink">
                              Next
                          </span>
