@@ -24,6 +24,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.5",
     "@next/bundle-analyzer": "^12.0.7",
+    "axios": "^0.24.0",
     "framer-motion": "^4.1.17",
     "github-slugger": "^1.4.0",
     "highlightjs-zenscript": "^2.0.0",
