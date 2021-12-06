@@ -22,7 +22,8 @@
     "target": "esnext",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "incremental": true
   },
   "exclude": [
     "node_modules"

@@ -28,7 +28,7 @@ export default function Page(props: SlugPageProps): ReactElement {
         hasInfo: true
     }}>
 
-        <Layout pageKey = {`${props.version}-${props.language}-${props.meta.current.path}`}>
+        <Layout pageKey = {`${props.version}-${props.language}-${props.meta.current.path}`} slug = {props.slug}>
 
             <NextSeo
                 title = {`${props.meta.current.name} - CraftTweaker Documentation`}

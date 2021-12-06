@@ -15,6 +15,7 @@ import Heading from "./renderers/Heading";
 import RequiredMod from "./renderers/custom/RequiredMod";
 import Deprecated from "./renderers/Deprecated";
 import { ReactMarkdownProps } from "react-markdown/lib/complex-types";
+import rehypeRaw from "rehype-raw";
 
 const directives: Record<string, (props: DirectiveProps<DirectiveFields>, custom: any) => ReactElement> = {
     group(props, custom) {
@@ -56,7 +57,7 @@ export default function Markdown(props: { content: string, version: string, lang
 
 
     return <div id = "content" className = "markdown">
-        <ReactMarkdown skipHtml = {false} remarkPlugins = {[gfm, RemarkDirective, directive, slug, RemarkTable]} transformLinkUri = {href => linkTarget(href)} transformImageUri = {uri => linkTarget(uri, true)} components = {{
+        <ReactMarkdown skipHtml = {false} rehypePlugins = {[rehypeRaw]} remarkPlugins = {[gfm, RemarkDirective, directive, slug, RemarkTable]} transformLinkUri = {href => linkTarget(href)} transformImageUri = {uri => linkTarget(uri, true)} components = {{
             code: Code,
             a: Link,
             h1: Heading,
@@ -69,7 +70,7 @@ export default function Markdown(props: { content: string, version: string, lang
                 if (!(props.name in directives)) {
                     return <>Invalid container directive! `{props.name}`</>;
                 }
-                return directives[props.name](props, { headingId: slugger.slug(props.attributes?.name || "") });
+                return directives[props.name](props, { headingId: slugger.slug(JSON.parse(`${props.attributes ?? `{name: ""}`}`)) });
             },
             textdirective(props: TextDirective & ReactMarkdownProps & { children?: React.ReactNode | undefined }) {
                 return <>:{props.name}</>;

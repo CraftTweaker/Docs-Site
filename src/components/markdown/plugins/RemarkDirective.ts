@@ -11,7 +11,7 @@ export default function RemarkDirective(): Plugin {
 
             node.data = {
                 hName: node.type.toLowerCase(),
-                hProperties: { name: node.name, attributes: node.attributes as unknown as string[] },
+                hProperties: { name: node.name, attributes: JSON.stringify(node.attributes) },
                 ...node.data
             };
         }

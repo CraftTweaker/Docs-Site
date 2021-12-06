@@ -73,8 +73,11 @@ export interface PageContentProps extends Verlang {
 export interface SideNavProps extends Verlang {
     folder: string;
     slug: string;
-
     nav: Docs;
+}
+
+export interface NavbarProps {
+    slug: string;
 }
 
 interface NavProps {

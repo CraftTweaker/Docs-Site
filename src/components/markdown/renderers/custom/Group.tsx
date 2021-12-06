@@ -1,12 +1,12 @@
-import React, {ReactElement, useState} from "react";
-import {motion} from "framer-motion";
-import {DirectiveProps} from "util/Types";
-import {ContainerDirective} from "mdast-util-directive/complex-types";
-import {LinkIcon, MinusIcon, PlusIcon} from "@heroicons/react/solid";
-import {InlineCode} from "../Code";
+import React, { ReactElement, useState } from "react";
+import { motion } from "framer-motion";
+import { DirectiveProps } from "util/Types";
+import { ContainerDirective } from "mdast-util-directive/complex-types";
+import { LinkIcon, MinusIcon, PlusIcon } from "@heroicons/react/solid";
+import { InlineCode } from "../Code";
 
-export default function Group({props, custom}: { props: DirectiveProps<ContainerDirective>, custom: { headingId: string } }): ReactElement {
-    const attributes: Record<string, string> = props.attributes || {};
+export default function Group({ props, custom }: { props: DirectiveProps<ContainerDirective>, custom: { headingId: string } }): ReactElement {
+    const attributes: Record<string, string> = JSON.parse(`${props.attributes ?? {}}`);
     const name = attributes.name;
     const [collapsed, setCollapsed] = useState(false);
     const id = `g-${custom.headingId}`;
@@ -43,7 +43,7 @@ export default function Group({props, custom}: { props: DirectiveProps<Container
             }}
             animate = {{
                 height: collapsed ? "2rem" : "100%",
-                transition: {duration: `0.25`}
+                transition: { duration: `0.25` }
             }}
 
             className = {`mt-2 overflow-hidden`}

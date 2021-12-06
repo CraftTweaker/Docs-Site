@@ -97,7 +97,7 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
                         setOpening(false);
                     }
                 }}
-                transition = {{ type: "tween", ease: "anticipate" }}
+                transition = {{ type: "tween", ease: "linear" }}
                 className = {`overflow-hidden flex flex-col`}
             >
                 {(open || opening) && children.map(value => {

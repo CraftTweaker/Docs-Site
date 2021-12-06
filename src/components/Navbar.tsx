@@ -4,8 +4,10 @@ import { ReactElement, useContext } from "react";
 import NavbarOutlinks from "./ui/NavbarOutlinks";
 import { VerLangContext } from "../util/Context";
 import { useRouter } from "next/router";
+import { NavbarProps } from "../util/Types";
+import axios from "axios";
 
-export default function Navbar(): ReactElement {
+export default function Navbar(props: NavbarProps): ReactElement {
 
     const verLangs = useContext(VerLangContext);
     const router = useRouter();
@@ -39,12 +41,23 @@ export default function Navbar(): ReactElement {
 
                     </select>
 
-                    <select className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable`} defaultValue = {verLangs.language} onChange = {event => {
+                    <select className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable`} defaultValue = {verLangs.language} onChange = {async event => {
                         const value = event.currentTarget.value;
                         if (value === verLangs.language) {
                             return;
                         }
-                        router.push(`/${verLangs.version}/${value}/index`);
+                        let validPage = await axios.get(`/${verLangs.version}/${value}/${props.slug}.md`).then(() => {
+                            return Promise.resolve(true);
+                        }).catch(() => {
+                            return Promise.resolve(false);
+                        });
+
+                        if (validPage) {
+                            await router.push(`/${verLangs.version}/${value}/${props.slug}`);
+                        } else {
+                            await router.push(`/${verLangs.version}/${value}/index`);
+                        }
+
                     }}>
                         {verLangs.languages.map(language => {
                             return <option key = {language} className = {`${verLangs.language === language ? `bg-teal-400 dark:bg-emerald-600` : `bg-white dark:bg-gray-700`}`} value = {language}>{language}</option>;

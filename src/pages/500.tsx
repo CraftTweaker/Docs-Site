@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import Link from "next/link";
 
 export default function Error(): ReactElement {
-    return <Layout pageKey = "error">
+    return <Layout pageKey = "error" slug="500">
         <div className = {`flex min-h-screen`}>
 
             <div className = {`flex-grow`}>

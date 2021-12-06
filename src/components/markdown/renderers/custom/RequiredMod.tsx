@@ -4,7 +4,7 @@ import { LeafDirective } from "mdast-util-directive/complex-types";
 import { ShieldCheckIcon, ShieldExclamationIcon } from "@heroicons/react/solid";
 
 export default function RequiredMod({ props }: { props: DirectiveProps<LeafDirective> }): ReactElement {
-    const attributes: Record<string, string> = props.attributes || {};
+    const attributes: Record<string, string> = JSON.parse(`${props.attributes ?? {}}`);
 
     if (!("builtIn" in attributes)) {
         return <div className = {`bg-red-500 border-2 border-red-500 p-4 bg-opacity-25 my-2`}>
