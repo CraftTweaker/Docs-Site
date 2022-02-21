@@ -70,7 +70,7 @@ export default function Markdown(props: { content: string, version: string, lang
                 if (!(props.name in directives)) {
                     return <>Invalid container directive! `{props.name}`</>;
                 }
-                return directives[props.name](props, { headingId: slugger.slug(JSON.parse(`${props.attributes ?? `{name: ""}`}`)) });
+                return directives[props.name](props, { headingId: JSON.parse(`${props.attributes ?? `{name: ""}`}`).name });
             },
             textdirective(props: TextDirective & ReactMarkdownProps & { children?: React.ReactNode | undefined }) {
                 return <>:{props.name}</>;

@@ -9,7 +9,7 @@ export default function Group({ props, custom }: { props: DirectiveProps<Contain
     const attributes: Record<string, string> = JSON.parse(`${props.attributes ?? {}}`);
     const name = attributes.name;
     const [collapsed, setCollapsed] = useState(false);
-    const id = `g-${custom.headingId}`;
+    const id = custom.headingId;
     if (!("name" in attributes)) {
         return <div className = {`bg-red-500 border-2 border-red-500 p-4 bg-opacity-25 my-2`}>
             <p>
