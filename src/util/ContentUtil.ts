@@ -11,8 +11,15 @@ export function getDocsDir(): string {
 }
 
 export function getVersions(): string[] {
-
-    return fs.readdirSync(getDocsDir()).sort((a, b) => b.localeCompare(a));
+    return fs.readdirSync(getDocsDir()).sort((a, b) => {
+        if (a === "MineTweaker") {
+            return 1;
+        } 
+        if (b === "MineTweaker") {
+            return -1;
+        }
+        return b.localeCompare(a);
+    });
 }
 
 export function getVersionDir(version: string): string {
