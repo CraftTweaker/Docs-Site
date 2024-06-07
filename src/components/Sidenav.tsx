@@ -6,16 +6,11 @@ import { NavContext } from "../util/Context";
 import { LazyMotion, m } from "framer-motion";
 import { Router } from "next/router";
 import SidebarOutlinks from "./ui/SidebarOutlinks";
-import { AD_REFRESH_RATE, DesktopAd } from "./ads/Ads";
+import {SideNavAd} from "./ads/Ad";
 
 const loadFeatures = () => import("./dynamic/DomAnimation").then(res => res.default);
 
 export default function Sidenav(props: SideNavProps): ReactElement {
-
-    const lastRender = useRef(0);
-    setInterval(() => {
-        lastRender.current = lastRender.current + 1;
-    }, AD_REFRESH_RATE);
 
     const nav = useContext(NavContext);
     useEffect(() => {
@@ -44,17 +39,12 @@ export default function Sidenav(props: SideNavProps): ReactElement {
         return props.slug === path;
     }
 
-    return <div className = {`${nav.open ? `` : `hidden lg:flex`} flex-col justify-between flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black fixed lg:sticky lg:top-18`}>
+    return <div className = {`${nav.open ? `` : `hidden lg:flex`} flex-col justify-between flex-none w-8/12 lg:w-80 h-content bg-gray-50 dark:bg-gray-850 shadow-md border-r border-transparent dark:border-black fixed lg:sticky lg:top-18 z-40`}>
         <div className = {`overflow-y-auto h-content lg:h-with-ad min-h-with-ad flex-grow scrollbar-h-2 scrollbar-light dark:scrollbar-dark`}>
             <SidebarOutlinks/>
             <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
         </div>
-        <div key = {lastRender.current}>
-            <DesktopAd id = {"side-nav-ad"} current = {{
-                name: new Date().toString(),
-                path: "value"
-            }} type = {"image"} className = {`mx-auto pt-4 hidden lg:block h-[18.5rem]`}/>
-        </div>
+        <SideNavAd/>
 
     </div>;
 }

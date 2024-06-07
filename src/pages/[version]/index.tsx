@@ -6,44 +6,40 @@ import Image from "next/image";
 import React, { ReactElement, useRef } from "react";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { Ad, AD_REFRESH_RATE } from "../../components/ads/Ads";
+import Footer from "../../components/Footer";
+import {VersionSelectAd} from "../../components/ads/Ad";
 
 export default function VersionIndex(props: { version: Version, versions: string[] }): ReactElement {
-
-    const lastRender = useRef(0);
-    setInterval(() => {
-        lastRender.current = lastRender.current + 1;
-    }, AD_REFRESH_RATE);
 
     return <Layout pageKey = {`${props.version}`} slug = "">
 
         <NextSeo
-            title = {`CraftTweaker Documentation`}
-            description = {`Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`}
-            canonical = {`https://docs.blamejared.com/`}
-            openGraph = {{
-                type: `website`,
-                url: `https://docs.blamejared.com/`,
-                title: `CraftTweaker Documentation`,
-                description: `Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`,
-                images: [
-                    {
-                        url: `https://docs.blamejared.com/og_image.png`,
-                        width: 90,
-                        height: 92,
-                        alt: `CraftTweaker logo`
-                    }
-                ]
-            }}
-            additionalMetaTags = {[{
-                property: "keywords",
-                content: `CraftTweaker,CraftTweaker docs,CraftTweaker documentation,CraftTweaker wiki,CraftTweaker mod`
-            }, {
-                property: "charset",
-                content: `utf-8`
-            }]}
+                title = {`CraftTweaker Documentation`}
+                description = {`Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`}
+                canonical = {`https://docs.blamejared.com/`}
+                openGraph = {{
+                    type: `website`,
+                    url: `https://docs.blamejared.com/`,
+                    title: `CraftTweaker Documentation`,
+                    description: `Documentation for the CraftTweaker Minecraft mod, information on how to use the ZenScript language and a central wiki for mods that rely on it.`,
+                    images: [
+                        {
+                            url: `https://docs.blamejared.com/og_image.png`,
+                            width: 90,
+                            height: 92,
+                            alt: `CraftTweaker logo`
+                        }
+                    ]
+                }}
+                additionalMetaTags = {[{
+                    property: "keywords",
+                    content: `CraftTweaker,CraftTweaker docs,CraftTweaker documentation,CraftTweaker wiki,CraftTweaker mod`
+                }, {
+                    property: "charset",
+                    content: `utf-8`
+                }]}
         />
-        <div className = {`flex min-h-screen`}>
+        <div className = {`flex flex-grow mb-16`}>
 
             <div className = {`flex-grow`}>
 
@@ -52,35 +48,31 @@ export default function VersionIndex(props: { version: Version, versions: string
                         <h2 className = {`text-5xl text-center`}>
                             Select Version
                         </h2>
+
                         <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-2`}>
                             {props.versions.map(version => {
-                                    return props.version.version !== version ? <Link href = {`/${version}`} key = {version}>
+                                        return props.version.version !== version ? <Link href = {`/${version}`} key = {version}>
 
-                                        <a key = {version} className = {`versionButton`}>
+                                            <a key = {version} className = {`versionButton`}>
 
+                                                <p className = {`versionText`}>
+                                                    {version}
+                                                </p>
+
+                                            </a>
+
+                                        </Link> : <div className = {`versionButtonSelected`} key = {version}>
                                             <p className = {`versionText`}>
                                                 {version}
                                             </p>
-
-                                        </a>
-
-                                    </Link> : <div className = {`versionButtonSelected`} key = {version}>
-                                        <p className = {`versionText`}>
-                                            {version}
-                                        </p>
-                                    </div>;
-                                }
+                                        </div>;
+                                    }
                             )}
                         </div>
                     </div>
-                    <div key = {lastRender.current}>
-                        <Ad id = {"top-home-ad"} current = {{
-                            name: new Date().toString(),
-                            path: "value"
-                        }} type = {"text"} className = {`w-full h-32 sm:h-24`}/>
-                    </div>
+                    <VersionSelectAd/>
 
-                    <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-64`}>
+                    <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2`}>
                         {props.version.languages.map(lang => {
                             return <Link key = {`${props.version.version}-${lang}`} href = {`/${props.version.version}/${lang}/index`}>
 
@@ -105,6 +97,9 @@ export default function VersionIndex(props: { version: Version, versions: string
             </div>
 
         </div>
+        <span data-ccpa-link = "1" className = "text-2xl text-center mx-auto underline mb-2"></span>
+
+        <Footer/>
     </Layout>;
 }
 

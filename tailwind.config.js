@@ -103,6 +103,7 @@ module.exports = {
         extend: {},
     },
     plugins: [
+        require('@tailwindcss/typography'),
         plugin(function ({addUtilities, theme}) {
             const colors = theme("colors");
             const newUtilities = {

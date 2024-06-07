@@ -1,47 +1,88 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { Page } from "../../util/Types";
+import {SITE_DEV} from "../../util/EnvUtil";
 
-export default function EthicalAd({
-    id,
-    current,
-    type,
-    className
-}: { id: string, current: Page, type: "image" | "text", className?: string }): ReactElement {
+export function SideNavAd() {
+    return <div>
+        <div id = "ad-sidenav-desktop"></div>
+        <script dangerouslySetInnerHTML = {{
+            __html: `window['nitroAds'].createAd('ad-sidenav-desktop', {
+    "demo": ${SITE_DEV},
+    "refreshTime": 30,
+    "renderVisibleOnly": false,
+    "sizes": [
+        [
+            "300",
+            "250"
+        ]
+    ],
+    "report": {
+        "enabled": true,
+        "icon": true,
+        "wording": "Report Ad",
+        "position": "top-right"
+    },
+    "mediaQuery": "(min-width: 1024px)"
+});`
+        }}>
 
-    return <RenderAd id = {id} current = {current} type = {type} className = {className}/>;
+        </script>
+    </div>
 }
 
-function RenderAd({
-    id,
-    current,
-    type,
-    className = ""
-}: { id: string, current: Page, type: "image" | "text", className?: string }) {
-    // const matches = matchesMedia("(max-width: 767px)");
-    const [loaded, setLoaded] = useState(false);
+export function MobileAd() {
+    return <div>
+        <div id = "ad-mobile"></div>
 
-    useEffect(() => {
-        if (loaded) {
-            //@ts-ignore
-            ethicalads.load();
-        }
-    }, [loaded]);
+        <script dangerouslySetInnerHTML = {{
+            __html: `window['nitroAds'].createAd('ad-mobile', {
+    "demo": ${SITE_DEV},
+    "refreshTime": 30,
+    "renderVisibleOnly": false,
+    "sizes": [
+        [
+            "320",
+            "50"
+        ]
+    ],
+    "report": {
+        "enabled": true,
+        "icon": true,
+        "wording": "Report Ad",
+        "position": "bottom-right-side"
+    },
+    "mediaQuery": "(min-width: 320px) and (max-width: 1023px)"
+});`
+        }}>
 
-    useEffect(() => {
-        //@ts-ignore
-        if (typeof ethicalads === "undefined") {
-            return;
-        }
-        // if (!matches) {
-        //     setLoaded(false);
-        //     return;
-        // }
-        setLoaded(true);
-    }, [/* matches,*/ current]);
+        </script>
+    </div>
+}
 
+export function VersionSelectAd() {
+    return <div>
+        <MobileAd/>
+        <div id = "ad-version-select-desktop-top"></div>
+        <script dangerouslySetInnerHTML = {{
+            __html: `
+window['nitroAds'].createAd('ad-version-select-desktop-top', {
+    "demo": ${SITE_DEV},
+    "refreshTime": 30,
+    "renderVisibleOnly": false,
+    "sizes": [
+        [
+            "728",
+            "90"
+        ]
+    ],
+    "report": {
+        "enabled": true,
+        "icon": true,
+        "wording": "Report Ad",
+        "position": "bottom-right-side"
+    },
+    "mediaQuery": "(min-width: 1024px)"
+});`
+        }}>
 
-    if (!loaded) {
-        return <></>;
-    }
-    return <div className = {`${className ?? ""} bordered`} data-ea-publisher = "docs-blamejared-com" data-ea-type = {type} data-ea-manual = "true" id = {id}/>;
+        </script>
+    </div>
 }

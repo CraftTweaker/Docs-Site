@@ -68,7 +68,6 @@ export default function Navbar(props: NavbarProps): ReactElement {
             </div>
 
             <div className = {`flex gap-x-4`}>
-
                 <NavbarOutlinks/>
             </div>
         </div>

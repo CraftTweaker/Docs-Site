@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
 import Navbar from "./Navbar";
 import { initGA, pageView } from "../util/Analytics";
+import Footer from "./Footer";
 
 export default function Layout({ children, pageKey, slug }: React.PropsWithChildren<{ pageKey: string, slug:string }>): ReactElement {
 
@@ -16,7 +17,7 @@ export default function Layout({ children, pageKey, slug }: React.PropsWithChild
         <header className = {`sticky top-0 z-[5000]`}>
             <Navbar slug={slug}/>
         </header>
-        <main>
+        <main className="flex-grow flex flex-col">
             {children}
         </main>
     </div>;

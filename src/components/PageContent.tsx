@@ -1,33 +1,31 @@
 import Markdown from "./markdown/Markdown";
-import React, { ReactElement, useRef } from "react";
-import { DocsMeta, PageContentProps, Verlang } from "util/Types";
+import React, {ReactElement, useRef} from "react";
+import {DocsMeta, PageContentProps, Verlang} from "util/Types";
 import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
-import { AD_REFRESH_RATE, MobileAd } from "./ads/Ads";
+import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/solid";
+import Footer from "./Footer";
+import {MobileAd} from "./ads/Ad";
 
 function PageContent(props: PageContentProps): ReactElement {
 
-    const lastRender = useRef(0);
-    setInterval(() => {
-        lastRender.current = lastRender.current + 1;
-    }, AD_REFRESH_RATE);
+    return <div className="flex-grow w-full flex flex-col">
+        <div className = "flex w-full flex-grow">
+            <div className = {`w-full lg:w-content flex-grow flex-col`}>
+                <div className = "my-2 lg:my-0">
+                    <MobileAd/>
+                </div>
+                <div className = {`w-10/12 lg:w-8/12 mx-auto my-4 mb-32 flex flex-col`}>
 
-    return <div className = {`w-full lg:w-content`}>
-        <div className = "" key = {lastRender.current}>
-            <MobileAd id = {"top-home-ad"} current = {{
-                name: new Date().toString(),
-                path: "value"
-            }} type = {"text"} className = {`w-full block lg:hidden h-32 sm:h-24 mt-4`}/>
-        </div>
-        <div className = {`w-10/12 lg:w-8/12 mx-auto my-4 mb-32 flex flex-col`}>
-
-            <NextPrevNav meta = {props.meta} version = {props.version} language = {props.language}/>
-            <div>
-                <Markdown content = {props.content} version = {props.version} language = {props.language}/>
+                    <NextPrevNav meta = {props.meta} version = {props.version} language = {props.language}/>
+                    <div>
+                        <Markdown content = {props.content} version = {props.version} language = {props.language}/>
+                    </div>
+                    <NextPrevNav meta = {props.meta} version = {props.version} language = {props.language}/>
+                </div>
             </div>
-            <NextPrevNav meta = {props.meta} version = {props.version} language = {props.language}/>
-        </div>
 
+        </div>
+        <Footer/>
     </div>;
 }
 
