@@ -1,9 +1,8 @@
 import Layout from "../components/Layout";
-import React, { ReactElement } from "react";
-import Link from "next/link";
+import {ReactElement} from "react";
 
 export default function NotFound(): ReactElement {
-    return <Layout pageKey = "not-found" slug="404">
+    return <Layout pageKey = "not-found" slug = "404">
         <div className = {`flex min-h-screen`}>
 
             <div className = {`flex-grow`}>
@@ -17,15 +16,13 @@ export default function NotFound(): ReactElement {
 
 
                         </h1>
-                        <Link href = {"/"}>
 
-                            <a className = {`text-4xl text-center text-blue-700 dark:text-blue-400 hover:underline`}>
-                                <h2>
-                                    Click here to go back to the main page.
-                                </h2>
-                            </a>
+                        <a className = {`text-4xl text-center text-blue-700 dark:text-blue-400 hover:underline`} href = {"/"}>
+                            <h2>
+                                Click here to go back to the main page.
+                            </h2>
+                        </a>
 
-                        </Link>
                     </div>
 
                 </div>

@@ -17,15 +17,13 @@ export default function Error(): ReactElement {
 
 
                         </h1>
-                        <Link href = {"/"}>
 
-                            <a className = {`text-4xl text-center text-blue-700 dark:text-blue-400 hover:underline`}>
+                            <a href = {"/"} className = {`text-4xl text-center text-blue-700 dark:text-blue-400 hover:underline`}>
                                 <h2>
                                     Click here to go back to the main page.
                                 </h2>
                             </a>
 
-                        </Link>
                     </div>
 
                 </div>

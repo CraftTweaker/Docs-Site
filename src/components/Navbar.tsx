@@ -1,10 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ReactElement, useContext } from "react";
+import {ReactElement, useContext} from "react";
 import NavbarOutlinks from "./ui/NavbarOutlinks";
-import { VerLangContext } from "../util/Context";
-import { useRouter } from "next/router";
-import { NavbarProps } from "../util/Types";
+import {VerLangContext} from "../util/Context";
+import {useRouter} from "next/router";
+import {NavbarProps} from "../util/Types";
 import axios from "axios";
 
 export default function Navbar(props: NavbarProps): ReactElement {
@@ -15,17 +14,15 @@ export default function Navbar(props: NavbarProps): ReactElement {
     return <nav className = {`flex bg-blue-800 h-18 text-white shadow-md dark:shadow-none`}>
         <div className = {`flex justify-between px-4 w-full my-auto`}>
             <div className = {`flex gap-x-2`}>
-                <Link href = {`/`} as = {`/`}>
 
-                    <a className = "flex items-center gap-x-2 ml-2">
+                <a className = "flex items-center gap-x-2 ml-2" href = {`/`}>
 
-                        <Image width = {48} height = {48} src = "/crafttweaker.svg" alt = "crafttweaker_logo" priority = {true} loading = {`eager`}/>
+                    <Image width = {48} height = {48} src = "/crafttweaker.svg" alt = "crafttweaker_logo" priority = {true} loading = {`eager`}/>
 
-                        <span className = "text-lg hidden sm:block">CraftTweaker Documentation</span> <span className = "text-lg block sm:hidden">CraftTweaker Docs</span>
+                    <span className = "text-lg hidden sm:block">CraftTweaker Documentation</span> <span className = "text-lg block sm:hidden">CraftTweaker Docs</span>
 
-                    </a>
+                </a>
 
-                </Link>
 
                 {verLangs.hasInfo && <div className = {`my-auto flex gap-x-2 hidden lg:flex `}>
                     <select className = {`p-2 bg-gray-100 text-black dark:text-white hover:bg-opacity-100 focus:bg-opacity-100 active:hover:bg-opacity-100 selectable`} defaultValue = {verLangs.version} onChange = {event => {

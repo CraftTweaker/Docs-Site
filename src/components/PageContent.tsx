@@ -1,14 +1,13 @@
 import Markdown from "./markdown/Markdown";
-import React, {ReactElement, useRef} from "react";
+import React, {ReactElement} from "react";
 import {DocsMeta, PageContentProps, Verlang} from "util/Types";
-import Link from "next/link";
 import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/solid";
 import Footer from "./Footer";
 import {MobileAd} from "./ads/Ad";
 
 function PageContent(props: PageContentProps): ReactElement {
 
-    return <div className="flex-grow w-full flex flex-col">
+    return <div className = "flex-grow w-full flex flex-col">
         <div className = "flex w-full flex-grow">
             <div className = {`w-full lg:w-content flex-grow flex-col`}>
                 <div className = "my-2 lg:my-0">
@@ -36,44 +35,40 @@ function NextPrevNav(props: Verlang & { meta: DocsMeta }): ReactElement {
     return <div className = {`flex select-none ${hasPrevious && hasNext ? `justify-between` : hasNext ? `justify-end` : ``}`}>
         {props.meta.previous ? <div className = {`max-w-48perc`}>
 
-            <Link href = {`/${props.version}/${props.language}/${props.meta.previous.path}`}>
+            <a className = {`flex text-gray-800 dark:text-gray-100`} href = {`/${props.version}/${props.language}/${props.meta.previous.path}`}>
+                <div className = {`group flex w-full`}>
+                    <div className = "flex inline-block pr-2 mr-0 md:mr-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800 items-center">
+                        <ChevronLeftIcon className = {`my-auto inline-block w-4 h-4`}/>
 
-                <a className = {`flex text-gray-800 dark:text-gray-100`}>
-                    <div className = {`group flex w-full`}>
-                        <div className = "flex inline-block pr-2 mr-0 md:mr-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800 items-center">
-                            <ChevronLeftIcon className = {`my-auto inline-block w-4 h-4`}/>
-
-                            <span className = "flex-shrink">
+                        <span className = "flex-shrink">
                                 Previous
                             </span>
-                        </div>
-                        <span className = {`sr-only md:not-sr-only truncate`}>
+                    </div>
+                    <span className = {`sr-only md:not-sr-only truncate`}>
                             {props.meta.previous.name}
                         </span>
-                    </div>
-                </a>
-
-            </Link>
+                </div>
+            </a>
 
         </div> : <> </>}
 
-        {props.meta.next ? <Link href = {`/${props.version}/${props.language}/${props.meta.next.path}`}>
+        {props.meta.next ?
 
-            <a className = {`flex text-gray-800 dark:text-gray-100`}>
+                <a className = {`flex text-gray-800 dark:text-gray-100`} href = {`/${props.version}/${props.language}/${props.meta.next.path}`}>
 
-                <div className = {`group flex w-full`}>
-                    <span className = {`sr-only md:not-sr-only truncate`}>{props.meta.next.name}</span>
-                    <div className = "flex inline-block pl-2 ml-0 md:ml-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800 items-center">
+                    <div className = {`group flex w-full`}>
+                        <span className = {`sr-only md:not-sr-only truncate`}>{props.meta.next.name}</span>
+                        <div className = "flex inline-block pl-2 ml-0 md:ml-1 border border-gray-500 dark:border-gray-700 bg-white dark:bg-black group-hover:bg-gray-200 dark:group-hover:bg-gray-800 items-center">
                          <span className = "flex-shrink">
                              Next
                          </span>
 
-                        <ChevronRightIcon className = {`my-auto inline-block w-4 h-4`}/>
+                            <ChevronRightIcon className = {`my-auto inline-block w-4 h-4`}/>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-        </Link> : <> </>}
+                : <> </>}
     </div>;
 }
 

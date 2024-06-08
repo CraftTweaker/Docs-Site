@@ -2,28 +2,30 @@ import "css/index.css";
 import "css/nprogress.css";
 import "css/markdown.css";
 import "css/code.css";
-import type { AppProps } from "next/app";
-import { NavContext, ThemeContext } from "util/Context";
-import { ReactElement, useEffect, useState } from "react";
+import type {AppProps} from "next/app";
+import {NavContext, ThemeContext} from "util/Context";
+import {ReactElement, useEffect, useState} from "react";
 import NProgress from "nprogress";
 import Router from "next/router";
-import { ThemeValues } from "../util/Types";
-import { saveTheme } from "../util/ThemeUtil";
-import { BreakpointProvider, setDefaultBreakpoints } from "react-socks";
+import {ThemeValues} from "../util/Types";
+import {saveTheme} from "../util/ThemeUtil";
+import {BreakpointProvider, setDefaultBreakpoints} from "react-socks";
 
-NProgress.configure({ showSpinner: false });
+NProgress.configure({showSpinner: false});
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
 });
-Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeComplete", () => {
+    NProgress.done();
+});
 Router.events.on("routeChangeError", () => NProgress.done());
 
 setDefaultBreakpoints([
-    { lg: 1024 }
+    {lg: 1024}
 ]);
 
 
-function MyApp({ Component, pageProps }: AppProps): ReactElement {
+function MyApp({Component, pageProps}: AppProps): ReactElement {
 
     const [theme, setTheme] = useState<ThemeValues>(`light`);
     const [navOpen, setNavOpen] = useState<boolean>(false);

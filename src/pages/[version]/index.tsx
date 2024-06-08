@@ -1,11 +1,10 @@
-import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from "next";
-import { getVersion, getVersions } from "util/ContentUtil";
+import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from "next";
+import {getVersion, getVersions} from "util/ContentUtil";
 import Layout from "components/Layout";
-import { Version } from "util/Types";
+import {Version} from "util/Types";
 import Image from "next/image";
-import React, { ReactElement, useRef } from "react";
-import Link from "next/link";
-import { NextSeo } from "next-seo";
+import {ReactElement} from "react";
+import {NextSeo} from "next-seo";
 import Footer from "../../components/Footer";
 import {VersionSelectAd} from "../../components/ads/Ad";
 
@@ -51,21 +50,21 @@ export default function VersionIndex(props: { version: Version, versions: string
 
                         <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-2`}>
                             {props.versions.map(version => {
-                                        return props.version.version !== version ? <Link href = {`/${version}`} key = {version}>
+                                        return props.version.version !== version ?
 
-                                            <a key = {version} className = {`versionButton`}>
+                                                <a key = {version} className = {`versionButton`} href = {`/${version}`}>
 
-                                                <p className = {`versionText`}>
-                                                    {version}
-                                                </p>
+                                                    <p className = {`versionText`}>
+                                                        {version}
+                                                    </p>
 
-                                            </a>
+                                                </a>
 
-                                        </Link> : <div className = {`versionButtonSelected`} key = {version}>
-                                            <p className = {`versionText`}>
-                                                {version}
-                                            </p>
-                                        </div>;
+                                                : <div className = {`versionButtonSelected`} key = {version}>
+                                                    <p className = {`versionText`}>
+                                                        {version}
+                                                    </p>
+                                                </div>;
                                     }
                             )}
                         </div>
@@ -74,22 +73,18 @@ export default function VersionIndex(props: { version: Version, versions: string
 
                     <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2`}>
                         {props.version.languages.map(lang => {
-                            return <Link key = {`${props.version.version}-${lang}`} href = {`/${props.version.version}/${lang}/index`}>
-
-                                <a>
-                                    <div className = {`group component selectable w-full flex flex-col text-center`}>
-                                        <div>
-                                            <Image src = {`https://blamejared.com/svg/flags/${lang}.svg`} alt = {lang} width = {564} height = {423}
-                                                   layout = {`responsive`} className = {`dark:brightness-[80%]`} priority = {true} loading = {`eager`}/>
-                                        </div>
-                                        <div className = {`flex flex-col text-xl gap-y-1 py-2 select-none font-semibold`}>
-                                            <p>Version: {props.version.version}</p>
-                                            <p>Language: {lang}</p>
-                                        </div>
+                            return <a key = {`${props.version.version}-${lang}`} href = {`/${props.version.version}/${lang}/index`}>
+                                <div className = {`group component selectable w-full flex flex-col text-center`}>
+                                    <div>
+                                        <Image src = {`https://blamejared.com/svg/flags/${lang}.svg`} alt = {lang} width = {564} height = {423}
+                                               layout = {`responsive`} className = {`dark:brightness-[80%]`} priority = {true} loading = {`eager`}/>
                                     </div>
-                                </a>
-
-                            </Link>;
+                                    <div className = {`flex flex-col text-xl gap-y-1 py-2 select-none font-semibold`}>
+                                        <p>Version: {props.version.version}</p>
+                                        <p>Language: {lang}</p>
+                                    </div>
+                                </div>
+                            </a>;
                         })}
                     </div>
                 </div>
@@ -99,12 +94,14 @@ export default function VersionIndex(props: { version: Version, versions: string
         </div>
         <span data-ccpa-link = "1" className = "text-2xl text-center mx-auto underline mb-2"></span>
 
-        <Footer/>
-    </Layout>;
+        <Footer/> </Layout>;
 }
 
 
-export async function getStaticProps(context: GetStaticPropsContext<{ version: string }>): Promise<GetStaticPropsResult<{ version: Version, versions: string[] }>> {
+export async function getStaticProps(context: GetStaticPropsContext<{ version: string }>): Promise<GetStaticPropsResult<{
+    version: Version,
+    versions: string[]
+}>> {
 
     const version = context.params?.version;
     if (!version) {
@@ -121,7 +118,7 @@ export async function getStaticProps(context: GetStaticPropsContext<{ version: s
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return {
         paths: getVersions().map(value => {
-            return { params: { version: value } };
+            return {params: {version: value}};
         }),
         fallback: false
     };

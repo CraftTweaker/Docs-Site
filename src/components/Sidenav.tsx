@@ -10,6 +10,7 @@ import {SideNavAd} from "./ads/Ad";
 
 const loadFeatures = () => import("./dynamic/DomAnimation").then(res => res.default);
 
+
 export default function Sidenav(props: SideNavProps): ReactElement {
 
     const nav = useContext(NavContext);
@@ -106,12 +107,10 @@ function NavItem(props: SideNavItemProps): ReactElement {
 
     const pagePath = props.path.replace(/\.md/, "");
 
-    return <Link href = {`/${props.version}/${props.language}/${pagePath}`}>
-
-        <a className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${0.5 + (props.level * 0.75)}ch` }}>
+    return <a href = {`/${props.version}/${props.language}/${pagePath}`} className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${0.5 + (props.level * 0.75)}ch` }}>
 
             {props.name}
         </a>
 
-    </Link>;
+    ;
 }
