@@ -1,12 +1,10 @@
-import React, { ReactElement, useContext, useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { SideNavFolderProps, SideNavItemProps, SideNavProps } from "../util/Types";
-import { ChevronRightIcon } from "@heroicons/react/solid";
-import { NavContext } from "../util/Context";
-import { LazyMotion, m } from "framer-motion";
-import { Router } from "next/router";
+import {ReactElement, useContext, useEffect, useState} from "react";
+import {SideNavFolderProps, SideNavItemProps, SideNavProps} from "../util/Types";
+import {ChevronRightIcon} from "@heroicons/react/solid";
+import {NavContext} from "../util/Context";
+import {LazyMotion, m} from "framer-motion";
+import {Router} from "next/router";
 import SidebarOutlinks from "./ui/SidebarOutlinks";
-import {SideNavAd} from "./ads/Ad";
 
 const loadFeatures = () => import("./dynamic/DomAnimation").then(res => res.default);
 
@@ -45,7 +43,7 @@ export default function Sidenav(props: SideNavProps): ReactElement {
             <SidebarOutlinks/>
             <NavFolder path = {`nav`} nav = {props.nav["nav"]} root = {true} name = {``} version = {props.version} language = {props.language} level = {0} initialOpen = {true} isCurrent = {isCurrent}/>
         </div>
-        <SideNavAd/>
+        {/*<SideNavAd/>*/}
 
     </div>;
 }
@@ -70,33 +68,33 @@ function NavFolder(props: SideNavFolderProps): ReactElement {
     return <div className = {`flex flex-col`}>
 
         {!props.root &&
-        <button style = {{ paddingLeft: `${0.5 + (props.level * 0.75)}ch` }} className = {`p-1 block flex gap-x-0 nav-item text-left`} onClick = {toggleFolder}>
-            <ChevronRightIcon className = {`w-4 h-4 my-auto transform transition-transform duration-150 ${open ? `rotate-90` : ``}`}/>
-            <p className = {`my-auto mr-2`}>{props.name}</p>
-        </button>}
+                <button style = {{paddingLeft: `${0.5 + (props.level * 0.75)}ch`}} className = {`p-1 block flex gap-x-0 nav-item text-left`} onClick = {toggleFolder}>
+                    <ChevronRightIcon className = {`w-4 h-4 my-auto transform transition-transform duration-150 ${open ? `rotate-90` : ``}`}/>
+                    <p className = {`my-auto mr-2`}>{props.name}</p>
+                </button>}
 
         <LazyMotion features = {loadFeatures}>
             <m.div
-                initial = {{
-                    height: open ? "100%" : "0"
-                }}
-                animate = {{
-                    height: open ? "100%" : "0"
-                }}
-                onAnimationComplete = {() => {
-                    if (opening) {
-                        setOpening(false);
-                    }
-                }}
-                transition = {{ type: "tween", ease: "linear" }}
-                className = {`overflow-hidden flex flex-col`}
+                    initial = {{
+                        height: open ? "100%" : "0"
+                    }}
+                    animate = {{
+                        height: open ? "100%" : "0"
+                    }}
+                    onAnimationComplete = {() => {
+                        if (opening) {
+                            setOpening(false);
+                        }
+                    }}
+                    transition = {{type: "tween", ease: "linear"}}
+                    className = {`overflow-hidden flex flex-col`}
             >
                 {(open || opening) && children.map(value => {
-                        if (typeof props.nav[value] === "string") {
-                            return <NavItem name = {value} version = {props.version} language = {props.language} key = {props.nav[value] as unknown as string} path = {props.nav[value] as unknown as string} level = {props.level + 1} current = {false} isCurrent = {props.isCurrent}/>;
+                            if (typeof props.nav[value] === "string") {
+                                return <NavItem name = {value} version = {props.version} language = {props.language} key = {props.nav[value] as unknown as string} path = {props.nav[value] as unknown as string} level = {props.level + 1} current = {false} isCurrent = {props.isCurrent}/>;
+                            }
+                            return <NavFolder path = {`${props.path}/${value}`} key = {value} nav = {props.nav[value]} name = {value} root = {false} version = {props.version} language = {props.language} level = {props.level + 1} initialOpen = {false} isCurrent = {props.isCurrent}/>;
                         }
-                        return <NavFolder path = {`${props.path}/${value}`} key = {value} nav = {props.nav[value]} name = {value} root = {false} version = {props.version} language = {props.language} level = {props.level + 1} initialOpen = {false} isCurrent = {props.isCurrent}/>;
-                    }
                 )}
             </m.div>
         </LazyMotion>
@@ -107,10 +105,10 @@ function NavItem(props: SideNavItemProps): ReactElement {
 
     const pagePath = props.path.replace(/\.md/, "");
 
-    return <a href = {`/${props.version}/${props.language}/${pagePath}`} className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{ paddingLeft: `${0.5 + (props.level * 0.75)}ch` }}>
+    return <a href = {`/${props.version}/${props.language}/${pagePath}`} className = {`p-1 block align-bottom justify-self-center nav-item ${props.isCurrent(pagePath) ? `nav-item-selected` : ``}`} style = {{paddingLeft: `${0.5 + (props.level * 0.75)}ch`}}>
 
-            {props.name}
-        </a>
+        {props.name}
+    </a>
 
-    ;
+            ;
 }

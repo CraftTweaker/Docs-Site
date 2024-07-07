@@ -3,16 +3,15 @@ import React, {ReactElement} from "react";
 import {DocsMeta, PageContentProps, Verlang} from "util/Types";
 import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/solid";
 import Footer from "./Footer";
-import {MobileAd} from "./ads/Ad";
 
 function PageContent(props: PageContentProps): ReactElement {
 
     return <div className = "flex-grow w-full flex flex-col">
         <div className = "flex w-full flex-grow">
             <div className = {`w-full lg:w-content flex-grow flex-col`}>
-                <div className = "my-2 lg:my-0">
-                    <MobileAd/>
-                </div>
+                {/*<div className = "my-2 lg:my-0">*/}
+                {/*    <MobileAd/>*/}
+                {/*</div>*/}
                 <div className = {`w-10/12 lg:w-8/12 mx-auto my-4 mb-32 flex flex-col`}>
 
                     <NextPrevNav meta = {props.meta} version = {props.version} language = {props.language}/>

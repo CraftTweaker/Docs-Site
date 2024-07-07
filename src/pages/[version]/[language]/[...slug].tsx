@@ -56,7 +56,7 @@ export default function Page(props: SlugPageProps): ReactElement {
                     content: `utf-8`
                 }]}
             />
-            <div className = {`flex flex-grow max-w-screen`}>
+            <div className = {`flex flex-grow lg:max-w-content`}>
                 <Sidenav version = {props.version} language = {props.language} folder = {props.meta.folders.join("/")} slug = {props.slug} nav = {props.nav}/>
 
                 <PageContent content = {props.content} version = {props.version} language = {props.language} meta = {props.meta}/>

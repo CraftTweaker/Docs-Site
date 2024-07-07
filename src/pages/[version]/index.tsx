@@ -6,7 +6,6 @@ import Image from "next/image";
 import {ReactElement} from "react";
 import {NextSeo} from "next-seo";
 import Footer from "../../components/Footer";
-import {VersionSelectAd} from "../../components/ads/Ad";
 
 export default function VersionIndex(props: { version: Version, versions: string[] }): ReactElement {
 
@@ -69,7 +68,7 @@ export default function VersionIndex(props: { version: Version, versions: string
                             )}
                         </div>
                     </div>
-                    <VersionSelectAd/>
+                    {/*<VersionSelectAd/>*/}
 
                     <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2`}>
                         {props.version.languages.map(lang => {

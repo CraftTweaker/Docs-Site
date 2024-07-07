@@ -1,8 +1,9 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
-import Document, { Head, Html, Main, NextScript } from "next/document";
-import React, { ReactElement } from "react";
+import Document, {Head, Html, Main, NextScript} from "next/document";
+import {ReactElement} from "react";
 import ThemeScriptTag from "../util/Darkmode";
-import { SITE_DEV } from "../util/EnvUtil";
+import {SITE_DEV} from "../util/EnvUtil";
+import {AnchorAd} from "../components/ads/Ad";
 
 class MyDocument extends Document {
     render(): ReactElement {
@@ -33,8 +34,11 @@ class MyDocument extends Document {
 
                     <Main/>
 
+                    <AnchorAd/>
+
                     <NextScript/>
                     </body>
+
                 </Html>
         );
     }

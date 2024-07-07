@@ -59,7 +59,7 @@ export function MobileAd() {
 
 export function VersionSelectAd() {
     return <div>
-        <MobileAd/>
+        {/*<MobileAd/>*/}
         <div id = "ad-version-select-desktop-top"></div>
         <script dangerouslySetInnerHTML = {{
             __html: `
@@ -85,4 +85,24 @@ window['nitroAds'].createAd('ad-version-select-desktop-top', {
 
         </script>
     </div>
+}
+
+export function AnchorAd() {
+    return <script dangerouslySetInnerHTML = {{
+        __html: `window['nitroAds'].createAd('nitro-anchor', {
+            "demo": ${SITE_DEV},
+  "refreshTime": 30,
+  "format": "anchor",
+  "anchor": "bottom",
+  "anchorPersistClose": false,
+  "report": {
+    "enabled": true,
+    "icon": true,
+    "wording": "Report Ad",
+    "position": "top-right"
+  },
+  "mediaQuery": "(min-width: 1025px), (min-width: 768px) and (max-width: 1024px), (min-width: 320px) and (max-width: 767px)"
+});`
+    }}/>
+
 }
