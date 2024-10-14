@@ -69,7 +69,9 @@ export default function VersionIndex(props: { version: Version, versions: string
                         </div>
                     </div>
                     {/*<VersionSelectAd/>*/}
-
+                    <h2 className = {`text-5xl text-center`}>
+                        Select Language
+                    </h2>
                     <div className = {`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2`}>
                         {props.version.languages.map(lang => {
                             return <a key = {`${props.version.version}-${lang}`} href = {`/${props.version.version}/${lang}/index`}>
